@@ -1,0 +1,19 @@
+{
+  "name": "wahlcionario",
+  "version": "1.0.0",
+  "description": "Elección de palabra en diccionario",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VirginiaCreativa/Wahlcionario.git"
+  },
+  "author": "@Virginia.Creativa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VirginiaCreativa/Wahlcionario/issues"
+  },
+  "homepage": "https://github.com/VirginiaCreativa/Wahlcionario#readme"
+}
