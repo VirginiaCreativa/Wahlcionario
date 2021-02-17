@@ -6,16 +6,14 @@ import Palabra from '../containers/Palabra';
 
 const Routes = () => {
   return (
-    <>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/palabra">
-          <Palabra />
-        </Route>
-      </Switch>
-    </>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route exact path="/palabra">
+        <Palabra />
+      </Route>
+    </Switch>
   );
 };
 

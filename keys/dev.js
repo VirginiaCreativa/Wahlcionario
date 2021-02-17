@@ -1,7 +1,7 @@
 module.exports = {
-  jwtSecret: "secretkey",
-  dbUser: "admin",
-  dbPassword: "LVdjpaIusn5XLrQe",
-  dbHost: "cluster0.fgjat.mongodb.net",
-  dbNameUsers: "User_DB",
+  jwtSecret: 'secretkey',
+  dbAdmin: 'admin',
+  dbPassword: '7XzlRbt2M3X3vixv',
+  dbHost: 'cluster0.knzyi.mongodb.net',
+  dbTest: 'DataBase',
 };
