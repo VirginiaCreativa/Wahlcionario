@@ -65,7 +65,7 @@ const Menus = () => {
         },
       })
       .then((res) => {
-        if (res) setUserCurrent(res.data);
+        if (res) setUserCurrent(res.data.data.name);
       })
       .catch((err) => console.error(err));
     // ===== BOX SUBMENU =====//
