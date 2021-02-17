@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -57,17 +57,17 @@ const Menus = () => {
   const [userCurrent, setUserCurrent] = useState(false);
 
   useEffect(() => {
-    // axios
-    //   .get('http://localhost:3000/user/current', {
-    //     headers: {
-    //       'x-access-token':
-    //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyMzBjMWJiOTEwMjczNzIwNGUyZjA2In0sImlhdCI6MTYxMzQ5MTY4NSwiZXhwIjoxNjEzNTI3Njg1fQ.K5bWmaaINeXJvPUvV1Owf-nqIZFMTEqEfushHcaGV70',
-    //     },
-    //   })
-    //   .then((res) => {
-    //     if (res) setUserCurrent(res.data.data.name);
-    //   })
-    //   .catch((err) => console.error(err));
+    axios
+      .get('http://localhost:3000/user/current', {
+        headers: {
+          'x-access-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyZDdlZTkyZjI0OGQzNTAxMWQwMTJmIn0sImlhdCI6MTYxMzU5NDUwNywiZXhwIjoxNjEzNjMwNTA3fQ.5XtZ1cyUZwWh7g8ckZ-ScuLVS1SmWh_S9Vf6j4dhTNc',
+        },
+      })
+      .then((res) => {
+        if (res) setUserCurrent(res.data);
+      })
+      .catch((err) => console.error(err));
     // ===== BOX SUBMENU =====//
     const bodyBox = document.querySelector('body');
     if (bodyBox) {
