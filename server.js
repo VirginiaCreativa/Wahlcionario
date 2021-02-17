@@ -6,21 +6,23 @@ const cors = require("cors");
 const logger = require("morgan");
 const chalk = require("chalk");
 const bodyParser = require("body-parser");
-const { get } = require("http");
 
-app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors({ origin: true, credentials: true }));
-app.options("*", cors());
-app.use(express.static(path.join(__dirname, "client", "public", "index.html")));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(cors({ origin: true, credentials: true }));
+// app.options(cors());
+
+app.use(express.static(path.join(__dirname, "../client/public")));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "public", "index.html"));
+});
 
 app.get("/", (req, res) => {
   res.send("Hello Word");
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log(
