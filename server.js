@@ -7,25 +7,43 @@ const logger = require("morgan");
 const chalk = require("chalk");
 const bodyParser = require("body-parser");
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(cors({ origin: true, credentials: true }));
-// app.options(cors());
+const keys = require("./keys/keys");
+const MongooseLib = require("./lib/mongoose");
+const UserRouter = require("./routes/User.Router");
 
-app.use(express.static(path.join(__dirname, "../client/public")));
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "public", "index.html"));
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+// ====== CONNECT MONGODB ====== //
+const connect = new MongooseLib();
+connect.connect();
+
+// ====== MIDDLEWARE ====== //
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors({ origin: true, credentials: true }));
+app.options("*", cors());
+// ====== CLIENT ====== //
+
+// ====== CONTROLLERS ROUTES ====== //
+UserRouter(app);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
+
+process.on("exit", (code) => {
+  console.log(`About to exit with code: ${code}`);
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello Word");
-});
+const port = process.env.PORT || 3000;
 
-const PORT = 3000;
-
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log(
-    chalk.hex("#fff").bgBlue.bold(`listening http://localhost:${PORT}`)
+    chalk.hex("#fff").bgBlue.bold(`listening http://localhost:${port}`)
   );
 });
