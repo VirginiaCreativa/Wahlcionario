@@ -3,9 +3,13 @@ import { createBrowserHistory } from "history";
 import thunk from "redux-thunk";
 import { routerMiddleware } from "connected-react-router";
 import createRootReducer from "../reducers/reducer";
-// import logger from "redux-logger";
+import { createLogger } from "redux-logger";
 
 export const history = createBrowserHistory();
+
+const logger = createLogger({
+  collapsed: true,
+});
 
 export default function createReduxStore(preloadedState) {
   const enhancers = [];
@@ -13,13 +17,14 @@ export default function createReduxStore(preloadedState) {
   const middleware = [routerMiddleware(history)];
 
   if (process.env.NODE_ENV === "development") {
-    const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+    const devToolsExtension =
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || logger;
     if (typeof devToolsExtension === "function") {
       enhancers.push(devToolsExtension());
     }
   }
   if (process.env.NODE_ENV === "development") {
-    applyMid = [...middleware, thunk];
+    applyMid = [...middleware, thunk, logger];
   } else {
     applyMid = [...middleware, thunk];
   }
