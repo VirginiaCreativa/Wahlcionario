@@ -84,7 +84,7 @@ const Menus = () => {
   return (
     <MenuStyled>
       <Button type="button" onClick={() => history.push('mispalabras')}>
-        <i class="bx bx-layer"></i>
+        <i className="bx bx-layer"></i>
       </Button>
       <Button
         type="button"
@@ -99,7 +99,7 @@ const Menus = () => {
               <p>{userCurrent || 'Desconocido'}</p>
             </li>
             <li>
-              <i class="bx bx-layer"></i>
+              <i className="bx bx-layer"></i>
               <Link to="mispalabras">Mis palabras</Link>
             </li>
             <li>

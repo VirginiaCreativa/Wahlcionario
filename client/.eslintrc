@@ -2,10 +2,12 @@
   "extends": [
     "airbnb",
     "airbnb/hooks",
+    "standard",
     "airbnb-babel",
     "plugin:prettier/recommended",
     "eslint:recommended",
     "prettier/standard",
+    "prettier/react",
     "plugin:react/recommended",
     "plugin:compat/recommended",
     "plugin:cypress/recommended",
@@ -41,7 +43,6 @@
   ],
   "rules": {
     "quotes": [2, "single", { "avoidEscape": true }],
-    "semi": 2,
     "no-console": "off",
     "react/prop-types": 0,
     "global-require": 0,

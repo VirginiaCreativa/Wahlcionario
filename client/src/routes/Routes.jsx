@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../containers/Home';
 import Palabra from '../containers/Palabra';
 import MisPalabra from '../containers/MisPalabras';
+import Login from '../containers/Login';
+import NotFound from '../containers/404';
 
 const Routes = () => {
   return (
@@ -16,6 +18,12 @@ const Routes = () => {
       </Route>
       <Route exact path="/mispalabras">
         <MisPalabra />
+      </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      <Route path="*">
+        <NotFound />
       </Route>
     </Switch>
   );
