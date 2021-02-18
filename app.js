@@ -24,21 +24,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 app.options("*", cors());
+app.use(express.static(path.join(__dirname, "client")));
 // ====== CLIENT ====== //
 
 // ====== CONTROLLERS ROUTES ====== //
 UserRouter(app);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.get("/*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
 }
 
-process.on("exit", (code) => {
-  console.log(`About to exit with code: ${code}`);
-});
+console.log(process.env.NODE_ENV);
 
 const port = process.env.PORT || 3000;
 
