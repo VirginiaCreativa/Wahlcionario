@@ -21,11 +21,12 @@
 // };
 
 // export default Routes;
-import React, { Suspense, lazy } from 'react';
+import React from "react";
 
-import { Switch, Route } from 'react-router-dom';
-import Home from '../containers/Home';
-import MisPalabras from '../containers/MisPalabras';
+import { Switch, Route } from "react-router-dom";
+import Home from "../containers/Home";
+import MisPalabras from "../containers/MisPalabras";
+import NotFound from "../containers/404";
 
 const Routes = () => {
   return (
@@ -37,6 +38,10 @@ const Routes = () => {
         <Route exact path="/mispalabras">
           <MisPalabras />
         </Route>
+        <Route exact path="/mispalabras">
+          <MisPalabras />
+        </Route>
+        <Route component={NotFound} />
       </Switch>
     </>
   );
