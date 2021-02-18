@@ -2,6 +2,7 @@ import { applyMiddleware, createStore, compose } from "redux";
 import { createBrowserHistory } from "history";
 import thunk from "redux-thunk";
 import createRootReducer from "../reducers/reducer";
+// import logger from "redux-logger";
 
 export const history = createBrowserHistory();
 
