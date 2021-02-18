@@ -22,9 +22,6 @@ const Routes = () => {
       <Route exact path="/login">
         <Login />
       </Route>
-      <Route path="*">
-        <NotFound />
-      </Route>
     </Switch>
   );
 };

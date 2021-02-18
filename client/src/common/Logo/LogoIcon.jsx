@@ -8,7 +8,7 @@ const LogoIcon = () => {
       <Link to="/">
         <img
           src={Logo}
-          alt="Icono de Logo Pinimark"
+          alt="Icono de Logo Wahlcionario"
           style={{ height: '40px' }}
         />
       </Link>
