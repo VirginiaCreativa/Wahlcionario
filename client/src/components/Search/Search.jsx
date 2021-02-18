@@ -23,7 +23,7 @@ const Button = styled.button`
 const InputStyled = styled.input`
   width: 15vw;
   padding: 6px 40px 6px 40px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-align: center;
   background-color: ${Variables.grey0};
   border: 0;

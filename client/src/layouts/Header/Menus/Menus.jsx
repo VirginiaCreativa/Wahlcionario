@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
 
 const MenuStyled = styled.div`
@@ -56,6 +56,8 @@ const Menus = () => {
   const [btnSubMenu, setBtnSubMenu] = useState(false);
   const [userCurrent, setUserCurrent] = useState(false);
 
+  const history = useHistory();
+
   useEffect(() => {
     axios
       .get('http://localhost:3000/user/current', {
@@ -81,8 +83,8 @@ const Menus = () => {
 
   return (
     <MenuStyled>
-      <Button type="button">
-        <i className="bx bx-bookmark"></i>
+      <Button type="button" onClick={() => history.push('mispalabras')}>
+        <i class="bx bx-layer"></i>
       </Button>
       <Button
         type="button"
@@ -97,8 +99,8 @@ const Menus = () => {
               <p>{userCurrent || 'Desconocido'}</p>
             </li>
             <li>
-              <i className="bx bx-bookmarks"></i>
-              <Link to="marcadores">Mis marcadores</Link>
+              <i class="bx bx-layer"></i>
+              <Link to="mispalabras">Mis palabras</Link>
             </li>
             <li>
               <i className="bx bxs-cog"></i>
