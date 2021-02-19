@@ -26,21 +26,16 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../containers/Home';
 import MisPalabras from '../containers/MisPalabras';
+import Login from '../containers/Login';
 import NotFound from '../containers/404';
 
 const Routes = () => {
   return (
     <>
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/mispalabras">
-          <MisPalabras />
-        </Route>
-        <Route exact path="/mispalabras">
-          <MisPalabras />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/mispalabras" component={MisPalabras} />
+        <Route exact path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
     </>

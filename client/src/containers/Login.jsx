@@ -1,7 +1,38 @@
 import React from 'react';
 
 const Login = () => {
-  return <div>Login</div>;
+  return (
+    <div className="container">
+      <div>logo</div>
+      <form>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Email address
+            <input
+              type="email"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </label>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Password
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+            />
+          </label>
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default Login;
