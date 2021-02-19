@@ -1,38 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import LoginUp from '../components/Login/LoginUp';
 
 const Login = () => {
-  return (
-    <div className="container">
-      <div>logo</div>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Email address
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Password
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-            />
-          </label>
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
-  );
+  const [hasUser, setHasUser] = useState(false);
+  return <div className="container">{hasUser ? <LoginUp /> : <LoginUp />}</div>;
 };
 
 export default Login;

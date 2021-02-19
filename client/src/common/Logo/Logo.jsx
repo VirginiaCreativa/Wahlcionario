@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoIconSVG from '../../assets/logo/Logo_Icon.svg';
+import LogoSVG from '../../assets/logo/logo.svg';
 
-const LogoIcon = ({ size = '60px' }) => {
+const Logo = () => {
   return (
     <>
       <Link to="/">
         <img
-          src={LogoIconSVG}
+          src={LogoSVG}
           alt="Icono de Logo Wahlcionario"
-          style={{ height: `${size}` }}
+          style={{ height: '40px' }}
         />
       </Link>
     </>
   );
 };
 
-export default LogoIcon;
+export default Logo;
