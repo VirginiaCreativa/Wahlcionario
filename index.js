@@ -11,8 +11,6 @@ const keys = require("./keys/keys");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
 connect.connect();
@@ -37,9 +35,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-console.log(process.env.NODE_ENV);
-
-const port = process.env.PORT || 3000;
+const port = keys.port || 3000;
 
 app.listen(port, () => {
   console.log(
