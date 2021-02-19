@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
-import Variables from '../../../styles/VariableStyled';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { Link, useHistory } from "react-router-dom";
+import Variables from "../../../styles/VariableStyled";
 
 const MenuStyled = styled.div`
   position: relative;
@@ -60,10 +60,10 @@ const Menus = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/user/current', {
+      .get("http://localhost:3000/user/current", {
         headers: {
-          'x-access-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyZDdlZTkyZjI0OGQzNTAxMWQwMTJmIn0sImlhdCI6MTYxMzY2MDE3MywiZXhwIjoxNjEzNjk2MTczfQ.uMZoBchQAzoRIwvIjL8UtvNfL_C_9eCvIEOdcGwwPvI',
+          "x-access-token":
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyZDdlZTkyZjI0OGQzNTAxMWQwMTJmIn0sImlhdCI6MTYxMzc0MTM1MCwiZXhwIjoxNjEzNzc3MzUwfQ.iruzrEBwb44WcqY5vcYKlTnGzn7hUv08Wu556Rk8Lno",
         },
       })
       .then((res) => {
@@ -71,9 +71,9 @@ const Menus = () => {
       })
       .catch((err) => console.error(err));
     // ===== BOX SUBMENU =====//
-    const bodyBox = document.querySelector('body');
+    const bodyBox = document.querySelector("body");
     if (bodyBox) {
-      bodyBox.addEventListener('mouseover', (ev) => {
+      bodyBox.addEventListener("mouseover", (ev) => {
         if (ev.clientY >= 220) {
           setBtnSubMenu(false);
         }
@@ -83,20 +83,21 @@ const Menus = () => {
 
   return (
     <MenuStyled>
-      <Button type="button" onClick={() => history.push('mispalabras')}>
+      <Button type="button" onClick={() => history.push("mispalabras")}>
         <i className="bx bx-layer"></i>
       </Button>
       <Button
         type="button"
-        activeuser={btnSubMenu ? '#2868ee' : '#a4b0be'}
-        onClick={() => setBtnSubMenu(!btnSubMenu)}>
+        activeuser={btnSubMenu ? "#2868ee" : "#a4b0be"}
+        onClick={() => setBtnSubMenu(!btnSubMenu)}
+      >
         <i className="bx bx-user"></i>
       </Button>
       {btnSubMenu && (
         <SubMenu className="boxSubMenu">
           <ul className="list-unstyled">
             <li>
-              <p>{userCurrent || 'Desconocido'}</p>
+              <p>{userCurrent || "Desconocido"}</p>
             </li>
             <li>
               <i className="bx bx-layer"></i>

@@ -8,7 +8,10 @@ import { createLogger } from "redux-logger";
 export const history = createBrowserHistory();
 
 const logger = createLogger({
+  level: "info",
   collapsed: true,
+  logger: console,
+  predicate: (getState, action) => true,
 });
 
 export default function createReduxStore(preloadedState) {
