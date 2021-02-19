@@ -34,7 +34,7 @@ const Search = () => {
   return (
     <SearchStyled>
       <Button type="button">
-        <i className="bx bx-search"></i>
+        <i className="bx bx-search" />
       </Button>
       <InputStyled
         type="text"

@@ -24,4 +24,4 @@ yarn-error.log*
 
 .eslintrc
 .prettierrc
-.stylelintrc
+.stylelintrc.json

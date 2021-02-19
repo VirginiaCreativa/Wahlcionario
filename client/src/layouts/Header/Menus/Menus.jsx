@@ -84,13 +84,13 @@ const Menus = () => {
   return (
     <MenuStyled>
       <Button type="button" onClick={() => history.push('mispalabras')}>
-        <i className="bx bx-layer"></i>
+        <i className="bx bx-layer" />
       </Button>
       <Button
         type="button"
         activeuser={btnSubMenu ? '#2868ee' : '#a4b0be'}
         onClick={() => setBtnSubMenu(!btnSubMenu)}>
-        <i className="bx bx-user"></i>
+        <i className="bx bx-user" />
       </Button>
       {btnSubMenu && (
         <SubMenu className="boxSubMenu">
@@ -99,15 +99,15 @@ const Menus = () => {
               <p>{userCurrent || 'Desconocido'}</p>
             </li>
             <li>
-              <i className="bx bx-layer"></i>
+              <i className="bx bx-layer" />
               <Link to="mispalabras">Mis palabras</Link>
             </li>
             <li>
-              <i className="bx bxs-cog"></i>
+              <i className="bx bxs-cog" />
               <Link to="configuracion">Configuración</Link>
             </li>
             <li>
-              <i className="bx bx-exit"></i>
+              <i className="bx bx-exit" />
               <Link to="logout">Salir</Link>
             </li>
           </ul>
