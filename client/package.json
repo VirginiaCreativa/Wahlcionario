@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "./",
-  "prox": "http://localhost:300/",
+  "prox": "http://localhost:3000/",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
