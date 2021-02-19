@@ -21,12 +21,12 @@
 // };
 
 // export default Routes;
-import React from "react";
+import React from 'react';
 
-import { Switch, Route } from "react-router-dom";
-import Home from "../containers/Home";
-import MisPalabras from "../containers/MisPalabras";
-import NotFound from "../containers/404";
+import { Switch, Route } from 'react-router-dom';
+import Home from '../containers/Home';
+import MisPalabras from '../containers/MisPalabras';
+import NotFound from '../containers/404';
 
 const Routes = () => {
   return (
