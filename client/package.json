@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "./",
   "main": "index.js",
-  "prox": "http://localhost:3000/",
+  "prox": "http://localhost:5000/",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",

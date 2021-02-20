@@ -5,7 +5,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import App from './App';
 
 import createReduxStore, { history } from './redux/store/store';
-import reportWebVitals from './reportWebVitals';
 import GlobalStyled from './styles/GlobalStyled';
 import 'bootstrap/scss/bootstrap.scss';
 
@@ -21,5 +20,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
-
-reportWebVitals();
