@@ -14,15 +14,29 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: 40px;
   }
+  button {
+    width: 100%;
+  }
 `;
 
-const LoginUp = () => {
+const SignUp = () => {
   return (
     <div className="container">
       <Wrapper>
         <LogoIcon size="100px" />
-        <h2>iniciar sesión</h2>
+        <h2>Registrarse</h2>
         <form>
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label">
+              Nombre completo
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+            </label>
+          </div>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email
@@ -44,14 +58,15 @@ const LoginUp = () => {
               />
             </label>
           </div>
-
-          <button type="submit" className="btn btn-primary">
-            Entrar
-          </button>
+          <div className="d-grid gap-2">
+            <button type="submit" className="btn btn-primary ">
+              Entrar
+            </button>
+          </div>
         </form>
       </Wrapper>
     </div>
   );
 };
 
-export default LoginUp;
+export default SignUp;

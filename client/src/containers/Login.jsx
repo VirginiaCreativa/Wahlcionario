@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import LoginUp from '../components/Login/LoginUp';
+import SignUp from '../components/Login/SignUp';
+import SignIn from '../components/Login/SignIn';
 
 const Login = () => {
   const [hasUser, setHasUser] = useState(false);
-  return <div className="container">{hasUser ? <LoginUp /> : <LoginUp />}</div>;
+  return <div className="container">{hasUser ? <SignIn /> : <SignUp />}</div>;
 };
 
 export default Login;
