@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
 
@@ -37,17 +38,26 @@ const SignUp = () => {
     passwordconfirm: '',
   });
 
-  const handleInputChange = (ev) => {
+  const { fullname, email, password, passwordconfirm } = hasFormDatas;
+  const handleInputChange = async (ev) => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
   };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    if (hasFormDatas.password !== hasFormDatas.passwordconfirm) {
+    if (password !== passwordconfirm) {
       setErrPassword(true);
     } else {
-      setErrPassword(false);
-      console.log(hasFormDatas);
+      try {
+        const newUser = {
+          fullname,
+          email,
+          password,
+        };
+        const body = JSON.stringify(newUser);
+      } catch (error) {
+        console.log(error.response.data);
+      }
     }
   };
 

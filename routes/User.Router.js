@@ -22,14 +22,14 @@ function UserRouter(app) {
   });
 
   router.post(
-    "/login/up",
+    "/loginup",
     validator.body(UserValidateSchema),
     (req, res, next) => {
       UserController.CreateUser(req, res);
     }
   );
 
-  router.post("/login/in", (req, res, next) => {
+  router.post("/loginin", (req, res, next) => {
     UserController.getLogin(req, res);
   });
 
