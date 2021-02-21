@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import LogoIcon from '../../common/Logo/LogoIcon';
 
@@ -20,41 +20,68 @@ const Wrapper = styled.div`
 `;
 
 const SignUp = () => {
+  const [hasFormDatas, setFormDatas] = useState({
+    fullname: '',
+    email: '',
+    password: '',
+    passwordconfirm: '',
+  });
+
+  const handleInputChange = (ev) => {
+    setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
+  };
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  };
+
   return (
     <div className="container">
       <Wrapper>
         <LogoIcon size="100px" />
         <h2>Registrarse</h2>
-        <form>
+        <form onSubmit={(ev) => handleSubmit(ev)}>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+            <label htmlFor="fullname" className="form-label">
               Nombre completo
               <input
-                type="email"
+                onChange={handleInputChange}
+                type="text"
+                name="fullname"
                 className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
               />
             </label>
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+            <label htmlFor="email" className="form-label">
               Email
               <input
+                onChange={handleInputChange}
                 type="email"
+                name="email"
                 className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
               />
             </label>
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label htmlFor="password" className="form-label">
               Contraseña
               <input
+                onChange={handleInputChange}
                 type="password"
+                name="password"
                 className="form-control"
-                id="exampleInputPassword1"
+              />
+            </label>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Confirma contraseña
+              <input
+                onChange={handleInputChange}
+                type="password"
+                name="passwordconfirm"
+                className="form-control"
               />
             </label>
           </div>
