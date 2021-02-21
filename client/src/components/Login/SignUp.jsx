@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import LogoIcon from '../../common/Logo/LogoIcon';
+import Variables from '../../styles/VariableStyled';
 
 const Wrapper = styled.div`
   display: grid;
@@ -15,11 +16,20 @@ const Wrapper = styled.div`
     margin-bottom: 40px;
   }
   button {
+    margin-top: 10px;
     width: 100%;
   }
 `;
 
+const AlertPassword = styled.div`
+  p {
+    margin-bottom: 0;
+    color: ${Variables.red1};
+  }
+`;
+
 const SignUp = () => {
+  const [errPassword, setErrPassword] = useState(false);
   const [hasFormDatas, setFormDatas] = useState({
     fullname: '',
     email: '',
@@ -33,6 +43,12 @@ const SignUp = () => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
+    if (hasFormDatas.password !== hasFormDatas.passwordconfirm) {
+      setErrPassword(true);
+    } else {
+      setErrPassword(false);
+      console.log(hasFormDatas);
+    }
   };
 
   return (
@@ -83,6 +99,11 @@ const SignUp = () => {
                 name="passwordconfirm"
                 className="form-control"
               />
+              {errPassword && (
+                <AlertPassword>
+                  <p>La contraseña de verificación no coincide.</p>
+                </AlertPassword>
+              )}
             </label>
           </div>
           <div className="d-grid gap-2">
