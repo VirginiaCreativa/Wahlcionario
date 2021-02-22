@@ -8,7 +8,7 @@ class AuthService {
     const res = await axios
       .post(`${URL}/login`, { email, password })
       .then((res) => {
-        if (res.data.token) {
+        if (res.token) {
           localStorage.setItem('user', JSON.stringify(res.data));
         }
       })

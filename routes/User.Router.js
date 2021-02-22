@@ -21,11 +21,11 @@ function UserRouter(app) {
     UserController.getUser(req.user, res);
   });
 
-  router.post("/login", validator.body(UserValidateSchema), (req, res) => {
+  router.post("/register", validator.body(UserValidateSchema), (req, res) => {
     UserController.CreateUser(req, res);
   });
 
-  router.post("/register", (req, res) => {
+  router.post("/login", (req, res) => {
     UserController.getLogin(req, res);
   });
 
