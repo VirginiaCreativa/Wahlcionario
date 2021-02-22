@@ -42,7 +42,8 @@ const SignUp = () => {
   const history = useHistory();
 
   const { name, email, password, passwordconfirm } = hasFormDatas;
-  const handleInputChange = async (ev) => {
+
+  const handleInputChange = (ev) => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
   };
 
@@ -63,16 +64,13 @@ const SignUp = () => {
           },
         };
         const body = JSON.stringify(newUser);
-        console.log(body);
         const res = await axios.post(
           'http://localhost:3000/user/loginup',
           body,
           config,
         );
-        console.log(res.data);
         if (res.data) {
-          // history.push('/');
-          console.log();
+          history.push('/');
         }
       } catch (error) {
         console.log(error.response.data);

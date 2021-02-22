@@ -17,15 +17,15 @@ function UserRouter(app) {
       );
   });
 
-  router.get("/current", Authorization, (req, res) => {
+  router.get("/auth/current", Authorization, (req, res) => {
     UserController.getUser(req.user, res);
   });
 
-  router.post("/loginup", validator.body(UserValidateSchema), (req, res) => {
+  router.post("/login", validator.body(UserValidateSchema), (req, res) => {
     UserController.CreateUser(req, res);
   });
 
-  router.post("/loginin", (req, res) => {
+  router.post("/register", (req, res) => {
     UserController.getLogin(req, res);
   });
 

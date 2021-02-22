@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 import LogoIcon from '../../common/Logo/LogoIcon';
+import Variables from '../../styles/VariableStyled';
 
 const Wrapper = styled.div`
   display: grid;
@@ -19,32 +22,89 @@ const Wrapper = styled.div`
   }
 `;
 
+const AlertPassword = styled.div`
+  p {
+    margin-bottom: 0;
+    color: ${Variables.red1};
+  }
+`;
+
 const SignIn = () => {
+  const [errPassword, setErrPassword] = useState(false);
+  const [hasFormDatas, setFormDatas] = useState({
+    email: '',
+    password: '',
+  });
+  const history = useHistory();
+  const { email, password } = hasFormDatas;
+
+  const handleInputChange = (ev) => {
+    setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
+  };
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    if (!password) {
+      setErrPassword(true);
+    } else {
+      try {
+        const isUser = {
+          email,
+          password,
+        };
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+        const body = JSON.stringify(isUser);
+        const res = await axios.post(
+          'http://localhost:3000/user/loginin',
+          body,
+          config,
+        );
+        if (res.data) {
+          history.push('/');
+        }
+      } catch (error) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      }
+    }
+  };
+
   return (
     <div className="container">
       <Wrapper>
         <LogoIcon size="100px" />
         <h2>Iniciar Sesión</h2>
-        <form>
+        <form onSubmit={(ev) => handleSubmit(ev)}>
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+            <label htmlFor="email" className="form-label">
               Email
               <input
+                onChange={handleInputChange}
                 type="email"
+                name="email"
                 className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
               />
             </label>
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label htmlFor="password" className="form-label">
               Contraseña
               <input
+                onChange={handleInputChange}
                 type="password"
+                name="password"
                 className="form-control"
-                id="exampleInputPassword1"
               />
+              {errPassword && (
+                <AlertPassword>
+                  <p>La contraseña de validación no coincide.</p>
+                </AlertPassword>
+              )}
             </label>
           </div>
           <div className="d-grid gap-2">

@@ -3,7 +3,7 @@ import SignUp from '../components/Login/SignUp';
 import SignIn from '../components/Login/SignIn';
 
 const Login = () => {
-  const [hasUser, setHasUser] = useState(false);
+  const [hasUser, setHasUser] = useState(true);
   return <div className="container">{hasUser ? <SignIn /> : <SignUp />}</div>;
 };
 
