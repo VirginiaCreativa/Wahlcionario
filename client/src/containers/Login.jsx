@@ -3,7 +3,7 @@ import Register from '../components/Login/Register';
 import LoginIn from '../components/Login/Login';
 
 const Login = () => {
-  const [hasUser, setHasUser] = useState(true);
+  const [hasUser, setHasUser] = useState(false);
   return (
     <div className="container">{hasUser ? <LoginIn /> : <Register />}</div>
   );

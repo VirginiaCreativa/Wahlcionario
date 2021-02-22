@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import axios from 'axios';
+import AuthService from '../../services/authentication.service';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
+
+import RegisterSucces from '../../redux/actions/Auth.Action';
 
 const Wrapper = styled.div`
   display: grid;
@@ -40,6 +43,7 @@ const SignUp = () => {
   });
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const { name, email, password, passwordconfirm } = hasFormDatas;
 
@@ -47,36 +51,12 @@ const SignUp = () => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
   };
 
-  const handleSubmit = async (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
     if (password !== passwordconfirm) {
       setErrPassword(true);
     } else {
-      try {
-        const newUser = {
-          name,
-          email,
-          password,
-        };
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        };
-        const body = JSON.stringify(newUser);
-        const res = await axios.post(
-          'http://localhost:3000/user/register',
-          body,
-          config,
-        );
-        if (res.data) {
-          history.push('/');
-        }
-      } catch (error) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      }
+      dispatch(RegisterSucces({ name, email, password }));
     }
   };
 
