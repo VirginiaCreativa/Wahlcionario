@@ -18,6 +18,7 @@ const Wrapper = styled.div`
     margin-bottom: 40px;
   }
   button {
+    margin-top: 10px;
     width: 100%;
   }
 `;
@@ -29,14 +30,18 @@ const AlertPassword = styled.div`
   }
 `;
 
-const SignIn = () => {
+const SignUp = () => {
   const [errPassword, setErrPassword] = useState(false);
   const [hasFormDatas, setFormDatas] = useState({
+    name: '',
     email: '',
     password: '',
+    passwordconfirm: '',
   });
+
   const history = useHistory();
-  const { email, password } = hasFormDatas;
+
+  const { name, email, password, passwordconfirm } = hasFormDatas;
 
   const handleInputChange = (ev) => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
@@ -44,11 +49,12 @@ const SignIn = () => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    if (!password) {
+    if (password !== passwordconfirm) {
       setErrPassword(true);
     } else {
       try {
-        const isUser = {
+        const newUser = {
+          name,
           email,
           password,
         };
@@ -57,9 +63,9 @@ const SignIn = () => {
             'Content-Type': 'application/json',
           },
         };
-        const body = JSON.stringify(isUser);
+        const body = JSON.stringify(newUser);
         const res = await axios.post(
-          'http://localhost:3000/user/loginin',
+          'http://localhost:3000/user/register',
           body,
           config,
         );
@@ -78,8 +84,19 @@ const SignIn = () => {
     <div className="container">
       <Wrapper>
         <LogoIcon size="100px" />
-        <h2>Iniciar Sesión</h2>
+        <h2>Registrarse</h2>
         <form onSubmit={(ev) => handleSubmit(ev)}>
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Nombre completo
+              <input
+                onChange={handleInputChange}
+                type="text"
+                name="name"
+                className="form-control"
+              />
+            </label>
+          </div>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
               Email
@@ -100,9 +117,20 @@ const SignIn = () => {
                 name="password"
                 className="form-control"
               />
+            </label>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Confirma contraseña
+              <input
+                onChange={handleInputChange}
+                type="password"
+                name="passwordconfirm"
+                className="form-control"
+              />
               {errPassword && (
                 <AlertPassword>
-                  <p>La contraseña de validación no coincide.</p>
+                  <p>La contraseña de verificación no coincide.</p>
                 </AlertPassword>
               )}
             </label>
@@ -118,4 +146,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

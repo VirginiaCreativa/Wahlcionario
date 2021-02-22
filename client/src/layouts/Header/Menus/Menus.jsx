@@ -5,13 +5,13 @@ import { Link, useHistory } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
 
 const MenuStyled = styled.div`
-  position: relative;
   display: flex;
+  position: relative;
 `;
 
 const Button = styled.button`
-  background-color: transparent;
   border: 0;
+  background-color: transparent;
   .bx {
     color: ${Variables.grey1};
     font-size: 18px;
@@ -28,10 +28,10 @@ const SubMenu = styled.div`
   position: absolute;
   top: 30px;
   right: 0;
-  width: 200px;
-  padding: 15px;
   border-radius: 6px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 200px;
   ul {
     margin: 0;
     padding: 0;
@@ -39,8 +39,8 @@ const SubMenu = styled.div`
       margin-bottom: 10px;
       :last-child {
         margin-bottom: 0;
-        padding-top: 10px;
         border-top: 1px dotted ${Variables.grey0};
+        padding-top: 10px;
       }
       i {
         position: relative;
@@ -60,9 +60,9 @@ const Menus = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/user/current', {
+      .get('http://localhost:3000/user/auth/current', {
         headers: {
-          'x-access-token':
+          'x-accessToken':
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyZDdlZTkyZjI0OGQzNTAxMWQwMTJmIn0sImlhdCI6MTYxMzc0MTM1MCwiZXhwIjoxNjEzNzc3MzUwfQ.iruzrEBwb44WcqY5vcYKlTnGzn7hUv08Wu556Rk8Lno',
         },
       })
