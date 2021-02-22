@@ -9,7 +9,7 @@ function UserRouter(app) {
   const router = express.Router();
   app.use("/user", router);
 
-  router.get("/", Authorization, (req, res, next) => {
+  router.get("/", Authorization, (req, res) => {
     UserController.getUsers()
       .then((data) => response.success(req, res, data, "Users"))
       .catch((err) =>
@@ -17,23 +17,19 @@ function UserRouter(app) {
       );
   });
 
-  router.get("/current", Authorization, (req, res, next) => {
+  router.get("/current", Authorization, (req, res) => {
     UserController.getUser(req.user, res);
   });
 
-  router.post(
-    "/loginup",
-    validator.body(UserValidateSchema),
-    (req, res, next) => {
-      UserController.CreateUser(req, res);
-    }
-  );
+  router.post("/loginup", validator.body(UserValidateSchema), (req, res) => {
+    UserController.CreateUser(req, res);
+  });
 
-  router.post("/loginin", (req, res, next) => {
+  router.post("/loginin", (req, res) => {
     UserController.getLogin(req, res);
   });
 
-  router.put("/login/update/:id", (req, res, next) => {
+  router.put("/login/update/:id", (req, res) => {
     UserController.getUserUpdate(req, res);
   });
 }

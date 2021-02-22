@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import LogoIcon from '../../common/Logo/LogoIcon';
@@ -32,31 +33,51 @@ const AlertPassword = styled.div`
 const SignUp = () => {
   const [errPassword, setErrPassword] = useState(false);
   const [hasFormDatas, setFormDatas] = useState({
-    fullname: '',
+    name: '',
     email: '',
     password: '',
     passwordconfirm: '',
   });
 
-  const { fullname, email, password, passwordconfirm } = hasFormDatas;
+  const history = useHistory();
+
+  const { name, email, password, passwordconfirm } = hasFormDatas;
   const handleInputChange = async (ev) => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
   };
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault();
     if (password !== passwordconfirm) {
       setErrPassword(true);
     } else {
       try {
         const newUser = {
-          fullname,
+          name,
           email,
           password,
         };
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
         const body = JSON.stringify(newUser);
+        console.log(body);
+        const res = await axios.post(
+          'http://localhost:3000/user/loginup',
+          body,
+          config,
+        );
+        console.log(res.data);
+        if (res.data) {
+          // history.push('/');
+          console.log();
+        }
       } catch (error) {
         console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
       }
     }
   };
@@ -68,12 +89,12 @@ const SignUp = () => {
         <h2>Registrarse</h2>
         <form onSubmit={(ev) => handleSubmit(ev)}>
           <div className="mb-3">
-            <label htmlFor="fullname" className="form-label">
+            <label htmlFor="name" className="form-label">
               Nombre completo
               <input
                 onChange={handleInputChange}
                 type="text"
-                name="fullname"
+                name="name"
                 className="form-control"
               />
             </label>
