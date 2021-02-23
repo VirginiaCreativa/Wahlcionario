@@ -3,7 +3,9 @@ import { REGISTER_SUCESS, REGISTER_FAIL } from '../types';
 
 const URL = 'http://localhost:3000/user';
 
-const RegisterSucces = ({ name, email, password }) => async (dispatch) => {
+export const RegisterSucces = ({ name, email, password }) => async (
+  dispatch,
+) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -14,17 +16,18 @@ const RegisterSucces = ({ name, email, password }) => async (dispatch) => {
 
   try {
     const res = await axios.post(`${URL}/register`, body, config);
-
     dispatch({
       type: REGISTER_SUCESS,
       payload: res.data,
     });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     dispatch({
       type: REGISTER_FAIL,
     });
   }
 };
 
-export default RegisterSucces;
+export const AuthUser = (payload) => {
+  console.log('fdskjf');
+};

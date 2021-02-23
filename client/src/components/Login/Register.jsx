@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
 
-import RegisterSucces from '../../redux/actions/Auth.Action';
+import { RegisterSucces } from '../../redux/actions/Auth.Action';
 
 const Wrapper = styled.div`
   display: grid;
@@ -56,6 +56,7 @@ const SignUp = () => {
       setErrPassword(true);
     } else {
       dispatch(RegisterSucces({ name, email, password }));
+      history.push('/login');
     }
   };
 

@@ -1,14 +1,14 @@
-const UserSchema = require('../models/User.Model');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const keys = require('../keys/keys');
+const UserSchema = require("../models/User.Model");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const keys = require("../keys/keys");
 
 async function Create(req, res) {
   const { name, email, password, avatar } = req.body;
 
   let create = await UserSchema.findOne({ email });
   if (create) {
-    res.status(400).send({ message: 'User already existe' });
+    res.status(400).send({ message: "User already existe" });
   } else {
     create = await new UserSchema({ name, email, password, avatar })
       .save()
@@ -23,12 +23,12 @@ async function Create(req, res) {
               throw err;
             } else {
               res.status(201).send({
-                message: 'Save new user',
+                message: "Save new user",
                 data: items,
                 token,
               });
             }
-          },
+          }
         );
       })
       .catch((err) => res.status(201).send({ message: err }));
@@ -44,12 +44,12 @@ async function Users() {
 
 async function User(req, res) {
   const user = await UserSchema.findById(req)
-    .select('-password')
+    .select("-password")
     .then((data) =>
       res.status(200).send({
-        message: 'User current',
+        message: "User current",
         data,
-      }),
+      })
     )
     .catch((err) => res.status(201).send({ message: err }));
   return user || {};
@@ -66,7 +66,7 @@ async function UserUpdate(req, res) {
     data
       .save()
       .then((items) =>
-        res.status(201).send({ message: 'Update ID', data: items }),
+        res.status(201).send({ message: "Update ID", data: items })
       )
       .catch((err) => res.status(201).send({ message: err }));
   });
@@ -79,11 +79,11 @@ async function Login(req, res) {
     const user = await UserSchema.findOne({ email });
 
     if (!user) {
-      return res.status(400).send({ message: 'Invalida Email' });
+      return res.status(400).send({ message: "Invalida Email" });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).send({ message: 'Invalida Password' });
+      return res.status(400).send({ message: "Invalida Password" });
     }
 
     const payload = { user: { id: user.id } };
@@ -92,7 +92,7 @@ async function Login(req, res) {
         throw err;
       } else {
         res.status(201).send({
-          message: 'Login In',
+          message: "Login In",
           data: user,
           token,
         });
@@ -101,7 +101,7 @@ async function Login(req, res) {
 
     return user || {};
   } catch (error) {
-    res.status(500).send('Server error');
+    res.status(500).send("Server error");
   }
 }
 

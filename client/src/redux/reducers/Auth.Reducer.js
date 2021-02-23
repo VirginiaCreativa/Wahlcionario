@@ -2,7 +2,7 @@ import { REGISTER_SUCESS, REGISTER_FAIL } from '../types';
 
 const initialState = {
   token: localStorage.getItem('user'),
-  isAuthenticated: true,
+  isAuthenticated: null,
 };
 
 const AuthReduce = (state = initialState, action) => {
@@ -19,7 +19,7 @@ const AuthReduce = (state = initialState, action) => {
       localStorage.removeItem('user');
       return {
         ...state,
-        toke: null,
+        token: null,
         isAuthenticated: false,
       };
     default:
