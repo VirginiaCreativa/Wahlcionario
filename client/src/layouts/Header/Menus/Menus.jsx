@@ -108,7 +108,9 @@ const Menus = () => {
             </li>
             <li>
               <i className="bx bx-exit" />
-              <Link to="logout">Salir</Link>
+              <Link to="/login" onClick={() => localStorage.removeItem('user')}>
+                Salir
+              </Link>
             </li>
           </ul>
         </SubMenu>
