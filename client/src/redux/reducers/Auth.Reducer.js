@@ -1,26 +1,26 @@
 import { REGISTER_SUCESS, REGISTER_FAIL } from '../types';
 
 const initialState = {
-  currentUser: localStorage.getItem('user'),
-  isAuthenticated: null,
-  user: [],
+  token: localStorage.getItem('user'),
+  isAuthenticated: true,
 };
 
 const AuthReduce = (state = initialState, action) => {
+  const { type, payload } = action;
   switch (action.type) {
     case REGISTER_SUCESS:
+      localStorage.setItem('user', payload.token);
       return {
         ...state,
-        currentUser: localStorage.setItem('user', action.payload),
+        ...payload,
         isAuthenticated: true,
-        user: action.payload,
       };
     case REGISTER_FAIL:
+      localStorage.removeItem('user');
       return {
         ...state,
-        currentUser: localStorage.removeItem(),
+        toke: null,
         isAuthenticated: false,
-        user: null,
       };
     default:
       return state;

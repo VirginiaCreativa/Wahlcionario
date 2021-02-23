@@ -14,6 +14,7 @@ const RegisterSucces = ({ name, email, password }) => async (dispatch) => {
 
   try {
     const res = await axios.post(`${URL}/register`, body, config);
+
     dispatch({
       type: REGISTER_SUCESS,
       payload: res.data,

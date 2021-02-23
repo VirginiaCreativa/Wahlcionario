@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import AuthService from '../../services/authentication.service';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
 
