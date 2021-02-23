@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import LogoSVG from '../../assets/logo/logo.svg';
 
-const Logo = () => {
+const ImgStyle = styled.img`
+  height: ${({ size }) => size || '40px'};
+`;
+
+const Logo = ({ size }) => {
   return (
     <>
       <Link to="/">
-        <img
-          src={LogoSVG}
-          alt="Icono de Logo Wahlcionario"
-          style={{ height: '40px' }}
-        />
+        <ImgStyle src={LogoSVG} alt="Icono de Logo Wahlcionario" size={size} />
       </Link>
     </>
   );

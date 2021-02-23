@@ -40,7 +40,6 @@ const SignIn = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const alertErrorPassword = useSelector((state) => state.auth.error);
 
   const { email, password } = hasFormDatas;
