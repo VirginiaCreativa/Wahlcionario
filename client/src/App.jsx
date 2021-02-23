@@ -6,11 +6,6 @@ import Routes from './routes/Routes';
 import Layouts from './layouts/Layout';
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (localStorage.user) dispatch(LoadUser());
-  }, [dispatch]);
   return (
     <Router>
       <Layouts>
