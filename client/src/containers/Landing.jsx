@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from '../common/Logo/Logo';
+import Variables from '../styles/VariableStyled';
 import Banner from '../assets/21_01_WC_5_7_Banner_v1.svg';
 
 const Wrapper = styled.div`
@@ -11,23 +12,38 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   justify-items: center;
+  justify-self: center;
   width: 100vw;
   height: 80vh;
   a {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
   }
   .group {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 80vw;
     .col {
       :last-child {
-        padding: 60px;
+        padding: 80px;
       }
       img {
         height: 400px;
       }
       .box {
-        margin-bottom: 40px;
+        margin-bottom: 60px;
+        h1 {
+          margin-bottom: 10px;
+          font-size: 3.2rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        p {
+          margin-bottom: 10px;
+          color: ${Variables.grey2};
+          font-size: 1.2rem;
+        }
       }
       button {
         display: inline-block;
@@ -50,8 +66,9 @@ const Landing = () => {
           </div>
           <div className="col">
             <div className="box">
-              <h1>Si tenemos más diccionarios</h1>
-              <h3>También visual más aclaración</h3>
+              <p>Definición, ejemplos, similar, conjugar y además</p>
+              <h1>Si tenemos app de varios diccionarios.</h1>
+              <h2>También visual más aclaración</h2>
             </div>
             <div className="box">
               <button
