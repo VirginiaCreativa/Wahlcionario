@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import axios from 'axios';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
+
+import { LoginSucces } from '../../redux/actions/Auth.Action';
 
 const Wrapper = styled.div`
   display: grid;
@@ -36,6 +38,9 @@ const SignIn = () => {
     password: '',
   });
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { email, password } = hasFormDatas;
 
   const handleInputChange = (ev) => {
@@ -44,34 +49,8 @@ const SignIn = () => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    if (!password) {
-      setErrPassword(true);
-    } else {
-      try {
-        const isUser = {
-          email,
-          password,
-        };
-        const config = {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        };
-        const body = JSON.stringify(isUser);
-        const res = await axios.post(
-          'http://localhost:3000/user/login',
-          body,
-          config,
-        );
-        if (res.data) {
-          history.push('/');
-        }
-      } catch (error) {
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      }
-    }
+    dispatch(LoginSucces({ email, password }));
+    if (!isAuthenticated) history.push('/');
   };
 
   return (

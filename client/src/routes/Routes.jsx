@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { LoadUser } from '../redux/actions/Auth.Action';
-import setAuthToken from '../server/AuthToken.Server';
 import Home from '../containers/Home';
 import MisPalabras from '../containers/MisPalabras';
 import Login from '../containers/Login';
@@ -11,13 +8,6 @@ import Landing from '../containers/Landing';
 import NotFound from '../containers/404';
 
 const Routes = () => {
-  const dispatch = useDispatch();
-  setAuthToken(localStorage.user);
-  useEffect(() => {
-    if (localStorage.user) {
-      dispatch(LoadUser());
-    }
-  }, [dispatch]);
   return (
     <>
       <Switch>

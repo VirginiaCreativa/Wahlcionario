@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
+
+import { LoadUser } from '../../../redux/actions/Auth.Action';
 
 const MenuStyled = styled.div`
   display: flex;

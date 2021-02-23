@@ -1,9 +1,12 @@
 import axios from 'axios';
+import { history } from '../store/store';
 import setAuthToken from '../../server/AuthToken.Server';
 import {
   REGISTER_SUCESS,
   REGISTER_FAIL,
   USER_LOADED,
+  LOGIN_SUCESS,
+  LOGIN_FAIL,
   AUTH_ERROR,
 } from '../types';
 
@@ -40,6 +43,7 @@ export const RegisterSucces = ({ name, email, password }) => async (
 
   try {
     const res = await axios.post(`${URL}/register`, body, config);
+    history.push('/login');
     dispatch({
       type: REGISTER_SUCESS,
       payload: res.data,
@@ -52,6 +56,26 @@ export const RegisterSucces = ({ name, email, password }) => async (
   }
 };
 
-export const AuthUser = (payload) => {
-  console.log('fdskjf');
+export const LoginSucces = ({ email, password }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ email, password });
+
+  try {
+    const res = await axios.post(`${URL}/login`, body, config);
+    dispatch({
+      type: LOGIN_SUCESS,
+      payload: res.data,
+    });
+    dispatch(LoadUser());
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
 };

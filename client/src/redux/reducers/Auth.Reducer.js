@@ -1,13 +1,15 @@
 import {
   REGISTER_SUCESS,
   REGISTER_FAIL,
+  LOGIN_SUCESS,
+  LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
 } from '../types';
 
 const initialState = {
   token: localStorage.getItem('user'),
-  isAuthenticated: null,
+  isAuthenticated: false,
   user: null,
 };
 
@@ -21,6 +23,7 @@ const AuthReduce = (state = initialState, action) => {
         user: action.payload,
       };
     case REGISTER_SUCESS:
+    case LOGIN_SUCESS:
       localStorage.setItem('user', payload.token);
       return {
         ...state,
@@ -28,6 +31,7 @@ const AuthReduce = (state = initialState, action) => {
         isAuthenticated: true,
       };
     case REGISTER_FAIL:
+    case LOGIN_FAIL:
     case AUTH_ERROR:
       localStorage.removeItem('user');
       return {
