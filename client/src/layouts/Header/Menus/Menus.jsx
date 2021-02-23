@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
 
-import { LoadUser } from '../../../redux/actions/Auth.Action';
-
 const MenuStyled = styled.div`
   display: flex;
   position: relative;
@@ -60,6 +58,10 @@ const Menus = () => {
 
   const history = useHistory();
 
+  const user = useSelector((state) => state.auth.user);
+
+  console.log(user.data.name);
+
   useEffect(() => {
     // ===== BOX SUBMENU =====//
     const bodyBox = document.querySelector('body');
@@ -87,7 +89,7 @@ const Menus = () => {
         <SubMenu className="boxSubMenu">
           <ul className="list-unstyled">
             <li>
-              <p>{userCurrent || 'Desconocido'}</p>
+              <p>{user.data.name || 'Desconocido'}</p>
             </li>
             <li>
               <i className="bx bx-layer" />
