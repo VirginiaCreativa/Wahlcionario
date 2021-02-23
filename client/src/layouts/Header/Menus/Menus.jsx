@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
@@ -59,17 +58,6 @@ const Menus = () => {
   const history = useHistory();
 
   useEffect(() => {
-    // axios
-    //   .get('http://localhost:3000/user/auth/current', {
-    //     headers: {
-    //       'x-accessToken':
-    //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjAyZDdlZTkyZjI0OGQzNTAxMWQwMTJmIn0sImlhdCI6MTYxMzc0MTM1MCwiZXhwIjoxNjEzNzc3MzUwfQ.iruzrEBwb44WcqY5vcYKlTnGzn7hUv08Wu556Rk8Lno',
-    //     },
-    //   })
-    //   .then((res) => {
-    //     if (res) setUserCurrent(res.data.data.name);
-    //   })
-    //   .catch((err) => console.error(err));
     // ===== BOX SUBMENU =====//
     const bodyBox = document.querySelector('body');
     if (bodyBox) {
