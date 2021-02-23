@@ -41,6 +41,7 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const alertErrorPassword = useSelector((state) => state.auth.error);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const { email, password } = hasFormDatas;
 
@@ -54,9 +55,8 @@ const SignIn = () => {
 
     if (!errPassword) {
       setErrPassword(true);
-    } else {
-      history.push('/');
     }
+    if (!isAuthenticated) history.push('/');
   };
 
   return (

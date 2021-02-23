@@ -14,9 +14,9 @@ const Wrapper = styled.div`
   justify-items: center;
   justify-self: center;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   a {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
   }
   .group {
     display: flex;
