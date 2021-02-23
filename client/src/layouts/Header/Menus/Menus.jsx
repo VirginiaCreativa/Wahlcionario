@@ -58,7 +58,7 @@ const Menus = () => {
 
   const history = useHistory();
 
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.data);
 
   useEffect(() => {
     // ===== BOX SUBMENU =====//
@@ -87,7 +87,7 @@ const Menus = () => {
         <SubMenu className="boxSubMenu">
           <ul className="list-unstyled">
             <li>
-              <p>{user ? user.data.name : 'Desconocido'}</p>
+              <p>{user ? user.name : 'Desconocido'}</p>
             </li>
             <li>
               <i className="bx bx-layer" />
@@ -99,7 +99,9 @@ const Menus = () => {
             </li>
             <li>
               <i className="bx bx-exit" />
-              <Link to="/login" onClick={() => localStorage.removeItem('user')}>
+              <Link
+                to="/landing"
+                onClick={() => localStorage.removeItem('user')}>
                 Salir
               </Link>
             </li>

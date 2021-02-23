@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -42,6 +42,7 @@ const SignIn = () => {
 
   const alertErrorPassword = useSelector((state) => state.auth.error);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isUser = useSelector((state) => state.auth.user);
 
   const { email, password } = hasFormDatas;
 
@@ -49,14 +50,14 @@ const SignIn = () => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
   };
 
-  const handleSubmit = async (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
     dispatch(LoginSucces({ email, password }));
 
-    if (!errPassword) {
+    if (isUser === null) {
       setErrPassword(true);
     }
-    if (!isAuthenticated) history.push('/');
+    history.push('/');
   };
 
   return (

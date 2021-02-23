@@ -73,6 +73,7 @@ export const LoginSucces = ({ email, password }) => async (dispatch) => {
     });
     dispatch(LoadUser());
   } catch (error) {
+    history.push('/login');
     console.log(error);
     dispatch({
       type: LOGIN_FAIL,

@@ -20,6 +20,7 @@ const AuthReduce = (state = initialState, action) => {
     case USER_LOADED:
       return {
         ...state,
+        ...payload,
         isAuthenticated: true,
         user: action.payload,
       };
