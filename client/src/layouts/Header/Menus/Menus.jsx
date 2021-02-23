@@ -60,8 +60,6 @@ const Menus = () => {
 
   const user = useSelector((state) => state.auth.user);
 
-  console.log(user.data.name);
-
   useEffect(() => {
     // ===== BOX SUBMENU =====//
     const bodyBox = document.querySelector('body');
@@ -89,7 +87,7 @@ const Menus = () => {
         <SubMenu className="boxSubMenu">
           <ul className="list-unstyled">
             <li>
-              <p>{user.data.name || 'Desconocido'}</p>
+              <p>{user ? user.data.name : 'Desconocido'}</p>
             </li>
             <li>
               <i className="bx bx-layer" />

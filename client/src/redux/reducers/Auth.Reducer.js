@@ -11,6 +11,7 @@ const initialState = {
   token: localStorage.getItem('user'),
   isAuthenticated: false,
   user: null,
+  error: '',
 };
 
 const AuthReduce = (state = initialState, action) => {
@@ -39,6 +40,7 @@ const AuthReduce = (state = initialState, action) => {
         user: null,
         token: null,
         isAuthenticated: false,
+        error: action.payload,
       };
     default:
       return state;

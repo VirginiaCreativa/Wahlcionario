@@ -76,6 +76,7 @@ export const LoginSucces = ({ email, password }) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: LOGIN_FAIL,
+      payload: error.response.data.message,
     });
   }
 };

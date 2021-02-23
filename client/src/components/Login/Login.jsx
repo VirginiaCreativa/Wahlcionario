@@ -41,6 +41,8 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const alertErrorPassword = useSelector((state) => state.auth.error);
+
   const { email, password } = hasFormDatas;
 
   const handleInputChange = (ev) => {
@@ -50,7 +52,12 @@ const SignIn = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     dispatch(LoginSucces({ email, password }));
-    if (!isAuthenticated) history.push('/');
+
+    if (!errPassword) {
+      setErrPassword(true);
+    } else {
+      history.push('/');
+    }
   };
 
   return (
@@ -81,7 +88,7 @@ const SignIn = () => {
               />
               {errPassword && (
                 <AlertPassword>
-                  <p>La contraseña de validación no coincide.</p>
+                  <p>{alertErrorPassword}</p>
                 </AlertPassword>
               )}
             </label>
