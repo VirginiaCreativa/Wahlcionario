@@ -39,12 +39,13 @@ const SignUp = () => {
     email: '',
     password: '',
     passwordconfirm: '',
+    lavatar: 'https://i.pravatar.cc/200',
   });
 
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { name, email, password, passwordconfirm } = hasFormDatas;
+  const { name, email, password, passwordconfirm, lavatar } = hasFormDatas;
 
   const handleInputChange = (ev) => {
     setFormDatas({ ...hasFormDatas, [ev.target.name]: ev.target.value });
@@ -55,7 +56,7 @@ const SignUp = () => {
     if (password !== passwordconfirm) {
       setErrPassword(true);
     } else {
-      dispatch(RegisterSucces({ name, email, password }));
+      dispatch(RegisterSucces({ name, email, password, lavatar }));
       history.push('/login');
     }
   };
