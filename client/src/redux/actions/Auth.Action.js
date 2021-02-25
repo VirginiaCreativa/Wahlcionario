@@ -8,6 +8,7 @@ import {
   LOGIN_SUCESS,
   LOGIN_FAIL,
   AUTH_ERROR,
+  MENUS_HIDE,
 } from '../types';
 
 const URL = 'http://localhost:3000/user';
@@ -46,7 +47,7 @@ export const RegisterSucces = ({ name, email, password }) => async (
     history.push('/login');
     dispatch({
       type: REGISTER_SUCESS,
-      payload: res.data,
+      payload: res,
     });
   } catch (error) {
     console.log(error);
@@ -71,7 +72,6 @@ export const LoginSucces = ({ email, password }) => async (dispatch) => {
       type: LOGIN_SUCESS,
       payload: res.data,
     });
-    dispatch(LoadUser());
   } catch (error) {
     history.push('/login');
     console.log(error);
@@ -81,3 +81,8 @@ export const LoginSucces = ({ email, password }) => async (dispatch) => {
     });
   }
 };
+
+export const isMenusShow = (payload) => ({
+  type: MENUS_HIDE,
+  payload,
+});

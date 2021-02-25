@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import Variables from '../../../styles/VariableStyled';
+
+import { isMenusShow } from '../../../redux/actions/Auth.Action';
 
 const MenuStyled = styled.div`
   display: flex;
@@ -57,6 +59,7 @@ const Menus = () => {
   const [userCurrent, setUserCurrent] = useState(false);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.data);
 
@@ -71,6 +74,11 @@ const Menus = () => {
       });
     }
   });
+
+  const handleLogOut = () => {
+    localStorage.removeItem('user');
+    dispatch(isMenusShow(false));
+  };
 
   return (
     <MenuStyled>
@@ -99,9 +107,7 @@ const Menus = () => {
             </li>
             <li>
               <i className="bx bx-exit" />
-              <Link
-                to="/landing"
-                onClick={() => localStorage.removeItem('user')}>
+              <Link to="/landing" onClick={handleLogOut}>
                 Salir
               </Link>
             </li>

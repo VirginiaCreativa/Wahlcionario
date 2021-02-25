@@ -5,12 +5,14 @@ import {
   LOGIN_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  MENUS_HIDE,
 } from '../types';
 
 const initialState = {
   token: localStorage.getItem('user'),
   isAuthenticated: false,
   error: '',
+  menus: false,
 };
 
 const AuthReduce = (state = initialState, action) => {
@@ -20,6 +22,7 @@ const AuthReduce = (state = initialState, action) => {
       return {
         ...state,
         ...payload,
+        menus: true,
         isAuthenticated: true,
       };
     case REGISTER_SUCESS:
@@ -39,6 +42,11 @@ const AuthReduce = (state = initialState, action) => {
         token: null,
         isAuthenticated: false,
         error: action.payload,
+      };
+    case MENUS_HIDE:
+      return {
+        ...state,
+        menus: action.payload,
       };
     default:
       return state;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from './redux/store/store';
-import { LoadUser } from './redux/actions/Auth.Action';
+import { LoadUser, isMenusShow } from './redux/actions/Auth.Action';
 import Routes from './routes/Routes';
 import Layouts from './layouts/Layout';
 
@@ -12,8 +12,9 @@ const App = () => {
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
-    if (auth) {
+    if (localStorage.user || auth) {
       dispatch(LoadUser());
+      dispatch(isMenusShow(true));
     } else {
       history.push('/landing');
     }
