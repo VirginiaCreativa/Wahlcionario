@@ -11,11 +11,10 @@ const App = () => {
 
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
-  console.log(auth);
-
   useEffect(() => {
-    if (localStorage.user && auth) {
+    if (auth) {
       dispatch(LoadUser());
+      history.push('/');
     } else {
       history.push('/landing');
     }

@@ -10,7 +10,6 @@ import {
 const initialState = {
   token: localStorage.getItem('user'),
   isAuthenticated: false,
-  user: null,
   error: '',
 };
 
@@ -22,7 +21,6 @@ const AuthReduce = (state = initialState, action) => {
         ...state,
         ...payload,
         isAuthenticated: true,
-        user: action.payload,
       };
     case REGISTER_SUCESS:
     case LOGIN_SUCESS:
@@ -38,7 +36,6 @@ const AuthReduce = (state = initialState, action) => {
       localStorage.removeItem('user');
       return {
         ...state,
-        user: null,
         token: null,
         isAuthenticated: false,
         error: action.payload,
