@@ -11,14 +11,13 @@ const App = () => {
 
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
-  useEffect(() => {
-    if (auth) {
-      dispatch(LoadUser());
-      history.push('/');
-    } else {
-      history.push('/landing');
-    }
-  }, [dispatch, auth]);
+  // useEffect(() => {
+  //   if (auth) {
+  //     dispatch(LoadUser());
+  //   } else {
+  //     history.push('/landing');
+  //   }
+  // }, [dispatch, auth]);
 
   return (
     <Router history={history}>
