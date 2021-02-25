@@ -34,10 +34,10 @@ const Wrapper = styled.div`
         margin-bottom: 60px;
         h1 {
           margin-bottom: 10px;
-          font-size: 3.2rem;
+          font-size: 3.1rem;
         }
         h2 {
-          font-size: 1.6rem;
+          font-size: 1.5rem;
         }
         p {
           margin-bottom: 10px;
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
       button {
         display: inline-block;
         margin-right: 10px;
-        width: 48%;
+        width: 46%;
       }
     }
   }
@@ -59,7 +59,7 @@ const Landing = () => {
   return (
     <>
       <Wrapper>
-        <Logo size="140px" />
+        <Logo size="130px" />
         <div className="group">
           <div className="col">
             <img src={Banner} alt="Imagen de mujer con celular" />
