@@ -2,27 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { Wrapper, Form } from '../../styles/ExtendStyled';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
 
 import { LoginSucces } from '../../redux/actions/Auth.Action';
-
-const Wrapper = styled.div`
-  display: grid;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  width: 100%;
-  height: 80vh;
-  a,
-  h2 {
-    margin-bottom: 40px;
-  }
-  button {
-    width: 100%;
-  }
-`;
 
 const AlertPassword = styled.div`
   p {
@@ -61,11 +45,11 @@ const SignIn = () => {
   };
 
   return (
-    <div className="container">
+    <>
       <Wrapper>
         <LogoIcon size="100px" />
         <h2>Iniciar Sesión</h2>
-        <form onSubmit={(ev) => handleSubmit(ev)}>
+        <Form onSubmit={(ev) => handleSubmit(ev)}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">
               Email
@@ -98,9 +82,9 @@ const SignIn = () => {
               Entrar
             </button>
           </div>
-        </form>
+        </Form>
       </Wrapper>
-    </div>
+    </>
   );
 };
 

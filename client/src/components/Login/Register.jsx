@@ -2,28 +2,11 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { Wrapper, Form } from '../../styles/ExtendStyled';
 import LogoIcon from '../../common/Logo/LogoIcon';
 import Variables from '../../styles/VariableStyled';
 
 import { RegisterSucces } from '../../redux/actions/Auth.Action';
-
-const Wrapper = styled.div`
-  display: grid;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
-  width: 100%;
-  height: 80vh;
-  a,
-  h2 {
-    margin-bottom: 40px;
-  }
-  button {
-    margin-top: 10px;
-    width: 100%;
-  }
-`;
 
 const AlertPassword = styled.div`
   p {
@@ -62,11 +45,11 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container">
+    <>
       <Wrapper>
         <LogoIcon size="100px" />
         <h2>Registrarse</h2>
-        <form onSubmit={(ev) => handleSubmit(ev)}>
+        <Form onSubmit={(ev) => handleSubmit(ev)}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Nombre completo
@@ -121,9 +104,9 @@ const SignUp = () => {
               Entrar
             </button>
           </div>
-        </form>
+        </Form>
       </Wrapper>
-    </div>
+    </>
   );
 };
 
