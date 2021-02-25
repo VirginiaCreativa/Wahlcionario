@@ -3,15 +3,15 @@ import Variables from './VariableStyled';
 
 const GlobalStyled = createGlobalStyle`
   body {
-    font-family:  'Poppins', sans-serif !important;
     background: ${Variables.body};
+    font-family:  'Poppins', sans-serif !important;
   }
   a {
-    color: ${Variables.black1};
     text-decoration: none !important;
+    color: ${Variables.black1};
     :hover {
-      color: ${Variables.blue1};
       text-decoration: none !important;
+      color: ${Variables.blue1};
     }
   }
   h1,
@@ -21,15 +21,15 @@ const GlobalStyled = createGlobalStyle`
   h5,
   h6 {
     margin-bottom: 0;
-    color: ${Variables.black1};
     letter-spacing: -1px;
+    color: ${Variables.black1};
   }
   p,
   li,
   abbr {
     color: ${Variables.black1};
-    font-weight: 300;
     font-size: 0.9rem;
+    font-weight: 300;
   }
   *:focus {
     outline: none !important;
@@ -52,8 +52,8 @@ const GlobalStyled = createGlobalStyle`
   li,
   span {
     ::selection {
-      color: #fff;
       background-color: ${Variables.blue1};
+      color: #fff;
     }
   }
 `;
