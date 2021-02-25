@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Router } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { history } from './redux/store/store';
 import { LoadUser } from './redux/actions/Auth.Action';
 import Routes from './routes/Routes';
@@ -9,13 +9,17 @@ import Layouts from './layouts/Layout';
 const App = () => {
   const dispatch = useDispatch();
 
+  const auth = useSelector((state) => state.auth.isAuthenticated);
+
+  console.log(auth);
+
   useEffect(() => {
-    if (localStorage.user) {
+    if (localStorage.user && auth) {
       dispatch(LoadUser());
     } else {
-      history.push('landing');
+      history.push('/landing');
     }
-  });
+  }, [dispatch, auth]);
 
   return (
     <Router history={history}>
