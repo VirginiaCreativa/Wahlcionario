@@ -16,9 +16,11 @@ const App = () => {
       dispatch(LoadUser());
       dispatch(isMenusShow(true));
       <Redirect to="/" />;
+      history.push('/');
     } else {
       dispatch(isMenusShow(false));
       <Redirect to="/landing" />;
+      history.push('/landing');
     }
   }, [dispatch, auth]);
 
