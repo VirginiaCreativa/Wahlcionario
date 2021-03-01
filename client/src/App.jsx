@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Router } from 'react-router-dom';
+import { Router, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from './redux/store/store';
 import { LoadUser, isMenusShow } from './redux/actions/Auth.Action';
@@ -15,8 +15,10 @@ const App = () => {
     if (localStorage.user || auth) {
       dispatch(LoadUser());
       dispatch(isMenusShow(true));
+      <Redirect to="/" />;
     } else {
-      history.push('/landing');
+      dispatch(isMenusShow(false));
+      <Redirect to="/landing" />;
     }
   }, [dispatch, auth]);
 
