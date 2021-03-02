@@ -7,6 +7,7 @@ const Login = lazy(() => import('../containers/Login'));
 const Register = lazy(() => import('../containers/Register'));
 const Landing = lazy(() => import('../containers/Landing'));
 const MisPalabras = lazy(() => import('../containers/MisPalabras'));
+const Search = lazy(() => import('../containers/Search'));
 const NotFound = lazy(() => import('../containers/404'));
 
 const Routes = () => {
@@ -16,6 +17,7 @@ const Routes = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/landing" component={Landing} />
+          <Route exact path="/search" component={Search} />
           <Route exact path="/mispalabras" component={MisPalabras} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

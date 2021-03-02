@@ -48,11 +48,13 @@ const SearchHome = () => {
   const HandlerChangeSearchHome = (ev) => {
     setDoSearchValue(ev.target.value);
   };
-  const HandleSearchValue = () => {
+  const HandleSearchValue = (ev) => {
+    ev.preventDefault();
     if (!doSearchValue) {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
+      history.push('/search');
     }
   };
 

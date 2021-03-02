@@ -3,7 +3,7 @@ import React from 'react';
 const Palabra = () => {
   return (
     <>
-      <h3>Palabra</h3>
+      <h3>Search</h3>
     </>
   );
 };
