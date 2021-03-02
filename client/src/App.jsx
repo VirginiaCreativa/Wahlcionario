@@ -12,14 +12,11 @@ const App = () => {
   const auth = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
-    if (localStorage.user || auth) {
+    if (localStorage.user || auth === undefined) {
       dispatch(LoadUser());
       dispatch(isMenusShow(true));
-      <Redirect to="/" />;
-      history.push('/');
     } else {
       dispatch(isMenusShow(false));
-      <Redirect to="/landing" />;
       history.push('/landing');
     }
   }, [dispatch, auth]);
