@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { SEARCH_VALUE, SEARCH_FETCH } from '../types';
 
-export const valueSearch = (payload) => ({
+export const setValueSearch = (payload) => ({
   type: SEARCH_VALUE,
   payload,
 });

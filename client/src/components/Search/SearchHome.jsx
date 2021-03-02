@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Variables from '../../styles/VariableStyled';
+
+import { setValueSearch } from '../../redux/actions/Search.Action';
 
 const SearchStyled = styled.div`
   position: relative;
 `;
-
 const Button = styled.button`
   position: absolute;
   top: 0;
@@ -37,15 +40,32 @@ const InputStyled = styled.input`
 `;
 
 const SearchHome = () => {
+  const [doSearchValue, setDoSearchValue] = useState('');
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const HandlerChangeSearchHome = (ev) => {
+    setDoSearchValue(ev.target.value);
+  };
+  const HandleSearchValue = () => {
+    if (!doSearchValue) {
+      console.log('falta');
+    } else {
+      dispatch(setValueSearch(doSearchValue));
+    }
+  };
+
   return (
     <SearchStyled>
-      <Button type="button">
+      <Button type="button" onClick={HandleSearchValue}>
         <i className="bx bx-search" />
       </Button>
       <InputStyled
         type="text"
         name="search"
         placeholder="Buscador una palabra"
+        onChange={HandlerChangeSearchHome}
       />
     </SearchStyled>
   );
