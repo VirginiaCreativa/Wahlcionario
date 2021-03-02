@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,26 +16,29 @@ const HeaderStyled = styled.div`
 `;
 
 const Header = () => {
+  const [isSearchHomeHide, setSsSearchHomeHide] = useState(true);
   const history = useHistory();
   const dispatch = useDispatch();
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const isMenus = useSelector((state) => state.auth.menus);
+  const isPathSearchHide = useSelector(
+    (state) => state.router.location.pathname,
+  );
 
   useEffect(() => {
-    if (localStorage.user || isAuthenticated) {
-      dispatch(LoadUser());
-    } else {
-      history.push('/landing');
+    if (isPathSearchHide === '/') {
+      setSsSearchHomeHide(!isSearchHomeHide);
     }
-  }, [history, isAuthenticated, dispatch]);
+  }, []);
 
   return (
     <>
       {isMenus && (
         <HeaderStyled>
           <Logo />
-          <Search>search</Search>
+          {isSearchHomeHide && <Search />}
+
           <Menus />
         </HeaderStyled>
       )}
