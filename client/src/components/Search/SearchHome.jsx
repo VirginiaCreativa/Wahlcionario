@@ -32,7 +32,7 @@ const InputStyled = styled.input`
   border-radius: 100px;
   background-color: ${Variables.grey0};
   padding: 12px 30px 12px 30px;
-  width: 25vw;
+  width: 28vw;
   font-size: 0.85rem;
 `;
 

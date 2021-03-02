@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const BoxContent = styled.div`
   margin-bottom: 20px;
-  width: 25vw;
+  width: 28vw;
   h1 {
     margin-bottom: 20px;
     font-size: 3.5rem;
