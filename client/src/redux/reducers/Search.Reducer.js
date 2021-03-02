@@ -1,7 +1,7 @@
 import { SEARCH_VALUE } from '../types';
 
 const initialState = {
-  value: '',
+  palabra: '',
 };
 
 const SearchReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const SearchReducer = (state = initialState, action) => {
     case SEARCH_VALUE:
       return {
         ...state,
-        value: action.payload,
+        palabra: action.payload,
       };
     default:
       return state;
