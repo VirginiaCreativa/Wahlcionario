@@ -7,7 +7,11 @@ const Palabra = ({ palabra }) => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get(`https://api.dictionaryapi.dev/api/v2/entries/es/${palabra}`)
+          .get(`https://api.dictionaryapi.dev/api/v2/entries/es/${palabra}`, {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+            },
+          })
           .then((res) => console.log(res));
         return response;
       } catch (error) {
