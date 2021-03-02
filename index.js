@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const keys = require("./keys/keys");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
+const DiccionariosRouter = require("./routes/Diccionarios.Router");
 
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "client")));
 
 // ====== CONTROLLERS ROUTES ====== //
 UserRouter(app);
+DiccionariosRouter(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client", "build")));
