@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Router, Redirect } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from './redux/store/store';
 import { LoadUser, isMenusShow } from './redux/actions/Auth.Action';

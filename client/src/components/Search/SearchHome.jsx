@@ -8,12 +8,19 @@ const SearchStyled = styled.div`
 
 const Button = styled.button`
   position: absolute;
-  top: 8px;
-  right: 5px;
+  top: 0;
+  right: 0;
   border: 0;
-  background-color: transparent;
+  border-radius: 26px;
+  background-color: ${Variables.blue1};
+  padding: 11px 36px;
+  &:hover {
+    background-color: ${Variables.blue2};
+  }
   .bx {
-    color: ${Variables.grey3};
+    position: relative;
+    top: 2px;
+    color: #fff;
     font-size: 18px;
     &:hover {
       color: ${Variables.blue1};
@@ -24,13 +31,12 @@ const InputStyled = styled.input`
   border: 0;
   border-radius: 100px;
   background-color: ${Variables.grey0};
-  padding: 6px 40px 6px 40px;
-  width: 15vw;
-  text-align: center;
+  padding: 12px 30px 12px 30px;
+  width: 25vw;
   font-size: 0.85rem;
 `;
 
-const Search = () => {
+const SearchHome = () => {
   return (
     <SearchStyled>
       <Button type="button">
@@ -45,4 +51,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchHome;
