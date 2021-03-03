@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Variables from '../../styles/VariableStyled';
+
+import { setValueSearch } from '../../redux/actions/Search.Action';
 
 const SearchStyled = styled.div`
   position: relative;
@@ -31,16 +35,40 @@ const InputStyled = styled.input`
 `;
 
 const Search = () => {
+  const [doSearchValue, setDoSearchValue] = useState('');
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const HandlerChangeSearchHome = (ev) => {
+    setDoSearchValue(ev.target.value);
+  };
+  const HandleSearchValue = (ev) => {
+    ev.preventDefault();
+    if (ev.key === 'Enter' || ev.charCode === 13) {
+      dispatch(setValueSearch(doSearchValue));
+    }
+    if (!doSearchValue) {
+      console.log('falta');
+    } else {
+      dispatch(setValueSearch(doSearchValue));
+      history.push('/palabra');
+    }
+  };
+
   return (
     <SearchStyled>
-      <Button type="button">
+      <Button type="button" onClick={HandleSearchValue}>
         <i className="bx bx-search" />
       </Button>
-      <InputStyled
-        type="text"
-        name="search"
-        placeholder="Buscador una palabra"
-      />
+      <form action="" onSubmit={HandleSearchValue}>
+        <InputStyled
+          type="text"
+          name="search"
+          placeholder="Buscador una palabra"
+          onChange={HandlerChangeSearchHome}
+        />
+      </form>
     </SearchStyled>
   );
 };

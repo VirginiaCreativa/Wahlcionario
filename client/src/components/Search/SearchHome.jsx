@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Variables from '../../styles/VariableStyled';
@@ -63,12 +63,14 @@ const SearchHome = () => {
       <Button type="button" onClick={HandleSearchValue}>
         <i className="bx bx-search" />
       </Button>
-      <InputStyled
-        type="text"
-        name="search"
-        placeholder="Buscador una palabra"
-        onChange={HandlerChangeSearchHome}
-      />
+      <form action="" onSubmit={HandleSearchValue}>
+        <InputStyled
+          type="text"
+          name="search"
+          placeholder="Buscador una palabra"
+          onChange={HandlerChangeSearchHome}
+        />
+      </form>
     </SearchStyled>
   );
 };
