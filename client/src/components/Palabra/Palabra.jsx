@@ -1,30 +1,35 @@
 /* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Palabra = ({ palabra }) => {
+  const history = useHistory();
+  const { search } = useParams();
   const [hasDefinition, setHasDefinition] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios
-          .get(`http://localhost:3000/palabra/${palabra}`)
-          .then((response) =>
+          .get(`http://localhost:3000/palabra/${search}`)
+          .then((response) => {
             setHasDefinition(
               response.data.data.results[0].lexicalEntries[0].entries,
-            ),
-          )
-          .catch((error) => console.error(error));
+            );
+          })
+          .catch((error) => {
+            console.log(error);
+            history.push('/');
+          });
         return response;
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [palabra]);
+  }, [history, palabra, search]);
 
-  console.log(hasDefinition);
   return (
     <>
       {hasDefinition &&

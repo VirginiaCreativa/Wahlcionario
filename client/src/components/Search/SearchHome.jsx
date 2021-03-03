@@ -54,7 +54,7 @@ const SearchHome = () => {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
-      history.push('/palabra');
+      history.push(`/palabra/${doSearchValue}`);
     }
   };
 
