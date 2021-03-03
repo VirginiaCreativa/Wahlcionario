@@ -7,10 +7,11 @@ import { capitalizefirstletter } from '../scripts/plugin';
 
 const Palabra = () => {
   const isPalabra = useSelector((state) => state.search.palabra);
+  const { search } = useParams();
   const history = useHistory();
   return (
     <div className="container">
-      <h1>{capitalizefirstletter(isPalabra)}</h1>
+      <h1>{capitalizefirstletter(isPalabra || search)}</h1>
       <PalabraComponent palabra={isPalabra} />
     </div>
   );

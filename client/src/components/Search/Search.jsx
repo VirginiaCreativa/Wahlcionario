@@ -30,9 +30,14 @@ const InputStyled = styled.input`
   border-radius: 100px;
   background-color: ${Variables.grey0};
   padding: 6px 40px 6px 40px;
-  width: 15vw;
   text-align: center;
   font-size: 0.85rem;
+  @media screen and (min-width: 1366px) {
+    width: 30vw;
+  }
+  @media screen and (min-width: 1920px) {
+    width: 20vw;
+  }
 `;
 
 const Search = () => {
