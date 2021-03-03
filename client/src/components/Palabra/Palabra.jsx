@@ -20,7 +20,7 @@ const Palabra = ({ palabra }) => {
           })
           .catch((error) => {
             console.log(error);
-            history.push('/');
+            // history.push('/');
           });
         return response;
       } catch (error) {

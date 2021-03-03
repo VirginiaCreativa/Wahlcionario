@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Variables from '../../styles/VariableStyled';
+import eliminardiaciticos from '../../scripts/eliminardiaciticos';
 
 import { setValueSearch } from '../../redux/actions/Search.Action';
 
@@ -54,7 +55,7 @@ const SearchHome = () => {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
-      history.push(`/palabra/${doSearchValue}`);
+      history.push(`/palabra/${eliminardiaciticos(doSearchValue)}`);
     }
   };
 
