@@ -1,32 +1,42 @@
 /* eslint-disable consistent-return */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Palabra = ({ palabra }) => {
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios
-  //         .get(
-  //           `https://od-api.oxforddictionaries.com/api/v2/entries/es/sanar?fields=definitions&strictMatch=false`,
-  //           {
-  //             headers: {
-  //               Accept: 'application/json',
-  //               app_id: '5bf0aa54',
-  //               app_key: '3371afec4643fcadd24b3938ef44921a',
-  //             },
-  //           },
-  //         )
-  //         .then((res) => console.log(res));
-  //       return response;
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [palabra]);
+  const [hasDefinition, setHasDefinition] = useState([]);
 
-  return <div />;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios
+          .get(`http://localhost:3000/palabra/${palabra}`)
+          .then((response) =>
+            setHasDefinition(
+              response.data.data.results[0].lexicalEntries[0].entries,
+            ),
+          )
+          .catch((error) => console.error(error));
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [palabra]);
+
+  console.log(hasDefinition);
+  return (
+    <>
+      {hasDefinition &&
+        hasDefinition.map((item, key) => (
+          <div key={key}>
+            {item.senses.map((item, id) => (
+              <p key={item.id}>{item.definitions}</p>
+            ))}
+          </div>
+        ))}
+    </>
+  );
 };
 
 export default Palabra;
