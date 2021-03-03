@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import eliminardiaciticos from '../../scripts/eliminardiaciticos';
+import { eliminardiacriticos } from '../../scripts/plugin';
 import Variables from '../../styles/VariableStyled';
 
 import { setValueSearch } from '../../redux/actions/Search.Action';
@@ -53,7 +53,7 @@ const Search = () => {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
-      history.push(`/palabra/${eliminardiaciticos(doSearchValue)}`);
+      history.push(`/palabra/${eliminardiacriticos(doSearchValue)}`);
     }
   };
 
