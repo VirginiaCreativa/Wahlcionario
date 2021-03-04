@@ -7,7 +7,6 @@ function DicionariosRouter(app) {
 
   router.get("/:search", (req, res) => {
     DicionariosController.fetchDicionariosDefinicion(req, res);
-    // DicionariosController.fetchDicionariosSinonimo(req, res);
   });
 }
 

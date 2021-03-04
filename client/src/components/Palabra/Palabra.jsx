@@ -14,6 +14,7 @@ const Palabra = ({ palabra }) => {
   const history = useHistory();
   const { search } = useParams();
   const [hasDefinition, setHasDefinition] = useState([]);
+  const [hasSinonimos, setHasSinonimos] = useState([]);
   const [errPalabra, setErrPalabra] = useState(false);
   const [errPalabraMessage, setErrPalabraMessage] = useState('');
 
@@ -23,14 +24,15 @@ const Palabra = ({ palabra }) => {
         const response = await axios
           .get(`http://localhost:3000/palabra/${search}`)
           .then((response) => {
-            if (response.data.data === undefined) {
+            if (response.data.definiciones === undefined) {
               setErrPalabraMessage(response.data.message);
               setErrPalabra(true);
             } else {
               setErrPalabra(false);
               setHasDefinition(
-                response.data.data.results[0].lexicalEntries[0].entries,
+                response.data.definiciones.results[0].lexicalEntries[0].entries,
               );
+              setHasSinonimos(response.data.sinonimos.sinonimos);
             }
           })
           .catch((error) => {
@@ -44,6 +46,7 @@ const Palabra = ({ palabra }) => {
     fetchData();
   }, [history, palabra, search]);
 
+  console.log(hasSinonimos);
   return (
     <>
       {hasDefinition &&
@@ -52,6 +55,10 @@ const Palabra = ({ palabra }) => {
             <Definicion items={item.senses} {...item} />
           </BoxContent>
         ))}
+      <ul>
+        {hasSinonimos &&
+          hasSinonimos.map((item, key) => <li key={key}>{item.sinonimo}</li>)}
+      </ul>
       {errPalabra && <h4>{errPalabraMessage}</h4>}
     </>
   );
