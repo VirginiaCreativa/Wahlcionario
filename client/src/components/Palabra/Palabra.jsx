@@ -1,9 +1,14 @@
 /* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import axios from 'axios';
 
-import DefinicionItem from './Definiciones/DefinicionItem';
+import Definicion from './Definiciones/DefinicionItem';
+
+const BoxContent = styled.div`
+  margin: 20px 0;
+`;
 
 const Palabra = ({ palabra }) => {
   const history = useHistory();
@@ -43,9 +48,9 @@ const Palabra = ({ palabra }) => {
     <>
       {hasDefinition &&
         hasDefinition.map((item, id) => (
-          <div key={id}>
-            <DefinicionItem items={item.senses} {...item} />
-          </div>
+          <BoxContent key={id}>
+            <Definicion items={item.senses} {...item} />
+          </BoxContent>
         ))}
       {errPalabra && <h4>{errPalabraMessage}</h4>}
     </>

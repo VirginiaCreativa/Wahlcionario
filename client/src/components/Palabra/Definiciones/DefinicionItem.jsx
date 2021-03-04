@@ -1,8 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ListDefinicion = styled.ul`
+  margin: 0;
+  padding-left: 1rem;
+  > li {
+    margin-bottom: 10px;
+    p {
+      margin-bottom: 0;
+    }
+    ul {
+      li {
+        color: #aaa;
+        font-style: italic;
+      }
+    }
+  }
+`;
 
 const DefinicionItem = ({ items }) => {
   return (
-    <ul>
+    <ListDefinicion>
       {items &&
         items.map((item, key) => (
           <li key={key}>
@@ -15,7 +33,7 @@ const DefinicionItem = ({ items }) => {
             </ul>
           </li>
         ))}
-    </ul>
+    </ListDefinicion>
   );
 };
 
