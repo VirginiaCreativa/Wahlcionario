@@ -7,6 +7,8 @@ const Palabra = ({ palabra }) => {
   const history = useHistory();
   const { search } = useParams();
   const [hasDefinition, setHasDefinition] = useState([]);
+  const [errPalabra, setErrPalabra] = useState(false);
+  const [errPalabraMessage, setErrPalabraMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,13 +16,18 @@ const Palabra = ({ palabra }) => {
         const response = await axios
           .get(`http://localhost:3000/palabra/${search}`)
           .then((response) => {
-            setHasDefinition(
-              response.data.data.results[0].lexicalEntries[0].entries,
-            );
+            if (response.data.data === undefined) {
+              setErrPalabraMessage(response.data.message);
+              setErrPalabra(true);
+            } else {
+              setErrPalabra(false);
+              setHasDefinition(
+                response.data.data.results[0].lexicalEntries[0].entries,
+              );
+            }
           })
           .catch((error) => {
             console.log(error);
-            // history.push('/');
           });
         return response;
       } catch (error) {
@@ -40,6 +47,7 @@ const Palabra = ({ palabra }) => {
             ))}
           </div>
         ))}
+      {errPalabra && <h4>{errPalabraMessage}</h4>}
     </>
   );
 };

@@ -6,7 +6,6 @@ function DiccionariosRouter(app) {
   app.use("/palabra", router);
 
   router.get("/:search", (req, res) => {
-    // console.log(req.params.search);
     DiccionariosController.fetchPalabraDiccionario(req, res);
   });
 }

@@ -17,9 +17,9 @@ export const Wrapper = styled.div`
 `;
 
 export const Form = styled.form`
-  width: 35vh;
+  width: 45vh;
   input {
-    width: 35vh;
+    width: 45vh;
   }
   button {
     margin-top: 10px;

@@ -13,8 +13,15 @@ async function setPalabra(req, res) {
         },
       }
     )
-    .then((response) => res.status(200).send({ data: response.data }))
-    .catch((err) => res.status(400).send({ message: err }));
+    .then((response) => {
+      res.status(200).send({ data: response.data });
+    })
+    .catch((err) => {
+      res.send({
+        message:
+          "No se encontró ninguna entrada que coincida con palabra proporcionados",
+      });
+    });
 
   return result || {};
 }
