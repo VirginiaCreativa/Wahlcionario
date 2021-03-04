@@ -26,4 +26,23 @@ async function setPalabra(req, res) {
   return result || {};
 }
 
-module.exports = { setPalabra };
+async function setSinonimos(req, res) {
+  let result = await axios
+    .get(
+      ` http://sesat.fdi.ucm.es:8080/servicios/rest/sinonimos/json/${req.params.search}`
+    )
+    .then((response) => {
+      console.log(response.data);
+      res.status(200).send({ data: response.data });
+    })
+    .catch((err) => {
+      res.send({
+        message:
+          "No se encontró ninguna entrada que coincida con palabra proporcionados",
+      });
+    });
+
+  return result || {};
+}
+
+module.exports = { setPalabra, setSinonimos };
