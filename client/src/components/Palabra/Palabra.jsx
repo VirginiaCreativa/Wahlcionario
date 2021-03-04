@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 
+import DefinicionItem from './Definiciones/DefinicionItem';
+
 const Palabra = ({ palabra }) => {
   const history = useHistory();
   const { search } = useParams();
@@ -40,11 +42,9 @@ const Palabra = ({ palabra }) => {
   return (
     <>
       {hasDefinition &&
-        hasDefinition.map((item, key) => (
-          <div key={key}>
-            {item.senses.map((item, id) => (
-              <p key={item.id}>{item.definitions}</p>
-            ))}
+        hasDefinition.map((item, id) => (
+          <div key={id}>
+            <DefinicionItem items={item.senses} {...item} />
           </div>
         ))}
       {errPalabra && <h4>{errPalabraMessage}</h4>}
