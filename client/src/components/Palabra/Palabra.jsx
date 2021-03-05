@@ -1,10 +1,13 @@
 /* eslint-disable consistent-return */
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import Definicion from './Definiciones/DefinicionItem';
+import Loading from '../../common/loading/LoadingHorizontal';
+import { capitalizefirstletter } from '../../scripts/plugin';
+
+const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
 
 const BoxContent = styled.div`
   margin: 20px 0;
@@ -27,6 +30,8 @@ const Palabra = ({ palabra }) => {
             if (response.data.definiciones === undefined) {
               setErrPalabraMessage(response.data.message);
               setErrPalabra(true);
+              setHasDefinition(null);
+              setHasSinonimos(null);
             } else {
               setErrPalabra(false);
               setHasDefinition(
@@ -49,15 +54,20 @@ const Palabra = ({ palabra }) => {
   console.log(hasSinonimos);
   return (
     <>
-      {hasDefinition &&
-        hasDefinition.map((item, id) => (
-          <BoxContent key={id}>
-            <Definicion items={item.senses} {...item} />
-          </BoxContent>
-        ))}
+      <Suspense fallback={<Loading />}>
+        {hasDefinition &&
+          hasDefinition.map((item, id) => (
+            <BoxContent key={id}>
+              <Definicion items={item.senses} {...item} />
+            </BoxContent>
+          ))}
+      </Suspense>
+      <h6>{!errPalabra ? 'Similar' : null}</h6>
       <ul>
         {hasSinonimos &&
-          hasSinonimos.map((item, key) => <li key={key}>{item.sinonimo}</li>)}
+          hasSinonimos.map((item, key) => (
+            <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
+          ))}
       </ul>
       {errPalabra && <h4>{errPalabraMessage}</h4>}
     </>
