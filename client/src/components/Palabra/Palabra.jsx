@@ -54,31 +54,35 @@ const Palabra = ({ palabra }) => {
     };
     fetchData();
 
-    console.log(isLoading);
+    if (errPalabra) setIsLoading(false);
   }, [isLoading, history, palabra, search]);
 
   return (
     <>
-      <Section>
-        {isLoading && <Loading />}
-        {hasDefinition &&
-          hasDefinition.map((item, id) => (
-            <div key={id}>
-              <Definicion items={item.senses} {...item} />
-            </div>
-          ))}
-      </Section>
-      <Section>
-        <h6>{!errPalabra ? 'Similar' : null}</h6>
-        {isLoading && <Loading />}
-        <ul>
-          {hasSinonimos &&
-            hasSinonimos.map((item, key) => (
-              <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
-            ))}
-        </ul>
-      </Section>
       {errPalabra && <h4>{errPalabraMessage}</h4>}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Section>
+            {hasDefinition &&
+              hasDefinition.map((item, id) => (
+                <div key={id}>
+                  <Definicion items={item.senses} {...item} />
+                </div>
+              ))}
+          </Section>
+          <Section>
+            <h6>{!errPalabra ? 'Similar' : null}</h6>
+            <ul>
+              {hasSinonimos &&
+                hasSinonimos.map((item, key) => (
+                  <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
+                ))}
+            </ul>
+          </Section>
+        </>
+      )}
     </>
   );
 };

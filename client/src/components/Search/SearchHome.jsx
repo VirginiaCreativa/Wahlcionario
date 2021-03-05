@@ -37,7 +37,7 @@ const InputStyled = styled.input`
   background-color: ${Variables.grey0};
   padding: 12px 30px 12px 30px;
   width: 28vw;
-  font-size: 0.85rem;
+  font-size: 1rem;
 `;
 
 const SearchHome = () => {
