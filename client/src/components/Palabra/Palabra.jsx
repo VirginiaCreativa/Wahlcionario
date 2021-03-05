@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
@@ -9,8 +10,9 @@ import { capitalizefirstletter } from '../../scripts/plugin';
 
 const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
 
-const BoxContent = styled.div`
+const Section = styled.div`
   margin: 20px 0;
+  min-height: 25vh;
 `;
 
 const Palabra = ({ palabra }) => {
@@ -20,6 +22,7 @@ const Palabra = ({ palabra }) => {
   const [hasSinonimos, setHasSinonimos] = useState([]);
   const [errPalabra, setErrPalabra] = useState(false);
   const [errPalabraMessage, setErrPalabraMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +36,7 @@ const Palabra = ({ palabra }) => {
               setHasDefinition(null);
               setHasSinonimos(null);
             } else {
+              setIsLoading(false);
               setErrPalabra(false);
               setHasDefinition(
                 response.data.definiciones.results[0].lexicalEntries[0].entries,
@@ -49,26 +53,31 @@ const Palabra = ({ palabra }) => {
       }
     };
     fetchData();
-  }, [history, palabra, search]);
 
-  console.log(hasSinonimos);
+    console.log(isLoading);
+  }, [isLoading, history, palabra, search]);
+
   return (
     <>
-      <Suspense fallback={<Loading />}>
+      <Section>
+        {isLoading && <Loading />}
         {hasDefinition &&
           hasDefinition.map((item, id) => (
-            <BoxContent key={id}>
+            <div key={id}>
               <Definicion items={item.senses} {...item} />
-            </BoxContent>
+            </div>
           ))}
-      </Suspense>
-      <h6>{!errPalabra ? 'Similar' : null}</h6>
-      <ul>
-        {hasSinonimos &&
-          hasSinonimos.map((item, key) => (
-            <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
-          ))}
-      </ul>
+      </Section>
+      <Section>
+        <h6>{!errPalabra ? 'Similar' : null}</h6>
+        {isLoading && <Loading />}
+        <ul>
+          {hasSinonimos &&
+            hasSinonimos.map((item, key) => (
+              <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
+            ))}
+        </ul>
+      </Section>
       {errPalabra && <h4>{errPalabraMessage}</h4>}
     </>
   );

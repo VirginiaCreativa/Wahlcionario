@@ -5,8 +5,8 @@ const LoadingStyled = styled.div`
   .cssload-jumping {
     display: block;
     position: relative;
-    margin: 97px auto;
-    width: 107px;
+    margin: 20px auto;
+    width: 100%;
   }
 
   .cssload-jumping,
@@ -19,8 +19,8 @@ const LoadingStyled = styled.div`
     border-radius: 487px;
     background: rgb(40, 103, 238);
     background-clip: padding-box;
-    width: 15px;
-    height: 15px;
+    width: 8px;
+    height: 8px;
   }
 
   .cssload-jumping span:nth-child(1) {
@@ -132,12 +132,14 @@ const LoadingStyled = styled.div`
 
 const LoadingHorizontal = () => {
   return (
-    <LoadingStyled className="cssload-jumping">
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
+    <LoadingStyled>
+      <div className="cssload-jumping">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
     </LoadingStyled>
   );
 };
