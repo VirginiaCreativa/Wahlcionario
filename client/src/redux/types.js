@@ -11,3 +11,6 @@ export const MENUS_HIDE = 'MENUS_HIDE';
 // ============== SEARCH ============== //
 export const SEARCH_VALUE = 'SEARCH_VALUE';
 export const SEARCH_FETCH = 'SEARCH_FETCH';
+
+// ============== FETCH ALABRA ============== //
+export const FETCH_PALABRA_CONTENT_CLEAN = 'FETCH_PALABRA_CONTENT_CLEAN';

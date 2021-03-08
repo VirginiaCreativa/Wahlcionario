@@ -12,7 +12,7 @@ const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
 
 const Section = styled.div`
   margin: 20px 0;
-  min-height: 25vh;
+  min-height: 20vh;
 `;
 
 const Palabra = ({ palabra }) => {
