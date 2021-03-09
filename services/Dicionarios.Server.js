@@ -17,12 +17,17 @@ async function setPalabra(req, res) {
       axios.get(
         ` http://sesat.fdi.ucm.es:8080/servicios/rest/sinonimos/json/${req.params.search}`
       ),
+      axios.get(
+        ` http://sesat.fdi.ucm.es:8080/servicios/rest/antonimos/json/${req.params.search}`
+      ),
     ])
     .then(
-      axios.spread((response1, response2) => {
-        res
-          .status(200)
-          .send({ definiciones: response1.data, sinonimos: response2.data });
+      axios.spread((response1, response2, response3) => {
+        res.status(200).send({
+          definiciones: response1.data,
+          sinonimos: response2.data,
+          antonimos: response3.data,
+        });
       })
     )
     .catch((err) => {

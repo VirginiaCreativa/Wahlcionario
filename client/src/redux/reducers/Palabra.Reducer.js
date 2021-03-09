@@ -1,4 +1,9 @@
-import { FETCH_PALABRA_CONTENT_CLEAN } from '../types';
+import {
+  FETCH_PALABRA_CONTENT_CLEAN,
+  FETCH_REST_PALABRA_DEFINICION,
+  FETCH_REST_PALABRA_SINONIMOS,
+  FETCH_REST_PALABRA_ANTONIMOS,
+} from '../types';
 
 const initialState = {
   content: [],
