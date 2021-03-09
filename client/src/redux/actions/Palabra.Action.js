@@ -10,7 +10,7 @@ import {
 
 const URL = 'http://localhost:3000/palabra';
 
-export const shoulFetchPalabraContent = (payload) => ({
+export const shoulFetchContentClean = (payload) => ({
   type: FETCH_PALABRA_CONTENT_CLEAN,
   payload,
 });

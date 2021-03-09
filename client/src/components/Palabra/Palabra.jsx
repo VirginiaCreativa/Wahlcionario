@@ -25,7 +25,7 @@ const Palabra = ({ palabra }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { search } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
   const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
@@ -38,17 +38,13 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraSAntonimos(search));
 
     console.log(errorPalabra);
-    if (!errorPalabra) {
+    if (errorPalabra === null) {
       setIsLoading(false);
     } else {
       setIsLoading(true);
     }
-    // if (errorPalabra === null) {
-    //   setIsLoading(false);
-    // } else {
-    //   setIsLoading(true);
-    // }
   }, []);
+  console.log(isLoading);
 
   return (
     <>
