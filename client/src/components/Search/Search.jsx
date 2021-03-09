@@ -64,7 +64,6 @@ const Search = () => {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
-      dispatch(fetchPalabraDefinicion(doSearchValue));
       dispatch(fetchPalabraSinonimos(doSearchValue));
       dispatch(fetchPalabraSAntonimos(doSearchValue));
       history.push(`/palabra/${eliminardiacriticos(doSearchValue)}`);

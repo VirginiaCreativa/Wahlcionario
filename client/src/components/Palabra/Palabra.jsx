@@ -25,9 +25,6 @@ const Palabra = ({ palabra }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { search } = useParams();
-  // const [hasDefinition, setHasDefinition] = useState([]);
-  const [errPalabra, setErrPalabra] = useState(false);
-  const [errPalabraMessage, setErrPalabraMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
@@ -36,10 +33,21 @@ const Palabra = ({ palabra }) => {
   const errorPalabra = useSelector((state) => state.palabra.error);
 
   useEffect(() => {
-    dispatch(fetchPalabraDefinicion(search));
+    // dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraSAntonimos(search));
-    if (!errorPalabra) setIsLoading(false);
+
+    console.log(errorPalabra);
+    if (errorPalabra) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+    }
+    // if (errorPalabra === null) {
+    //   setIsLoading(false);
+    // } else {
+    //   setIsLoading(true);
+    // }
   }, []);
 
   return (

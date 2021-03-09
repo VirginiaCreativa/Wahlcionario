@@ -7,7 +7,6 @@ import {
 } from '../types';
 
 const initialState = {
-  content: null,
   definiciones: [],
   sinonimos: [],
   antonimos: [],
@@ -27,16 +26,19 @@ const AuthReduce = (state = initialState, action) => {
     case FETCH_REST_PALABRA_DEFINICION:
       return {
         ...state,
+        error: null,
         definiciones: payload,
       };
     case FETCH_REST_PALABRA_SINONIMOS:
       return {
         ...state,
+        error: null,
         sinonimos: payload,
       };
     case FETCH_REST_PALABRA_ANTONIMOS:
       return {
         ...state,
+        error: null,
         antonimos: payload,
       };
     case FETCH_REST_PALABRA_ERROR:
