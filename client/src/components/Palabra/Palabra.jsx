@@ -33,12 +33,12 @@ const Palabra = ({ palabra }) => {
   const errorPalabra = useSelector((state) => state.palabra.error);
 
   useEffect(() => {
-    // dispatch(fetchPalabraDefinicion(search));
+    dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraSAntonimos(search));
 
     console.log(errorPalabra);
-    if (errorPalabra) {
+    if (!errorPalabra) {
       setIsLoading(false);
     } else {
       setIsLoading(true);

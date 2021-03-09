@@ -6,5 +6,5 @@ module.exports = {
   dbHost: "cluster0.knzyi.mongodb.net",
   dbTest: "DataBase",
   oxfordAppId: "5bf0aa54",
-  oxfordAppKeys: "3371afec4643fcadd24b3938ef44921a",
+  oxfordAppKeys: "3418e22cc2be04cb57e7f5d80475db3d",
 };
