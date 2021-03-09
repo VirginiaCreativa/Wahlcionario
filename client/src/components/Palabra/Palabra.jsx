@@ -1,12 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import React, { lazy, Suspense, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
 import Loading from '../../common/loading/LoadingHorizontal';
 import { capitalizefirstletter } from '../../scripts/plugin';
+import {
+  fetchPalabraDefinicion,
+  fetchPalabraSinonimos,
+  fetchPalabraSAntonimos,
+} from '../../redux/actions/Palabra.Action';
 
 const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
 
@@ -17,6 +23,7 @@ const Section = styled.div`
 
 const Palabra = ({ palabra }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const { search } = useParams();
   const [hasDefinition, setHasDefinition] = useState([]);
   const [hasSinonimos, setHasSinonimos] = useState([]);
@@ -25,6 +32,9 @@ const Palabra = ({ palabra }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    dispatch(fetchPalabraDefinicion(search));
+    dispatch(fetchPalabraSinonimos(search));
+    dispatch(fetchPalabraSAntonimos(search));
     const fetchData = async () => {
       try {
         const response = await axios
