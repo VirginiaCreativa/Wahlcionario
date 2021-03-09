@@ -21,13 +21,19 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
     const res = await axios
       .get(`${URL}/${search}`)
       .then((res) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_DEFINICION,
-          payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
-        });
+        if (res.data.definiciones) {
+          dispatch({
+            type: FETCH_REST_PALABRA_DEFINICION,
+            payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
+          });
+        } else {
+          dispatch({
+            type: FETCH_REST_PALABRA_ERROR,
+            payload: res.data.message,
+          });
+        }
       })
       .catch((error) => {
-        console.log(error);
         dispatch({
           type: FETCH_REST_PALABRA_ERROR,
           payload: error,
@@ -41,20 +47,13 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
 
 export const fetchPalabraSinonimos = (search) => async (dispatch) => {
   try {
-    const res = await axios
-      .get(`${URL}/${search}`)
-      .then((res) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_SINONIMOS,
-          payload: res.data.sinonimos.sinonimos,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_ERROR,
-          payload: error,
-        });
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_SINONIMOS,
+        payload: res.data.sinonimos.sinonimos,
       });
+    });
+
     return res;
   } catch (error) {
     return error;
@@ -63,20 +62,13 @@ export const fetchPalabraSinonimos = (search) => async (dispatch) => {
 
 export const fetchPalabraSAntonimos = (search) => async (dispatch) => {
   try {
-    const res = await axios
-      .get(`${URL}/${search}`)
-      .then((res) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_ANTONIMOS,
-          payload: res.data.sinonimos.sinonimos,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_ERROR,
-          payload: error,
-        });
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_ANTONIMOS,
+        payload: res.data.sinonimos.sinonimos,
       });
+    });
+
     return res;
   } catch (error) {
     return error;

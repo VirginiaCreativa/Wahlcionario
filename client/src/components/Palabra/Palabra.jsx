@@ -25,62 +25,33 @@ const Palabra = ({ palabra }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { search } = useParams();
-  const [hasDefinition, setHasDefinition] = useState([]);
-  const [hasSinonimos, setHasSinonimos] = useState([]);
+  // const [hasDefinition, setHasDefinition] = useState([]);
   const [errPalabra, setErrPalabra] = useState(false);
   const [errPalabraMessage, setErrPalabraMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
-  const hasDefinicion = useSelector((state) => state.palabra.definiciones);
+  const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
+  const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
+  const hasAntonimos = useSelector((state) => state.palabra.antonimos);
+  const errorPalabra = useSelector((state) => state.palabra.error);
 
   useEffect(() => {
     dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraSAntonimos(search));
-
-    console.log(hasDefinicion);
-    const fetchData = async () => {
-      try {
-        const response = await axios
-          .get(`http://localhost:3000/palabra/${search}`)
-          .then((response) => {
-            if (response.data.definiciones === undefined) {
-              setErrPalabraMessage(response.data.message);
-              setErrPalabra(true);
-              setHasDefinition(null);
-              setHasSinonimos(null);
-            } else {
-              setIsLoading(false);
-              setErrPalabra(false);
-              setHasDefinition(
-                response.data.definiciones.results[0].lexicalEntries[0].entries,
-              );
-              setHasSinonimos(response.data.sinonimos.sinonimos);
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-
-    if (errPalabra) setIsLoading(false);
-  }, [isLoading, history, palabra, search]);
+    if (!errorPalabra) setIsLoading(false);
+  }, [fetchPalabraDefinicion]);
 
   return (
     <>
-      {errPalabra && <h4>{errPalabraMessage}</h4>}
+      {errorPalabra && <h4>{errorPalabra}</h4>}
       {isLoading ? (
         <Loading />
       ) : (
         <>
           <Section>
-            {hasDefinicion &&
-              hasDefinicion.map((item, id) => (
+            {hasDefiniciones &&
+              hasDefiniciones.map((item, id) => (
                 <div key={id}>
                   <Definicion items={item.senses} {...item} />
                 </div>

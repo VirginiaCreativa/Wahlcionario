@@ -43,6 +43,9 @@ const AuthReduce = (state = initialState, action) => {
       return {
         ...state,
         error: payload,
+        definiciones: null,
+        sinonimos: null,
+        antonimos: null,
       };
     default:
       return state;
