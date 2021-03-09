@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -31,10 +31,14 @@ const Palabra = ({ palabra }) => {
   const [errPalabraMessage, setErrPalabraMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
+  const hasDefinicion = useSelector((state) => state.palabra.definiciones);
+
   useEffect(() => {
     dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraSAntonimos(search));
+
+    console.log(hasDefinicion);
     const fetchData = async () => {
       try {
         const response = await axios
@@ -75,8 +79,8 @@ const Palabra = ({ palabra }) => {
       ) : (
         <>
           <Section>
-            {hasDefinition &&
-              hasDefinition.map((item, id) => (
+            {hasDefinicion &&
+              hasDefinicion.map((item, id) => (
                 <div key={id}>
                   <Definicion items={item.senses} {...item} />
                 </div>
