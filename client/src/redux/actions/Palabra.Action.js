@@ -53,12 +53,12 @@ export const fetchPalabraSinonimos = (search) => async (dispatch) => {
   }
 };
 
-export const fetchPalabraSAntonimos = (search) => async (dispatch) => {
+export const fetchPalabraAntonimos = (search) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_ANTONIMOS,
-        payload: res.data.sinonimos.sinonimos,
+        payload: res.data.antonimos.antonimos,
       });
     });
 

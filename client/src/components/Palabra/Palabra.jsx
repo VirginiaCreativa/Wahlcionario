@@ -11,7 +11,7 @@ import { capitalizefirstletter } from '../../scripts/plugin';
 import {
   fetchPalabraDefinicion,
   fetchPalabraSinonimos,
-  fetchPalabraSAntonimos,
+  fetchPalabraAntonimos,
 } from '../../redux/actions/Palabra.Action';
 
 const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
@@ -35,15 +35,16 @@ const Palabra = ({ palabra }) => {
   useEffect(() => {
     dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
-    dispatch(fetchPalabraSAntonimos(search));
+    dispatch(fetchPalabraAntonimos(search));
 
     if (errorPalabra === null) {
       setIsLoading(false);
     } else {
       setIsLoading(true);
     }
+
+    console.log('>>>', hasSinonimos);
   }, []);
-  console.log(isLoading);
 
   return (
     <>
@@ -61,13 +62,26 @@ const Palabra = ({ palabra }) => {
               ))}
           </Section>
           <Section>
-            <h6>{!errorPalabra ? 'Similar' : null}</h6>
-            <ul>
-              {hasSinonimos &&
-                hasSinonimos.map((item, key) => (
-                  <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
-                ))}
-            </ul>
+            <div className="row">
+              <div className="col">
+                <h6>{!errorPalabra ? 'Similar = Sinónimos' : null}</h6>
+                <ul>
+                  {hasSinonimos &&
+                    hasSinonimos.map((item, key) => (
+                      <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
+                    ))}
+                </ul>
+              </div>
+              <div className="col">
+                <h6>{!errorPalabra ? 'Opuesta = Antónimos' : null}</h6>
+                <ul>
+                  {hasAntonimos &&
+                    hasAntonimos.map((item, key) => (
+                      <li key={key}>{capitalizefirstletter(item.antonimo)}</li>
+                    ))}
+                </ul>
+              </div>
+            </div>
           </Section>
         </>
       )}

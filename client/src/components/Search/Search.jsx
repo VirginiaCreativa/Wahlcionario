@@ -10,7 +10,7 @@ import { setValueSearch } from '../../redux/actions/Search.Action';
 import {
   fetchPalabraDefinicion,
   fetchPalabraSinonimos,
-  fetchPalabraSAntonimos,
+  fetchPalabraAntonimos,
 } from '../../redux/actions/Palabra.Action';
 
 const SearchStyled = styled.div`
@@ -64,9 +64,9 @@ const Search = () => {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
-      dispatch(doSearchValue);
+      dispatch(fetchPalabraDefinicion(doSearchValue));
       dispatch(fetchPalabraSinonimos(doSearchValue));
-      dispatch(fetchPalabraSAntonimos(doSearchValue));
+      dispatch(fetchPalabraAntonimos(doSearchValue));
       history.push(`/palabra/${eliminardiacriticos(doSearchValue)}`);
     }
   };
