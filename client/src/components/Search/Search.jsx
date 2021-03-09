@@ -7,6 +7,12 @@ import Variables from '../../styles/VariableStyled';
 
 import { setValueSearch } from '../../redux/actions/Search.Action';
 
+import {
+  fetchPalabraDefinicion,
+  fetchPalabraSinonimos,
+  fetchPalabraSAntonimos,
+} from '../../redux/actions/Palabra.Action';
+
 const SearchStyled = styled.div`
   position: relative;
 `;
@@ -58,6 +64,9 @@ const Search = () => {
       console.log('falta');
     } else {
       dispatch(setValueSearch(doSearchValue));
+      dispatch(fetchPalabraDefinicion(doSearchValue));
+      dispatch(fetchPalabraSinonimos(doSearchValue));
+      dispatch(fetchPalabraSAntonimos(doSearchValue));
       history.push(`/palabra/${eliminardiacriticos(doSearchValue)}`);
     }
   };

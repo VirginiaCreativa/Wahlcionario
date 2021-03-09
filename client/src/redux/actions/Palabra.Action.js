@@ -21,15 +21,15 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
     const res = await axios
       .get(`${URL}/${search}`)
       .then((res) => {
-        if (res.data.definiciones) {
-          dispatch({
-            type: FETCH_REST_PALABRA_DEFINICION,
-            payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
-          });
-        } else {
+        if (!res.data.definiciones) {
           dispatch({
             type: FETCH_REST_PALABRA_ERROR,
             payload: res.data.message,
+          });
+        } else {
+          dispatch({
+            type: FETCH_REST_PALABRA_DEFINICION,
+            payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
           });
         }
       })

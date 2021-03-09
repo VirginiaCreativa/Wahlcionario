@@ -40,7 +40,7 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraSAntonimos(search));
     if (!errorPalabra) setIsLoading(false);
-  }, [fetchPalabraDefinicion]);
+  }, []);
 
   return (
     <>
@@ -58,7 +58,7 @@ const Palabra = ({ palabra }) => {
               ))}
           </Section>
           <Section>
-            <h6>{!errPalabra ? 'Similar' : null}</h6>
+            <h6>{!errorPalabra ? 'Similar' : null}</h6>
             <ul>
               {hasSinonimos &&
                 hasSinonimos.map((item, key) => (
