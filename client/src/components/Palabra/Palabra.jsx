@@ -37,7 +37,6 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraSAntonimos(search));
 
-    console.log(errorPalabra);
     if (errorPalabra === null) {
       setIsLoading(false);
     } else {
