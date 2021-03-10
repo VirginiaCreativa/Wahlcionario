@@ -72,10 +72,9 @@ export const fetchPalabraAntonimos = (search) => async (dispatch) => {
 export const fetchPalabraImages = (search) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/images/${search}`).then((res) => {
-      console.log(res.data);
       dispatch({
         type: FETCH_REST_PALABRA_IMAGES,
-        payload: res.data,
+        payload: res.data.images,
       });
     });
 

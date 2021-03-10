@@ -55,6 +55,7 @@ async function setImages(req, res) {
     per_page: 8,
     sort: "popular",
     view: "minimal",
+    orientation: "horizontal",
     language: "es",
   };
 

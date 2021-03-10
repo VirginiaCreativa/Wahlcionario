@@ -18,9 +18,15 @@ import {
 const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
 
 const Section = styled.div`
-  margin: 20px 0;
-  min-height: 20vh;
+  margin: 20px 0 40px;
 `;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 60% auto;
+`;
+
+const Column = styled.div``;
 
 const Palabra = ({ palabra }) => {
   const history = useHistory();
@@ -55,17 +61,32 @@ const Palabra = ({ palabra }) => {
       ) : (
         <>
           <Section>
-            {hasDefiniciones &&
-              hasDefiniciones.map((item, id) => (
-                <div key={id}>
-                  <Definicion items={item.senses} {...item} />
-                </div>
-              ))}
+            <Grid>
+              <Column>
+                {hasDefiniciones &&
+                  hasDefiniciones.map((item, id) => (
+                    <div key={id}>
+                      <Definicion items={item.senses} {...item} />
+                    </div>
+                  ))}
+              </Column>
+              <Column>
+                {hasImages &&
+                  hasImages.map((item, id) => (
+                    <div key={id}>
+                      <img
+                        src={item.assets.large_thumb.url}
+                        alt={item.assets}
+                      />
+                    </div>
+                  ))}
+              </Column>
+            </Grid>
           </Section>
           <Section>
             <div className="row">
               <div className="col">
-                <h6>{!errorPalabra ? 'Similar = Sinónimos' : null}</h6>
+                <h6>{!errorPalabra ? 'Similar = Sinónimos = Igual' : null}</h6>
                 <ul>
                   {hasSinonimos &&
                     hasSinonimos.map((item, key) => (
@@ -74,7 +95,9 @@ const Palabra = ({ palabra }) => {
                 </ul>
               </div>
               <div className="col">
-                <h6>{!errorPalabra ? 'Opuesta = Antónimos' : null}</h6>
+                <h6>
+                  {!errorPalabra ? 'Opuesta = Antónimos = Diferente' : null}
+                </h6>
                 <ul>
                   {hasAntonimos &&
                     hasAntonimos.map((item, key) => (
