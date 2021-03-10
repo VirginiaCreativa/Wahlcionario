@@ -16,6 +16,7 @@ import {
 
 import Definicion from './Definiciones/DefinicionItem';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
+import ImagesPictograma from './Images/ImagesPictograma';
 
 const Section = styled.div`
   margin: 20px 0 40px;
@@ -23,7 +24,7 @@ const Section = styled.div`
 
 const Column = styled.div`
   display: grid;
-  grid-template-columns: 60% auto;
+  grid-template-columns: 63% auto;
 `;
 
 const Grid = styled.div``;
