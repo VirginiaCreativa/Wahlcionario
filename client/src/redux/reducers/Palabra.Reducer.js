@@ -4,6 +4,7 @@ import {
   FETCH_REST_PALABRA_ANTONIMOS,
   FETCH_REST_PALABRA_ERROR,
   FETCH_REST_PALABRA_IMAGES,
+  FETCH_REST_PALABRA_PICTOGRAMA,
 } from '../types';
 
 const initialState = {
@@ -11,7 +12,9 @@ const initialState = {
   sinonimos: [],
   antonimos: [],
   images: [],
-  error: null,
+  pictograma: '',
+  error: false,
+  message: '',
 };
 
 const AuthReduce = (state = initialState, action) => {
@@ -20,35 +23,42 @@ const AuthReduce = (state = initialState, action) => {
     case FETCH_REST_PALABRA_DEFINICION:
       return {
         ...state,
-        error: null,
+        error: false,
         definiciones: payload,
       };
     case FETCH_REST_PALABRA_SINONIMOS:
       return {
         ...state,
-        error: null,
+        error: false,
         sinonimos: payload,
       };
     case FETCH_REST_PALABRA_ANTONIMOS:
       return {
         ...state,
-        error: null,
-        antonimos: payload || '',
+        error: false,
+        antonimos: payload,
       };
     case FETCH_REST_PALABRA_IMAGES:
       return {
         ...state,
-        error: null,
+        error: false,
         images: payload,
+      };
+    case FETCH_REST_PALABRA_PICTOGRAMA:
+      return {
+        ...state,
+        error: false,
+        pictograma: payload,
       };
     case FETCH_REST_PALABRA_ERROR:
       return {
         ...state,
-        error: payload,
-        definiciones: null,
-        sinonimos: null,
-        antonimos: null,
-        images: null,
+        error: true,
+        message: payload,
+        definiciones: [],
+        sinonimos: [],
+        antonimos: [],
+        images: [],
       };
     default:
       return state;

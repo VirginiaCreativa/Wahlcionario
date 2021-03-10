@@ -6,6 +6,7 @@ import {
   FETCH_REST_PALABRA_SINONIMOS,
   FETCH_REST_PALABRA_ANTONIMOS,
   FETCH_REST_PALABRA_IMAGES,
+  FETCH_REST_PALABRA_PICTOGRAMA,
 } from '../types';
 
 const URL = 'http://localhost:3000/palabra';
@@ -15,11 +16,12 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
     const res = await axios
       .get(`${URL}/${search}`)
       .then((res) => {
+        console.log(res.data);
         if (res.data.definiciones) {
           dispatch({
             type: FETCH_REST_PALABRA_DEFINICION,
-            // payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
-            payload: res.data.definiciones.definiciones,
+            payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
+            // payload: res.data.definiciones.definiciones,
           });
         } else {
           dispatch({
@@ -76,6 +78,21 @@ export const fetchPalabraImages = (search) => async (dispatch) => {
       dispatch({
         type: FETCH_REST_PALABRA_IMAGES,
         payload: res.data.images,
+      });
+    });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchPalabraPictograma = (search) => async (dispatch) => {
+  try {
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_PICTOGRAMA,
+        payload: res.data,
       });
     });
 

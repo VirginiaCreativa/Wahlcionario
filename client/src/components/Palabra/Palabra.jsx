@@ -40,12 +40,14 @@ const Palabra = ({ palabra }) => {
   const dispatch = useDispatch();
   const { search } = useParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [isErrorMessage, setIsErrorMessage] = useState('');
 
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
   const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
   const hasAntonimos = useSelector((state) => state.palabra.antonimos);
   const hasImages = useSelector((state) => state.palabra.images);
   const errorPalabra = useSelector((state) => state.palabra.error);
+  const errorMessage = useSelector((state) => state.palabra.message);
 
   useEffect(() => {
     dispatch(fetchPalabraDefinicion(search));
@@ -53,16 +55,18 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraAntonimos(search));
     dispatch(fetchPalabraImages(search));
 
-    if (errorPalabra === null) {
-      setIsLoading(false);
-    } else {
+    if (errorPalabra) {
       setIsLoading(true);
+      setIsErrorMessage(errorMessage);
+    } else {
+      setIsLoading(false);
     }
+    console.log(hasAntonimos.length);
   }, []);
 
   return (
     <>
-      {errorPalabra && <h4>{errorPalabra}</h4>}
+      {errorMessage && <h4>{errorMessage}</h4>}
       {isLoading ? (
         <Loading />
       ) : (
@@ -70,20 +74,12 @@ const Palabra = ({ palabra }) => {
           <Section>
             <Column>
               <Grid>
-                {/* {hasDefiniciones &&
+                {hasDefiniciones &&
                   hasDefiniciones.map((item, id) => (
                     <div key={id}>
                       <Definicion items={item.senses} {...item} />
                     </div>
-                  ))} */}
-                <ul>
-                  {hasDefiniciones &&
-                    hasDefiniciones.map((item, key) => (
-                      <li key={key}>
-                        {capitalizefirstletter(item.definicion)}
-                      </li>
-                    ))}
-                </ul>
+                  ))}
               </Grid>
               <Grid>
                 <GridImages>
@@ -104,10 +100,13 @@ const Palabra = ({ palabra }) => {
               <div className="col">
                 <h6>{!errorPalabra ? 'Similar = Sinónimos = Igual' : null}</h6>
                 <ul>
-                  {hasSinonimos &&
-                    hasSinonimos.map((item, key) => (
-                      <li key={key}>{capitalizefirstletter(item.sinonimo)}</li>
-                    ))}
+                  {hasSinonimos.length >= 0
+                    ? hasSinonimos.map((item, key) => (
+                        <li key={key}>
+                          {capitalizefirstletter(item.sinonimo)}
+                        </li>
+                      ))
+                    : null}
                 </ul>
               </div>
               <div className="col">
@@ -115,10 +114,13 @@ const Palabra = ({ palabra }) => {
                   {!errorPalabra ? 'Opuesta = Antónimos = Diferente' : null}
                 </h6>
                 <ul>
-                  {hasAntonimos &&
-                    hasAntonimos.map((item, key) => (
-                      <li key={key}>{capitalizefirstletter(item.antonimo)}</li>
-                    ))}
+                  {hasAntonimos.length >= 0
+                    ? hasAntonimos.map((item, key) => (
+                        <li key={key}>
+                          {capitalizefirstletter(item.antonimo)}
+                        </li>
+                      ))
+                    : null}
                 </ul>
               </div>
             </div>

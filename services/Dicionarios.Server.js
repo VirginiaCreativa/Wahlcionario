@@ -5,19 +5,19 @@ const keys = require("../keys/keys");
 async function setPalabra(req, res) {
   let result = await axios
     .all([
-      // axios.get(
-      //   `https://od-api.oxforddictionaries.com/api/v2/entries/es/${req.params.search}?strictMatch=false`,
-      //   {
-      //     headers: {
-      //       Accept: "application/json",
-      //       app_id: keys.oxfordAppId,
-      //       app_key: keys.oxfordAppKeys,
-      //     },
-      //   }
-      // ),
       axios.get(
-        `http://sesat.fdi.ucm.es:8080/servicios/rest/definicion/json/${req.params.search}`
+        `https://od-api.oxforddictionaries.com/api/v2/entries/es/${req.params.search}?strictMatch=false`,
+        {
+          headers: {
+            Accept: "application/json",
+            app_id: keys.oxfordAppId,
+            app_key: keys.oxfordAppKeys,
+          },
+        }
       ),
+      // axios.get(
+      //   `http://sesat.fdi.ucm.es:8080/servicios/rest/definicion/json/${req.params.search}`
+      // ),
       axios.get(
         `http://sesat.fdi.ucm.es:8080/servicios/rest/sinonimos/json/${req.params.search}`
       ),
