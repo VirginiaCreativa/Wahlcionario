@@ -5,7 +5,7 @@ exports.fetchDicionariosDefinicion = (req, res) =>
     resolve(DicionariosServices.setPalabra(req, res))
   );
 
-exports.fetchDicionariosSinonimo = (req, res) =>
+exports.fetchDicionariosImages = (req, res) =>
   new Promise((resolve, reject) =>
-    resolve(DicionariosServices.setSinonimos(req, res))
+    resolve(DicionariosServices.setImages(req, res))
   );

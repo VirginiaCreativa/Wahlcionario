@@ -8,6 +8,9 @@ function DicionariosRouter(app) {
   router.get("/:search", (req, res) => {
     DicionariosController.fetchDicionariosDefinicion(req, res);
   });
+  router.get("/images/:images", (req, res) => {
+    DicionariosController.fetchDicionariosImages(req, res);
+  });
 }
 
 module.exports = DicionariosRouter;

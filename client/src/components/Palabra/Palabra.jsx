@@ -12,6 +12,7 @@ import {
   fetchPalabraDefinicion,
   fetchPalabraSinonimos,
   fetchPalabraAntonimos,
+  fetchPalabraImages,
 } from '../../redux/actions/Palabra.Action';
 
 const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
@@ -30,20 +31,20 @@ const Palabra = ({ palabra }) => {
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
   const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
   const hasAntonimos = useSelector((state) => state.palabra.antonimos);
+  const hasImages = useSelector((state) => state.palabra.images);
   const errorPalabra = useSelector((state) => state.palabra.error);
 
   useEffect(() => {
     dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraAntonimos(search));
+    dispatch(fetchPalabraImages(search));
 
     if (errorPalabra === null) {
       setIsLoading(false);
     } else {
       setIsLoading(true);
     }
-
-    console.log('>>>', hasSinonimos);
   }, []);
 
   return (

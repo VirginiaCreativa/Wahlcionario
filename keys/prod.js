@@ -7,4 +7,6 @@ module.exports = {
   dbTest: process.env.DB_NAME_DATABASE,
   oxfordAppId: process.env.OX_APP_ID,
   oxfordAppKeys: process.env.OX_APP_KEYS,
+  shuttImagesId: process.env.SHUTTERSTOCK_API_ID,
+  shuttImagesSecret: process.env.SHUTTERSTOCK_API_SECRET,
 };

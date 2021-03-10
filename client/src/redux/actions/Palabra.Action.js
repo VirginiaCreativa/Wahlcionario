@@ -5,6 +5,7 @@ import {
   FETCH_REST_PALABRA_ERROR,
   FETCH_REST_PALABRA_SINONIMOS,
   FETCH_REST_PALABRA_ANTONIMOS,
+  FETCH_REST_PALABRA_IMAGES,
 } from '../types';
 
 const URL = 'http://localhost:3000/palabra';
@@ -59,6 +60,22 @@ export const fetchPalabraAntonimos = (search) => async (dispatch) => {
       dispatch({
         type: FETCH_REST_PALABRA_ANTONIMOS,
         payload: res.data.antonimos.antonimos,
+      });
+    });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchPalabraImages = (search) => async (dispatch) => {
+  try {
+    const res = await axios.get(`${URL}/images/${search}`).then((res) => {
+      console.log(res.data);
+      dispatch({
+        type: FETCH_REST_PALABRA_IMAGES,
+        payload: res.data,
       });
     });
 

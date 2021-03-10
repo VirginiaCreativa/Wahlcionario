@@ -7,4 +7,6 @@ module.exports = {
   dbTest: "DataBase",
   oxfordAppId: "5bf0aa54",
   oxfordAppKeys: "3418e22cc2be04cb57e7f5d80475db3d",
+  shuttImagesId: "kGAJBo7fjOnL4olJRNYAL0bJGrd5y08P",
+  shuttImagesSecret: "2Ij909ecOWz5sWpH",
 };

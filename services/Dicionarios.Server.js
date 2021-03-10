@@ -1,4 +1,5 @@
 const axios = require("axios");
+const sstk = require("shutterstock-api");
 const keys = require("../keys/keys");
 
 async function setPalabra(req, res) {
@@ -14,6 +15,9 @@ async function setPalabra(req, res) {
           },
         }
       ),
+      // axios.get(
+      //   `http://sesat.fdi.ucm.es:8080/servicios/rest/definicion/json/${req.params.search}`
+      // ),
       axios.get(
         ` http://sesat.fdi.ucm.es:8080/servicios/rest/sinonimos/json/${req.params.search}`
       ),
@@ -40,4 +44,33 @@ async function setPalabra(req, res) {
   return result || {};
 }
 
-module.exports = { setPalabra };
+async function setImages(req, res) {
+  sstk.setBasicAuth(keys.shuttImagesId, keys.shuttImagesSecret);
+  const imagesApi = new sstk.ImagesApi();
+
+  const queryParams = {
+    query: req.params.images,
+    image_type: "photo",
+    page: 1,
+    per_page: 8,
+    sort: "popular",
+    view: "minimal",
+    language: "es",
+  };
+
+  await imagesApi
+    .searchImages(queryParams)
+    .then((images) => {
+      res.status(200).send({
+        images: images.data,
+      });
+    })
+    .catch((error) => {
+      res.send({
+        message: error,
+      });
+    });
+  return imagesApi;
+}
+
+module.exports = { setPalabra, setImages };
