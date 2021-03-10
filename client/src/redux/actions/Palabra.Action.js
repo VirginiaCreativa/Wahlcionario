@@ -16,7 +16,6 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
     const res = await axios
       .get(`${URL}/${search}`)
       .then((res) => {
-        console.log(res.data);
         if (res.data.definiciones) {
           dispatch({
             type: FETCH_REST_PALABRA_DEFINICION,
@@ -74,12 +73,20 @@ export const fetchPalabraAntonimos = (search) => async (dispatch) => {
 
 export const fetchPalabraImages = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/images/${search}`).then((res) => {
-      dispatch({
-        type: FETCH_REST_PALABRA_IMAGES,
-        payload: res.data.images,
+    const res = await axios
+      .get(`${URL}/images/${search}`)
+      .then((res) => {
+        dispatch({
+          type: FETCH_REST_PALABRA_IMAGES,
+          payload: res.data.images,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: FETCH_REST_PALABRA_ERROR,
+          payload: error,
+        });
       });
-    });
 
     return res;
   } catch (error) {

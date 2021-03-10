@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Loading from '../../common/loading/LoadingHorizontal';
+import AlertErrorPalabra from '../../common/Alert/AlertErrorPalabra';
 import { capitalizefirstletter } from '../../scripts/plugin';
 import {
   fetchPalabraDefinicion,
@@ -40,7 +41,6 @@ const Palabra = ({ palabra }) => {
   const dispatch = useDispatch();
   const { search } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [isErrorMessage, setIsErrorMessage] = useState('');
 
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
   const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
@@ -54,19 +54,15 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraAntonimos(search));
     dispatch(fetchPalabraImages(search));
-
     if (errorPalabra) {
       setIsLoading(true);
-      setIsErrorMessage(errorMessage);
     } else {
       setIsLoading(false);
     }
-    console.log(hasAntonimos.length);
   }, []);
 
   return (
     <>
-      {errorMessage && <h4>{errorMessage}</h4>}
       {isLoading ? (
         <Loading />
       ) : (
@@ -98,7 +94,7 @@ const Palabra = ({ palabra }) => {
           <Section>
             <div className="row">
               <div className="col">
-                <h6>{!errorPalabra ? 'Similar = Sinónimos = Igual' : null}</h6>
+                <h6>{errorPalabra ? null : 'Similar = Sinónimos = Igual'}</h6>
                 <ul>
                   {hasSinonimos.length >= 0
                     ? hasSinonimos.map((item, key) => (
@@ -111,7 +107,7 @@ const Palabra = ({ palabra }) => {
               </div>
               <div className="col">
                 <h6>
-                  {!errorPalabra ? 'Opuesta = Antónimos = Diferente' : null}
+                  {errorPalabra ? null : 'Opuesta = Antónimos = Diferente'}
                 </h6>
                 <ul>
                   {hasAntonimos.length >= 0
