@@ -78,16 +78,18 @@ const Palabra = ({ palabra }) => {
                   ))}
               </Grid>
               <Grid>
-                <GridImages>
-                  {hasImages &&
-                    hasImages.map((item, id) => (
-                      <ImagesItemTrumb
-                        key={id}
-                        src={item.assets.large_thumb.url}
-                        alt={item.assets}
-                      />
-                    ))}
-                </GridImages>
+                {!errorPalabra && (
+                  <GridImages>
+                    {hasImages &&
+                      hasImages.map((item, id) => (
+                        <ImagesItemTrumb
+                          key={id}
+                          src={item.assets.large_thumb.url}
+                          alt={item.assets}
+                        />
+                      ))}
+                  </GridImages>
+                )}
               </Grid>
             </Column>
           </Section>

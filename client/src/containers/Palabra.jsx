@@ -17,7 +17,9 @@ const Palabra = () => {
   return (
     <div className="container">
       <h1>{capitalizefirstletter(isPalabra || search)}</h1>
-      {errorPalabra !== true ? <h4>{errorMessage}</h4> : <h4>...</h4>}
+      {errorPalabra === true ? (
+        <AlertErrorPalabra title={errorMessage} />
+      ) : null}
       <PalabraComponent palabra={isPalabra} />
     </div>
   );

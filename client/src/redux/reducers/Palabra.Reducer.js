@@ -41,7 +41,6 @@ const AuthReduce = (state = initialState, action) => {
     case FETCH_REST_PALABRA_IMAGES:
       return {
         ...state,
-        error: false,
         images: payload,
       };
     case FETCH_REST_PALABRA_PICTOGRAMA:
