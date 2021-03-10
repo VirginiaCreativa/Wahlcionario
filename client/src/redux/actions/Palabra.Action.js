@@ -18,7 +18,8 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
         if (res.data.definiciones) {
           dispatch({
             type: FETCH_REST_PALABRA_DEFINICION,
-            payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
+            // payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
+            payload: res.data.definiciones.definiciones,
           });
         } else {
           dispatch({

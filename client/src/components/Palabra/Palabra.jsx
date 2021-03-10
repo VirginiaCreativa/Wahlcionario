@@ -4,7 +4,6 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
 
 import Loading from '../../common/loading/LoadingHorizontal';
 import { capitalizefirstletter } from '../../scripts/plugin';
@@ -15,18 +14,25 @@ import {
   fetchPalabraImages,
 } from '../../redux/actions/Palabra.Action';
 
-const Definicion = lazy(() => import('./Definiciones/DefinicionItem'));
+import Definicion from './Definiciones/DefinicionItem';
+import ImagesItemTrumb from './Images/ImagesItemTrumb';
 
 const Section = styled.div`
   margin: 20px 0 40px;
 `;
 
-const Grid = styled.div`
+const Column = styled.div`
   display: grid;
   grid-template-columns: 60% auto;
 `;
 
-const Column = styled.div``;
+const Grid = styled.div``;
+
+const GridImages = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+`;
 
 const Palabra = ({ palabra }) => {
   const history = useHistory();
@@ -61,27 +67,36 @@ const Palabra = ({ palabra }) => {
       ) : (
         <>
           <Section>
-            <Grid>
-              <Column>
-                {hasDefiniciones &&
+            <Column>
+              <Grid>
+                {/* {hasDefiniciones &&
                   hasDefiniciones.map((item, id) => (
                     <div key={id}>
                       <Definicion items={item.senses} {...item} />
                     </div>
-                  ))}
-              </Column>
-              <Column>
-                {hasImages &&
-                  hasImages.map((item, id) => (
-                    <div key={id}>
-                      <img
+                  ))} */}
+                <ul>
+                  {hasDefiniciones &&
+                    hasDefiniciones.map((item, key) => (
+                      <li key={key}>
+                        {capitalizefirstletter(item.definicion)}
+                      </li>
+                    ))}
+                </ul>
+              </Grid>
+              <Grid>
+                <GridImages>
+                  {hasImages &&
+                    hasImages.map((item, id) => (
+                      <ImagesItemTrumb
+                        key={id}
                         src={item.assets.large_thumb.url}
                         alt={item.assets}
                       />
-                    </div>
-                  ))}
-              </Column>
-            </Grid>
+                    ))}
+                </GridImages>
+              </Grid>
+            </Column>
           </Section>
           <Section>
             <div className="row">

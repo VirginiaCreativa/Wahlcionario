@@ -33,7 +33,7 @@ const AuthReduce = (state = initialState, action) => {
       return {
         ...state,
         error: null,
-        antonimos: payload && '',
+        antonimos: payload || '',
       };
     case FETCH_REST_PALABRA_IMAGES:
       return {
