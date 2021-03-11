@@ -56,7 +56,7 @@ async function setImages(req, res) {
     query: req.params.images,
     image_type: "photo",
     page: 1,
-    per_page: 6,
+    per_page: 9,
     sort: "popular",
     view: "minimal",
     orientation: "horizontal",

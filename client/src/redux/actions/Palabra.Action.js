@@ -99,7 +99,7 @@ export const fetchPalabraPictograma = (search) => async (dispatch) => {
     const res = await axios.get(`${URL}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_PICTOGRAMA,
-        payload: res.data,
+        payload: res.data.pictograma,
       });
     });
 

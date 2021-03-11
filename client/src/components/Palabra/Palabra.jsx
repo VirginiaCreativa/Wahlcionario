@@ -13,6 +13,7 @@ import {
   fetchPalabraSinonimos,
   fetchPalabraAntonimos,
   fetchPalabraImages,
+  fetchPalabraPictograma,
 } from '../../redux/actions/Palabra.Action';
 
 import Definicion from './Definiciones/DefinicionItem';
@@ -45,6 +46,7 @@ const Palabra = ({ palabra }) => {
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
   const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
   const hasAntonimos = useSelector((state) => state.palabra.antonimos);
+  const hasPictograma = useSelector((state) => state.palabra.pictograma);
   const hasImages = useSelector((state) => state.palabra.images);
   const errorPalabra = useSelector((state) => state.palabra.error);
   const errorMessage = useSelector((state) => state.palabra.message);
@@ -54,6 +56,7 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraSinonimos(search));
     dispatch(fetchPalabraAntonimos(search));
     dispatch(fetchPalabraImages(search));
+    dispatch(fetchPalabraPictograma(search));
     if (errorPalabra) {
       setIsLoading(true);
     } else {
@@ -79,16 +82,19 @@ const Palabra = ({ palabra }) => {
               </Grid>
               <Grid>
                 {!errorPalabra && (
-                  <GridImages>
-                    {hasImages &&
-                      hasImages.map((item, id) => (
-                        <ImagesItemTrumb
-                          key={id}
-                          src={item.assets.large_thumb.url}
-                          alt={item.assets}
-                        />
-                      ))}
-                  </GridImages>
+                  <>
+                    <ImagesPictograma />
+                    <GridImages>
+                      {hasImages &&
+                        hasImages.map((item, id) => (
+                          <ImagesItemTrumb
+                            key={id}
+                            src={item.assets.large_thumb.url}
+                            alt={item.assets}
+                          />
+                        ))}
+                    </GridImages>
+                  </>
                 )}
               </Grid>
             </Column>

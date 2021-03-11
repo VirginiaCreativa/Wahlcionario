@@ -29,13 +29,11 @@ const AuthReduce = (state = initialState, action) => {
     case FETCH_REST_PALABRA_SINONIMOS:
       return {
         ...state,
-        error: false,
         sinonimos: payload,
       };
     case FETCH_REST_PALABRA_ANTONIMOS:
       return {
         ...state,
-        error: false,
         antonimos: payload,
       };
     case FETCH_REST_PALABRA_IMAGES:
@@ -46,7 +44,6 @@ const AuthReduce = (state = initialState, action) => {
     case FETCH_REST_PALABRA_PICTOGRAMA:
       return {
         ...state,
-        error: false,
         pictograma: payload,
       };
     case FETCH_REST_PALABRA_ERROR:
