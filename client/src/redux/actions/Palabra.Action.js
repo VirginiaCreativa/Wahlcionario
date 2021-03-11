@@ -100,9 +100,7 @@ export const fetchPalabraPictograma = (search) => async (dispatch) => {
       const element = res.data.pictograma;
       const tmp = document.createElement('div');
       tmp.innerHTML = element;
-      console.log(res.data.pictograma);
       const elemChild = tmp.lastElementChild;
-      console.log('>>>', elemChild.src);
       dispatch({
         type: FETCH_REST_PALABRA_PICTOGRAMA,
         payload: elemChild.src,

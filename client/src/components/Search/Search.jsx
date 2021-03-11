@@ -12,6 +12,7 @@ import {
   fetchPalabraSinonimos,
   fetchPalabraAntonimos,
   fetchPalabraImages,
+  fetchPalabraPictograma,
 } from '../../redux/actions/Palabra.Action';
 
 const SearchStyled = styled.div`
@@ -69,6 +70,7 @@ const Search = () => {
       dispatch(fetchPalabraSinonimos(doSearchValue));
       dispatch(fetchPalabraAntonimos(doSearchValue));
       dispatch(fetchPalabraImages(doSearchValue));
+      dispatch(fetchPalabraPictograma(doSearchValue));
       history.push(`/palabra/${eliminardiacriticos(doSearchValue)}`);
     }
   };

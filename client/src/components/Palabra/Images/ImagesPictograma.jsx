@@ -1,14 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
-const ImagesPictograma = ({ src }) => {
-  const imgEl = useRef(null);
+const ImgStyled = styled.img``;
 
-  useEffect(() => {
-    console.log(imgEl);
-  }, []);
+const ImagesPictograma = ({ src, palabra }) => {
   return (
     <>
-      <img src={src} alt="" ref={imgEl} />
+      <img src={src} alt={palabra} />
     </>
   );
 };

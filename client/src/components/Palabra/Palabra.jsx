@@ -84,7 +84,9 @@ const Palabra = ({ palabra }) => {
               <Grid>
                 {!errorPalabra && (
                   <>
-                    <ImagesPictograma />
+                    {hasPictograma !== undefined ? (
+                      <ImagesPictograma src={hasPictograma} />
+                    ) : null}
                     <GridImages>
                       {hasImages &&
                         hasImages.map((item, id) => (
