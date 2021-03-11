@@ -6,7 +6,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Loading from '../../common/loading/LoadingHorizontal';
-import AlertErrorPalabra from '../../common/Alert/AlertErrorPalabra';
 import { capitalizefirstletter } from '../../scripts/plugin';
 import {
   fetchPalabraDefinicion,
@@ -57,11 +56,13 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraAntonimos(search));
     dispatch(fetchPalabraImages(search));
     dispatch(fetchPalabraPictograma(search));
+
     if (errorPalabra) {
       setIsLoading(true);
     } else {
       setIsLoading(false);
     }
+    // if (hasPictograma) console.log(hasPictograma);
   }, []);
 
   return (

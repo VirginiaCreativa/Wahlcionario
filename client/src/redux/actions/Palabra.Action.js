@@ -97,9 +97,15 @@ export const fetchPalabraImages = (search) => async (dispatch) => {
 export const fetchPalabraPictograma = (search) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/${search}`).then((res) => {
+      const element = res.data.pictograma;
+      const tmp = document.createElement('div');
+      tmp.innerHTML = element;
+      console.log(res.data.pictograma);
+      const elemChild = tmp.lastElementChild;
+      console.log('>>>', elemChild.src);
       dispatch({
         type: FETCH_REST_PALABRA_PICTOGRAMA,
-        payload: res.data.pictograma,
+        payload: elemChild.src,
       });
     });
 
