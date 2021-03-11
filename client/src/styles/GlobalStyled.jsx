@@ -28,7 +28,7 @@ const GlobalStyled = createGlobalStyle`
   li,
   abbr {
     color: ${Variables.black1};
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 300;
   }
   *:focus {
