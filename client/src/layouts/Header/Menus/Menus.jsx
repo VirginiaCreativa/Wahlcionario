@@ -30,15 +30,18 @@ const SubMenu = styled.div`
   position: absolute;
   top: 30px;
   right: 0;
+  z-index: 999;
   border-radius: 6px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
   padding: 15px;
-  width: 200px;
+  width: 180px;
   ul {
     margin: 0;
     padding: 0;
     li {
       margin-bottom: 10px;
+      font-size: 0.9rem;
       :last-child {
         margin-bottom: 0;
         border-top: 1px dotted ${Variables.grey0};
@@ -50,6 +53,11 @@ const SubMenu = styled.div`
         margin-right: 10px;
         color: ${Variables.grey1};
       }
+    }
+    p {
+      margin-bottom: 0;
+      color: ${Variables.blue1};
+      font-size: 0.9rem;
     }
   }
 `;
