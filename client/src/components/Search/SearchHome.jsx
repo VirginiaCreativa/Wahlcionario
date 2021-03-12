@@ -17,7 +17,7 @@ const Button = styled.button`
   border: 0;
   border-radius: 26px;
   background-color: ${Variables.blue1};
-  padding: 11px 36px;
+  padding: 12px 36px;
   &:hover {
     background-color: ${Variables.blue2};
   }

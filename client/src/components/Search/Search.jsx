@@ -37,7 +37,7 @@ const InputStyled = styled.input`
   border: 0;
   border-radius: 100px;
   background-color: ${Variables.grey0};
-  padding: 6px 40px 6px 40px;
+  padding: 8px 40px 8px 40px;
   text-align: center;
   font-size: 0.85rem;
   @media screen and (min-width: 1366px) {

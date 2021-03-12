@@ -23,7 +23,7 @@ const Header = () => {
     <>
       {isMenus && (
         <HeaderStyled>
-          <Logo />
+          <Logo size="50px" />
           {isPathSearchHide !== '/' ? <Search /> : null}
           <Menus />
         </HeaderStyled>
