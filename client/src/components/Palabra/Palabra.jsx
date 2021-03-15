@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Loading from '../../common/loading/LoadingHorizontal';
+import FoundPictograma from '../../common/Found/FoundPictograma';
 import { capitalizefirstletter } from '../../scripts/plugin';
 import {
   fetchPalabraDefinicion,
@@ -93,7 +94,9 @@ const Palabra = ({ palabra }) => {
                     <Grid>
                       {hasPictograma !== undefined ? (
                         <ImagesPictograma src={hasPictograma} />
-                      ) : null}
+                      ) : (
+                        <FoundPictograma />
+                      )}
                     </Grid>
                     <Grid>
                       {!errorPalabra && (
