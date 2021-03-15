@@ -19,6 +19,7 @@ import {
 import Definicion from './Definiciones/DefinicionItem';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
+import Variables from '../../styles/VariableStyled';
 
 const Section = styled.div`
   margin: 20px 0 40px;
@@ -27,6 +28,7 @@ const Section = styled.div`
 const Column = styled.div`
   display: grid;
   grid-template-columns: 63% auto;
+  grid-gap: 60px;
 `;
 
 const ColumnImages = styled.div`
@@ -34,7 +36,20 @@ const ColumnImages = styled.div`
   grid-template-columns: 40% 1fr;
   grid-gap: 40px;
 `;
-const Grid = styled.div``;
+const Grid = styled.div`
+  h4 {
+    position: relative;
+    padding-bottom: 16px;
+    ::after {
+      display: block;
+      position: absolute;
+      bottom: 6px;
+      border-bottom: 2px solid ${Variables.blue1};
+      width: 60px;
+      content: '';
+    }
+  }
+`;
 
 const GridImages = styled.div`
   display: grid;
@@ -80,7 +95,7 @@ const Palabra = ({ palabra }) => {
           <Section>
             <Column>
               <Grid>
-                <h3>Definición</h3>
+                <h4>Definición</h4>
                 <Section>
                   {hasDefiniciones &&
                     hasDefiniciones.map((item, id) => (
@@ -118,7 +133,7 @@ const Palabra = ({ palabra }) => {
                 </Section>
               </Grid>
               <Grid>
-                <h3>Ejemplos</h3>
+                <h4>Ejemplos</h4>
               </Grid>
             </Column>
           </Section>

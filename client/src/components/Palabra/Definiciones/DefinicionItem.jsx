@@ -1,11 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import Variables from '../../../styles/VariableStyled';
 
 const ListDefinicion = styled.ul`
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 0;
   > li {
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    border: 1px solid ${Variables.grey0};
+    border-radius: 100px;
+    padding: 10px 20px;
     p {
       margin-bottom: 0;
     }
@@ -23,14 +27,8 @@ const DefinicionItem = ({ items }) => {
     <ListDefinicion>
       {items &&
         items.map((item, key) => (
-          <li key={key}>
+          <li key={key} className="list-unstyled">
             <p>{item.definitions}</p>
-            <ul>
-              {item.examples &&
-                item.examples.map((example, key) => (
-                  <li key={key}>{example.text}</li>
-                ))}
-            </ul>
           </li>
         ))}
     </ListDefinicion>

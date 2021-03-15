@@ -14,14 +14,23 @@ const TitlePalabra = styled.div`
   position: relative;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 40px;
   h1 {
-    background-color: #fff;
     padding-right: 20px;
     color: ${Variables.blue1};
     ::before {
       display: block;
       position: absolute;
-      top: 65%;
+      bottom: -10px;
+      z-index: -999;
+      border-bottom: 1px solid ${Variables.grey5};
+      width: 100%;
+      content: '';
+    }
+    ::after {
+      display: block;
+      position: absolute;
+      top: -10px;
       z-index: -999;
       border-bottom: 1px solid ${Variables.grey5};
       width: 100%;
@@ -31,11 +40,9 @@ const TitlePalabra = styled.div`
 `;
 
 const ButtonAddPalabra = styled.button`
-  position: relative;
-  top: 8px;
   margin-left: 10px;
   border: none;
-  background-color: #fff;
+  background-color: transparent;
   padding-left: 10px;
   i {
     position: relative;
