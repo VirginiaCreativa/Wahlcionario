@@ -11,13 +11,19 @@ const BoxStyled = styled.div`
   border-radius: 10px;
   background-color: ${Variables.grey0};
   padding: 20px;
+  height: 320px;
+  text-align: center;
+  img {
+    margin-bottom: 10px;
+    height: 60px;
+  }
 `;
 
 const FoundPictograma = () => {
   return (
     <BoxStyled>
       <img src={Icon.imgFound} alt="Images Found" />
-      <h3>No tenemos pictograma</h3>
+      <p>No tenemos pictograma</p>
     </BoxStyled>
   );
 };

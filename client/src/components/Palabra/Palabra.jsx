@@ -31,7 +31,7 @@ const Column = styled.div`
 
 const ColumnImages = styled.div`
   display: grid;
-  grid-template-columns: 45% auto;
+  grid-template-columns: 40% 1fr;
   grid-gap: 40px;
 `;
 const Grid = styled.div``;
@@ -39,7 +39,7 @@ const Grid = styled.div``;
 const GridImages = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
+  grid-gap: 10px;
 `;
 
 const Palabra = ({ palabra }) => {
