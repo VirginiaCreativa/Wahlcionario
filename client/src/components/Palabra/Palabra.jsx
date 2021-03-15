@@ -28,6 +28,11 @@ const Column = styled.div`
   grid-template-columns: 63% auto;
 `;
 
+const ColumnImages = styled.div`
+  display: grid;
+  grid-template-columns: 45% auto;
+  grid-gap: 40px;
+`;
 const Grid = styled.div``;
 
 const GridImages = styled.div`
@@ -74,31 +79,43 @@ const Palabra = ({ palabra }) => {
           <Section>
             <Column>
               <Grid>
-                {hasDefiniciones &&
-                  hasDefiniciones.map((item, id) => (
-                    <div key={id}>
-                      <Definicion items={item.senses} {...item} />
-                    </div>
-                  ))}
+                <h3>Definición</h3>
+                <Section>
+                  {hasDefiniciones &&
+                    hasDefiniciones.map((item, id) => (
+                      <div key={id}>
+                        <Definicion items={item.senses} {...item} />
+                      </div>
+                    ))}
+                </Section>
+                <Section>
+                  <ColumnImages>
+                    <Grid>
+                      {hasPictograma !== undefined ? (
+                        <ImagesPictograma src={hasPictograma} />
+                      ) : null}
+                    </Grid>
+                    <Grid>
+                      {!errorPalabra && (
+                        <>
+                          <GridImages>
+                            {hasImages &&
+                              hasImages.map((item, id) => (
+                                <ImagesItemTrumb
+                                  key={id}
+                                  src={item.assets.large_thumb.url}
+                                  alt={item.assets}
+                                />
+                              ))}
+                          </GridImages>
+                        </>
+                      )}
+                    </Grid>
+                  </ColumnImages>
+                </Section>
               </Grid>
               <Grid>
-                {!errorPalabra && (
-                  <>
-                    {hasPictograma !== undefined ? (
-                      <ImagesPictograma src={hasPictograma} />
-                    ) : null}
-                    <GridImages>
-                      {hasImages &&
-                        hasImages.map((item, id) => (
-                          <ImagesItemTrumb
-                            key={id}
-                            src={item.assets.large_thumb.url}
-                            alt={item.assets}
-                          />
-                        ))}
-                    </GridImages>
-                  </>
-                )}
+                <h3>Ejemplos</h3>
               </Grid>
             </Column>
           </Section>

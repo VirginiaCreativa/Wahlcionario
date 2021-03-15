@@ -5,6 +5,9 @@ const ImgStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
+  border-radius: 12px;
+  height: 100px;
+  overflow: hidden;
 `;
 const ImagesItemTrumb = ({ src, palabra }) => {
   return (

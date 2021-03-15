@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ImgStyled = styled.img``;
+const ImgStyled = styled.img`
+  max-width: 100%;
+  height: auto;
+`;
 
 const ImagesPictograma = ({ src, palabra }) => {
   return (
     <>
-      <img src={src} alt={palabra} />
+      <ImgStyled src={src} alt={palabra} />
     </>
   );
 };
