@@ -31,15 +31,16 @@ const ExampleItem = ({ items }) => {
   return (
     <ListExample>
       {items &&
-        items.map((item, key) => (
-          <li key={item} className="list-unstyled">
+        items.map((item, index) => (
+          <li key={index} className="list-unstyled">
             <ul>
-              {item.examples &&
-                item.examples.map((item, key) => (
-                  <li key>
-                    <p>{capitalizefirstletter(item.text)}</p>
-                  </li>
-                ))}
+              {item.examples
+                ? item.examples.map((item, index) => (
+                    <li key={index}>
+                      <p>{capitalizefirstletter(item.text)}</p>
+                    </li>
+                  ))
+                : null}
             </ul>
           </li>
         ))}

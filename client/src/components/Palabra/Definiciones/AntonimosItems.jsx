@@ -28,7 +28,7 @@ const SinonimosItem = ({ items }) => {
     <ListAntonimos>
       {items &&
         items.map((item, key) => (
-          <li key className="list-unstyled">
+          <li key={key} className="list-unstyled">
             <p>{capitalizefirstletter(item.antonimo)}</p>
           </li>
         ))}

@@ -156,8 +156,8 @@ const Palabra = ({ palabra }) => {
                 <Section>
                   <h3>Ejemplos</h3>
                   {hasEjemplos &&
-                    hasEjemplos.map((item, id) => (
-                      <div key={id}>
+                    hasEjemplos.map((item, index) => (
+                      <div key={index}>
                         <Ejemplo items={item.senses} />
                       </div>
                     ))}
