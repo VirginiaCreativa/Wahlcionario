@@ -18,6 +18,7 @@ const TitlePalabra = styled.div`
   h1 {
     padding-right: 20px;
     color: ${Variables.blue1};
+    font-weight: 700;
     ::before {
       display: block;
       position: absolute;

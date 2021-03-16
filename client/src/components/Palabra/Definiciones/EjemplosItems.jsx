@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Variables from '../../../styles/VariableStyled';
+import { capitalizefirstletter } from '../../../scripts/plugin';
 
-const ListDefinicion = styled.ul`
+const ListExample = styled.ul`
   margin: 0;
   padding-left: 0;
   > li {
@@ -22,17 +23,24 @@ const ListDefinicion = styled.ul`
   }
 `;
 
-const DefinicionItem = ({ items }) => {
+const ExampleItem = ({ items }) => {
   return (
-    <ListDefinicion>
+    <ListExample>
       {items &&
         items.map((item, key) => (
-          <li key={key} className="list-unstyled">
-            <p>{item.definitions}</p>
+          <li key={item} className="list-unstyled">
+            <ul>
+              {item.examples &&
+                item.examples.map((item, key) => (
+                  <li key>
+                    <p>{capitalizefirstletter(item.text)}</p>
+                  </li>
+                ))}
+            </ul>
           </li>
         ))}
-    </ListDefinicion>
+    </ListExample>
   );
 };
 
-export default DefinicionItem;
+export default ExampleItem;

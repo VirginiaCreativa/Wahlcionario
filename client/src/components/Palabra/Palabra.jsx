@@ -17,6 +17,7 @@ import {
 } from '../../redux/actions/Palabra.Action';
 
 import Definicion from './Definiciones/DefinicionItem';
+import Ejemplo from './Definiciones/EjemplosItems';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
 import Variables from '../../styles/VariableStyled';
@@ -37,9 +38,10 @@ const ColumnImages = styled.div`
   grid-gap: 40px;
 `;
 const Grid = styled.div`
-  h4 {
+  h3 {
     position: relative;
     padding-bottom: 16px;
+    font-weight: 600;
     ::after {
       display: block;
       position: absolute;
@@ -64,6 +66,7 @@ const Palabra = ({ palabra }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const hasDefiniciones = useSelector((state) => state.palabra.definiciones);
+  const hasEjemplos = useSelector((state) => state.palabra.definiciones);
   const hasSinonimos = useSelector((state) => state.palabra.sinonimos);
   const hasAntonimos = useSelector((state) => state.palabra.antonimos);
   const hasPictograma = useSelector((state) => state.palabra.pictograma);
@@ -95,7 +98,7 @@ const Palabra = ({ palabra }) => {
           <Section>
             <Column>
               <Grid>
-                <h4>Definición</h4>
+                <h3>Definición</h3>
                 <Section>
                   {hasDefiniciones &&
                     hasDefiniciones.map((item, id) => (
@@ -133,7 +136,15 @@ const Palabra = ({ palabra }) => {
                 </Section>
               </Grid>
               <Grid>
-                <h4>Ejemplos</h4>
+                <h3>Ejemplos</h3>
+                <Section>
+                  {hasEjemplos &&
+                    hasEjemplos.map((item, id) => (
+                      <div key={id}>
+                        <Ejemplo items={item.senses} />
+                      </div>
+                    ))}
+                </Section>
               </Grid>
             </Column>
           </Section>
