@@ -18,6 +18,7 @@ import {
 
 import Definicion from './Definiciones/DefinicionItem';
 import Ejemplo from './Definiciones/EjemplosItems';
+import Sinonimo from './Definiciones/SinonimosItems';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
 import Variables from '../../styles/VariableStyled';
@@ -40,7 +41,22 @@ const ColumnImages = styled.div`
 const Grid = styled.div`
   h3 {
     position: relative;
+    margin-bottom: 15px;
     padding-bottom: 16px;
+    font-weight: 600;
+    ::after {
+      display: block;
+      position: absolute;
+      bottom: 6px;
+      border-bottom: 2px solid ${Variables.blue1};
+      width: 60px;
+      content: '';
+    }
+  }
+  h4 {
+    position: relative;
+    margin-bottom: 10px;
+    padding-bottom: 14px;
     font-weight: 600;
     ::after {
       display: block;
@@ -136,14 +152,26 @@ const Palabra = ({ palabra }) => {
                 </Section>
               </Grid>
               <Grid>
-                <h3>Ejemplos</h3>
                 <Section>
+                  <h3>Ejemplos</h3>
                   {hasEjemplos &&
                     hasEjemplos.map((item, id) => (
                       <div key={id}>
                         <Ejemplo items={item.senses} />
                       </div>
                     ))}
+                </Section>
+                <Section>
+                  <h4>{errorPalabra ? null : <span>Sinónimos</span>}</h4>
+                  {hasSinonimos.length >= 0 ? (
+                    <Sinonimo items={hasSinonimos} />
+                  ) : null}
+                </Section>
+                <Section>
+                  <h4>{errorPalabra ? null : <span>Antónimos</span>}</h4>
+                  {hasSinonimos.length >= 0 ? (
+                    <Sinonimo items={hasSinonimos} />
+                  ) : null}
                 </Section>
               </Grid>
             </Column>
