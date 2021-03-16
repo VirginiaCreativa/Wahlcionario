@@ -16,7 +16,7 @@ const Variables = {
   blue3: '#1b1e34',
   yellow1: '#eccc68',
   yellow2: '#ffa502',
-  body: '#fff',
+  body: '#FBFCFA',
 };
 
 export default Variables;

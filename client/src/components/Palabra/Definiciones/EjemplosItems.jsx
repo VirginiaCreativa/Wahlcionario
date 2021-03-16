@@ -8,16 +8,20 @@ const ListExample = styled.ul`
   padding-left: 0;
   > li {
     margin-bottom: 16px;
-    border: 1px solid ${Variables.grey0};
     border-radius: 8px;
+    background-color: #f2f4f7;
     padding: 10px 20px;
     p {
       margin-bottom: 0;
     }
     ul {
+      margin: 0;
+      padding-left: 1rem;
       li {
-        color: #aaa;
         font-style: italic;
+        p {
+          color: ${Variables.grey3};
+        }
       }
     }
   }
