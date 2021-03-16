@@ -19,6 +19,7 @@ import {
 import Definicion from './Definiciones/DefinicionItem';
 import Ejemplo from './Definiciones/EjemplosItems';
 import Sinonimo from './Definiciones/SinonimosItems';
+import Antonimo from './Definiciones/AntonimosItems';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
 import Variables from '../../styles/VariableStyled';
@@ -169,42 +170,12 @@ const Palabra = ({ palabra }) => {
                 </Section>
                 <Section>
                   <h4>{errorPalabra ? null : <span>Antónimos</span>}</h4>
-                  {hasSinonimos.length >= 0 ? (
-                    <Sinonimo items={hasSinonimos} />
+                  {hasAntonimos.length >= 0 ? (
+                    <Antonimo items={hasAntonimos} />
                   ) : null}
                 </Section>
               </Grid>
             </Column>
-          </Section>
-          <Section>
-            <div className="row">
-              <div className="col">
-                <h6>{errorPalabra ? null : 'Similar = Sinónimos = Igual'}</h6>
-                <ul>
-                  {hasSinonimos.length >= 0
-                    ? hasSinonimos.map((item, key) => (
-                        <li key={key}>
-                          {capitalizefirstletter(item.sinonimo)}
-                        </li>
-                      ))
-                    : null}
-                </ul>
-              </div>
-              <div className="col">
-                <h6>
-                  {errorPalabra ? null : 'Opuesta = Antónimos = Diferente'}
-                </h6>
-                <ul>
-                  {hasAntonimos.length >= 0
-                    ? hasAntonimos.map((item, key) => (
-                        <li key={key}>
-                          {capitalizefirstletter(item.antonimo)}
-                        </li>
-                      ))
-                    : null}
-                </ul>
-              </div>
-            </div>
           </Section>
         </>
       )}
