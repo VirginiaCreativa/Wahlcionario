@@ -7,13 +7,13 @@ import styled from 'styled-components';
 
 import Loading from '../../common/loading/LoadingHorizontal';
 import FoundPictograma from '../../common/Found/FoundPictograma';
-import { capitalizefirstletter } from '../../scripts/plugin';
 import {
   fetchPalabraDefinicion,
   fetchPalabraSinonimos,
   fetchPalabraAntonimos,
   fetchPalabraImages,
   fetchPalabraPictograma,
+  fetchPalabraPixabay,
 } from '../../redux/actions/Palabra.Action';
 
 import Definicion from './Definiciones/DefinicionItem';
@@ -22,6 +22,7 @@ import Sinonimo from './Definiciones/SinonimosItems';
 import Antonimo from './Definiciones/AntonimosItems';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
+import ImagesPixabayItem from './Images/ImagesPixabayItem';
 import Variables from '../../styles/VariableStyled';
 
 const Section = styled.div`
@@ -78,6 +79,11 @@ const GridImages = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 `;
+const GridPixabay = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+`;
 
 const Palabra = ({ palabra }) => {
   const history = useHistory();
@@ -91,6 +97,7 @@ const Palabra = ({ palabra }) => {
   const hasAntonimos = useSelector((state) => state.palabra.antonimos);
   const hasPictograma = useSelector((state) => state.palabra.pictograma);
   const hasImages = useSelector((state) => state.palabra.images);
+  const hasPixabay = useSelector((state) => state.palabra.pixabay);
   const errorPalabra = useSelector((state) => state.palabra.error);
   const errorMessage = useSelector((state) => state.palabra.message);
 
@@ -100,6 +107,7 @@ const Palabra = ({ palabra }) => {
     dispatch(fetchPalabraAntonimos(search));
     dispatch(fetchPalabraImages(search));
     dispatch(fetchPalabraPictograma(search));
+    dispatch(fetchPalabraPixabay(search));
 
     if (errorPalabra) {
       setIsLoading(true);
@@ -153,6 +161,18 @@ const Palabra = ({ palabra }) => {
                       )}
                     </Grid>
                   </ColumnImages>
+                  <Section>
+                    <GridPixabay>
+                      {hasPixabay &&
+                        hasPixabay.map((item, id) => (
+                          <ImagesPixabayItem
+                            key={id}
+                            src={item.largeImageURL}
+                            alt={item.tags}
+                          />
+                        ))}
+                    </GridPixabay>
+                  </Section>
                 </Section>
               </Grid>
               <Grid>

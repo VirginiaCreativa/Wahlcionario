@@ -7,6 +7,7 @@ import {
   FETCH_REST_PALABRA_ANTONIMOS,
   FETCH_REST_PALABRA_IMAGES,
   FETCH_REST_PALABRA_PICTOGRAMA,
+  FETCH_REST_PALABRA_PIXABAY,
 } from '../types';
 
 const URL = 'http://localhost:3000/palabra';
@@ -106,6 +107,29 @@ export const fetchPalabraPictograma = (search) => async (dispatch) => {
         payload: elemChild.src,
       });
     });
+
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchPalabraPixabay = (search) => async (dispatch) => {
+  try {
+    const res = await axios
+      .get(`${URL}/${search}`)
+      .then((res) => {
+        dispatch({
+          type: FETCH_REST_PALABRA_PIXABAY,
+          payload: res.data.pixabay.hits,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: FETCH_REST_PALABRA_ERROR,
+          payload: error,
+        });
+      });
 
     return res;
   } catch (error) {
