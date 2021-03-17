@@ -113,7 +113,7 @@ const Palabra = ({ palabra }) => {
     <>
       {isLoading ? (
         <Loading />
-      ) : (
+      ) : !errorPalabra ? (
         <>
           <Section>
             <Column>
@@ -166,13 +166,13 @@ const Palabra = ({ palabra }) => {
                     ))}
                 </Section>
                 <SectionSec>
-                  <h4>{errorPalabra ? null : <span>Sinónimos</span>}</h4>
+                  <h4>Sinónimos</h4>
                   {hasSinonimos.length >= 0 ? (
                     <Sinonimo items={hasSinonimos} />
                   ) : null}
                 </SectionSec>
                 <SectionSec>
-                  <h4>{errorPalabra ? null : <span>Antónimos</span>}</h4>
+                  <h4>Antónimos</h4>
                   {hasAntonimos.length >= 0 ? (
                     <Antonimo items={hasAntonimos} />
                   ) : null}
@@ -181,7 +181,7 @@ const Palabra = ({ palabra }) => {
             </Column>
           </Section>
         </>
-      )}
+      ) : null}
     </>
   );
 };
