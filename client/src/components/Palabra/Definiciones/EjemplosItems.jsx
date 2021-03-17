@@ -18,6 +18,7 @@ const ListExample = styled.ul`
       margin: 0;
       padding-left: 1rem;
       li {
+        margin-bottom: 10px;
         font-style: italic;
         p {
           color: ${Variables.grey3};

@@ -28,6 +28,9 @@ const Section = styled.div`
   margin: 20px 0 40px;
 `;
 
+const SectionSec = styled.div`
+  margin: 20px 0;
+`;
 const Column = styled.div`
   display: grid;
   grid-template-columns: 63% auto;
@@ -162,18 +165,18 @@ const Palabra = ({ palabra }) => {
                       </div>
                     ))}
                 </Section>
-                <Section>
+                <SectionSec>
                   <h4>{errorPalabra ? null : <span>Sinónimos</span>}</h4>
                   {hasSinonimos.length >= 0 ? (
                     <Sinonimo items={hasSinonimos} />
                   ) : null}
-                </Section>
-                <Section>
+                </SectionSec>
+                <SectionSec>
                   <h4>{errorPalabra ? null : <span>Antónimos</span>}</h4>
                   {hasAntonimos.length >= 0 ? (
                     <Antonimo items={hasAntonimos} />
                   ) : null}
-                </Section>
+                </SectionSec>
               </Grid>
             </Column>
           </Section>

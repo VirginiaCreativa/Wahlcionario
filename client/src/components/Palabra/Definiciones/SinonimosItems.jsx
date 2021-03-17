@@ -9,7 +9,7 @@ const ListSinonimos = styled.ul`
   padding-left: 0;
   > li {
     margin-right: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     border-radius: 100px;
     background-color: #dcf2e4;
     padding: 2px 14px;
