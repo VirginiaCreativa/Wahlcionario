@@ -60,8 +60,8 @@ const GlobalStyled = createGlobalStyle`
     bottom: -2em !important;
   }
   .splide__arrow svg {
-    width: 1.3em !important;
-    height: 1.3em !important;
+    width: 1.1em !important;
+    height: 1.1em !important;
     fill: ${Variables.blue1} !important;
   }
   .splide__pagination__page:hover, .splide__pagination__page.is-active {
@@ -71,6 +71,18 @@ const GlobalStyled = createGlobalStyle`
   .splide__pagination__page {
     width: 8px !important;
     height: 8px !important;
+  }
+  .splide__arrow {
+    ::before {
+      position: absolute;
+      left: -3px;   
+      z-index: -1;
+      border-radius: 100%;
+      background-color: rgba(250, 250, 250, 0.3);
+      width: 1.5rem;
+      height: 1.5rem;
+      content: '';
+    }
   }
 `;
 
