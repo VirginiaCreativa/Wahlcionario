@@ -20,6 +20,9 @@ const ListExample = styled.ul`
       li {
         margin-bottom: 10px;
         font-style: italic;
+        :last-child {
+          margin-bottom: 0;
+        }
         p {
           color: ${Variables.grey3};
         }

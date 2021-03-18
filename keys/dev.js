@@ -10,4 +10,5 @@ module.exports = {
   shuttImagesId: "kGAJBo7fjOnL4olJRNYAL0bJGrd5y08P",
   shuttImagesSecret: "2Ij909ecOWz5sWpH",
   pixabayKey: "20733849-628d0e55711cd6b350b038ab8",
+  flaticonKey: "b1730b2933cfe997fe022994923d3da72448952a",
 };
