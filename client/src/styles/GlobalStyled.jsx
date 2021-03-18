@@ -56,6 +56,22 @@ const GlobalStyled = createGlobalStyle`
       color: #fff;
     }
   }
+  .splide__pagination {
+    bottom: -2em !important; 
+  }
+  .splide__arrow svg {
+    width: 1.3em !important;
+    height: 1.3em !important;
+    fill: ${Variables.blue1} !important;
+  }
+  .splide__pagination__page:hover, .splide__pagination__page.is-active {
+    transform: scale(1.2) !important;
+    background: ${Variables.blue1} !important;
+  }
+  .splide__pagination__page {
+    width: 8px !important;
+    height: 8px !important;
+  }
 `;
 
 export default GlobalStyled;

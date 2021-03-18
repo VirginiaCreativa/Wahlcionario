@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import Loading from '../../common/loading/LoadingHorizontal';
 import FoundPictograma from '../../common/Found/FoundPictograma';
 import {
@@ -149,7 +149,7 @@ const Palabra = ({ palabra }) => {
                     {hasImages &&
                       hasImages.map((item, id) => (
                         <SplideSlide key={id}>
-                          <img
+                          <ImagesItemTrumb
                             src={item.assets.large_thumb.url}
                             alt={item.assets}
                           />
