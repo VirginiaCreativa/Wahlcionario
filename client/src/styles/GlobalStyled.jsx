@@ -57,7 +57,7 @@ const GlobalStyled = createGlobalStyle`
     }
   }
   .splide__pagination {
-    bottom: -2em !important; 
+    bottom: -2em !important;
   }
   .splide__arrow svg {
     width: 1.3em !important;
