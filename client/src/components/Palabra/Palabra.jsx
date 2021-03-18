@@ -144,17 +144,33 @@ const Palabra = ({ palabra }) => {
                     ))}
                 </Section>
                 <Section>
-                  <Splide options={SplideOptions}>
-                    {hasImages &&
-                      hasImages.map((item, id) => (
-                        <SplideSlide key={id}>
-                          <ImagesItemTrumb
-                            src={item.assets.large_thumb.url}
-                            alt={item.assets}
-                          />
-                        </SplideSlide>
-                      ))}
-                  </Splide>
+                  <SectionSec>
+                    <Splide options={SplideOptions}>
+                      {hasImages &&
+                        hasImages.map((item, id) => (
+                          <SplideSlide key={id}>
+                            <ImagesItemTrumb
+                              src={item.assets.large_thumb.url}
+                              alt={item.assets}
+                            />
+                          </SplideSlide>
+                        ))}
+                    </Splide>
+                  </SectionSec>
+                  <SectionSec>
+                    <Splide options={SplideOptions}>
+                      {hasPixabay &&
+                        hasPixabay.map((item, id) => (
+                          <SplideSlide key={id}>
+                            <ImagesPixabayItem
+                              key={id}
+                              src={item.largeImageURL}
+                              alt={item.tags}
+                            />
+                          </SplideSlide>
+                        ))}
+                    </Splide>
+                  </SectionSec>
                   {/* <ColumnImages>
                     <Grid>
                       {hasPictograma !== undefined ? (

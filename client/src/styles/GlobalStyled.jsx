@@ -56,8 +56,11 @@ const GlobalStyled = createGlobalStyle`
       color: #fff;
     }
   }
+  .splide {
+    margin-bottom: 50px;
+  }
   .splide__pagination {
-    bottom: -2em !important;
+    bottom: -1.8em !important;
   }
   .splide__arrow svg {
     width: 1.1em !important;
@@ -75,7 +78,7 @@ const GlobalStyled = createGlobalStyle`
   .splide__arrow {
     ::before {
       position: absolute;
-      left: -3px;   
+      left: -3px;
       z-index: -1;
       border-radius: 100%;
       background-color: rgba(250, 250, 250, 0.3);
