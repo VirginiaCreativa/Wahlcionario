@@ -4,7 +4,8 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import Loading from '../../common/loading/LoadingHorizontal';
 import FoundPictograma from '../../common/Found/FoundPictograma';
 import {
@@ -117,6 +118,14 @@ const Palabra = ({ palabra }) => {
     // if (hasPictograma) console.log(hasPictograma);
   }, []);
 
+  const primaryOptions = {
+    type: 'loop',
+    perPage: 6,
+    focus: 'center',
+    autoWidth: true,
+    gap: '1rem',
+  };
+
   return (
     <>
       {isLoading ? (
@@ -136,7 +145,18 @@ const Palabra = ({ palabra }) => {
                     ))}
                 </Section>
                 <Section>
-                  <ColumnImages>
+                  <Splide options={primaryOptions}>
+                    {hasImages &&
+                      hasImages.map((item, id) => (
+                        <SplideSlide key={id}>
+                          <img
+                            src={item.assets.large_thumb.url}
+                            alt={item.assets}
+                          />
+                        </SplideSlide>
+                      ))}
+                  </Splide>
+                  {/* <ColumnImages>
                     <Grid>
                       {hasPictograma !== undefined ? (
                         <ImagesPictograma src={hasPictograma} />
@@ -160,8 +180,8 @@ const Palabra = ({ palabra }) => {
                         </>
                       )}
                     </Grid>
-                  </ColumnImages>
-                  <Section>
+                  </ColumnImages> */}
+                  {/* <Section>
                     <GridPixabay>
                       {hasPixabay &&
                         hasPixabay.map((item, id) => (
@@ -172,7 +192,7 @@ const Palabra = ({ palabra }) => {
                           />
                         ))}
                     </GridPixabay>
-                  </Section>
+                  </Section> */}
                 </Section>
               </Grid>
               <Grid>

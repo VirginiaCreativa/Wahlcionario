@@ -6,6 +6,8 @@
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
+    "@splidejs/react-splide": "^0.4.4",
+    "@splidejs/splide": "^2.4.21",
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -64,6 +66,7 @@
     "prettier": "^2.2.1",
     "prompts": "2.4.0",
     "react": "^17.0.1",
+    "react-alice-carousel": "^2.4.0",
     "react-app-polyfill": "^2.0.0",
     "react-dev-utils": "^11.0.3",
     "react-dom": "^17.0.1",

@@ -33,7 +33,6 @@ async function setPalabra(req, res) {
     ])
     .then(
       axios.spread((response1, response2, response3, response4, response5) => {
-        console.log(response5);
         res.status(200).send({
           definiciones: response1.data,
           sinonimos: response2.data,
