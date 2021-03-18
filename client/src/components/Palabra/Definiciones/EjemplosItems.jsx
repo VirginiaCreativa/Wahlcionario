@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Variables from '../../../styles/VariableStyled';
 import { capitalizefirstletter } from '../../../scripts/plugin';
@@ -28,12 +28,19 @@ const ListExample = styled.ul`
   }
 `;
 
-const ExampleItem = ({ items }) => {
+const ExampleItem = ({ items, bgactive }) => {
+  const [hasBgExample, setHasBgExample] = useState(null);
+
   return (
     <ListExample>
       {items &&
         items.map((item, index) => (
-          <li key={index} className="list-unstyled">
+          <li
+            key={index}
+            className="list-unstyled"
+            style={{
+              display: item.examples !== undefined ? 'block' : 'none',
+            }}>
             <ul>
               {item.examples
                 ? item.examples.map((item, index) => (

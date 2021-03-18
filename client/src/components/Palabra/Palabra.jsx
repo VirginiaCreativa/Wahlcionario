@@ -115,10 +115,9 @@ const Palabra = ({ palabra }) => {
     } else {
       setIsLoading(false);
     }
-    // if (hasPictograma) console.log(hasPictograma);
   }, []);
 
-  const primaryOptions = {
+  const SplideOptions = {
     type: 'loop',
     perPage: 6,
     focus: 'center',
@@ -145,7 +144,7 @@ const Palabra = ({ palabra }) => {
                     ))}
                 </Section>
                 <Section>
-                  <Splide options={primaryOptions}>
+                  <Splide options={SplideOptions}>
                     {hasImages &&
                       hasImages.map((item, id) => (
                         <SplideSlide key={id}>
