@@ -158,18 +158,20 @@ const Palabra = ({ palabra }) => {
                     </Splide>
                   </SectionSec>
                   <SectionSec>
-                    <Splide options={SplideOptions}>
-                      {hasPixabay &&
-                        hasPixabay.map((item, id) => (
-                          <SplideSlide key={id}>
-                            <ImagesPixabayItem
-                              key={id}
-                              src={item.largeImageURL}
-                              alt={item.tags}
-                            />
-                          </SplideSlide>
-                        ))}
-                    </Splide>
+                    {hasPixabay !== undefined ? (
+                      <Splide options={SplideOptions}>
+                        {hasPixabay &&
+                          hasPixabay.map((item, id) => (
+                            <SplideSlide key={id}>
+                              <ImagesPixabayItem
+                                key={id}
+                                src={item.largeImageURL}
+                                alt={item.tags}
+                              />
+                            </SplideSlide>
+                          ))}
+                      </Splide>
+                    ) : null}
                   </SectionSec>
                   {/* <ColumnImages>
                     <Grid>
@@ -211,7 +213,14 @@ const Palabra = ({ palabra }) => {
                 </Section>
               </Grid>
               <Grid>
-                <Section>
+                <SectionSec>
+                  {hasPictograma !== undefined ? (
+                    <ImagesPictograma src={hasPictograma} />
+                  ) : (
+                    <FoundPictograma />
+                  )}
+                </SectionSec>
+                <SectionSec>
                   <h3>Ejemplos</h3>
                   {hasEjemplos &&
                     hasEjemplos.map((item, index) => (
@@ -219,7 +228,7 @@ const Palabra = ({ palabra }) => {
                         <Ejemplo items={item.senses} />
                       </div>
                     ))}
-                </Section>
+                </SectionSec>
                 <SectionSec>
                   <h4>Sinónimos</h4>
                   {hasSinonimos.length >= 0 ? (

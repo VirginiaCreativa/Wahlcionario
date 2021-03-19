@@ -62,6 +62,7 @@ const AuthReduce = (state = initialState, action) => {
         sinonimos: [],
         antonimos: [],
         images: [],
+        pixabay: [],
       };
     default:
       return state;

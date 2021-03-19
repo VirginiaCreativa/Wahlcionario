@@ -74,20 +74,12 @@ export const fetchPalabraAntonimos = (search) => async (dispatch) => {
 
 export const fetchPalabraImages = (search) => async (dispatch) => {
   try {
-    const res = await axios
-      .get(`${URL}/images/${search}`)
-      .then((res) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_IMAGES,
-          payload: res.data.images,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_ERROR,
-          payload: error,
-        });
+    const res = await axios.get(`${URL}/images/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_IMAGES,
+        payload: res.data.images,
       });
+    });
 
     return res;
   } catch (error) {
@@ -116,20 +108,12 @@ export const fetchPalabraPictograma = (search) => async (dispatch) => {
 
 export const fetchPalabraPixabay = (search) => async (dispatch) => {
   try {
-    const res = await axios
-      .get(`${URL}/${search}`)
-      .then((res) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_PIXABAY,
-          payload: res.data.pixabay.hits,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: FETCH_REST_PALABRA_ERROR,
-          payload: error,
-        });
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_PIXABAY,
+        payload: res.data.pixabay.hits,
       });
+    });
 
     return res;
   } catch (error) {
