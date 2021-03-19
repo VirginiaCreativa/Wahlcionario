@@ -107,7 +107,7 @@ const Menus = () => {
             </li>
             <li>
               <i className="bx bx-layer" />
-              <Link to="/mispalabras">Mis palabras</Link>
+              <Link to="../mispalabras">Mis palabras</Link>
             </li>
             <li>
               <i className="bx bxs-cog" />
