@@ -6,6 +6,7 @@ import {
   FETCH_REST_PALABRA_IMAGES,
   FETCH_REST_PALABRA_PICTOGRAMA,
   FETCH_REST_PALABRA_PIXABAY,
+  FETCH_REST_PALABRA_FLATICON,
 } from '../types';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   images: [],
   pixabay: [],
   pictograma: '',
+  flaticon: [],
   error: false,
   message: '',
 };
@@ -53,6 +55,11 @@ const AuthReduce = (state = initialState, action) => {
         ...state,
         pixabay: payload,
       };
+    case FETCH_REST_PALABRA_FLATICON:
+      return {
+        ...state,
+        flaticon: payload,
+      };
     case FETCH_REST_PALABRA_ERROR:
       return {
         ...state,
@@ -63,6 +70,7 @@ const AuthReduce = (state = initialState, action) => {
         antonimos: [],
         images: [],
         pixabay: [],
+        flaticon: [],
       };
     default:
       return state;

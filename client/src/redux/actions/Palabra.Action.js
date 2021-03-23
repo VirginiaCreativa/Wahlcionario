@@ -8,6 +8,7 @@ import {
   FETCH_REST_PALABRA_IMAGES,
   FETCH_REST_PALABRA_PICTOGRAMA,
   FETCH_REST_PALABRA_PIXABAY,
+  FETCH_REST_PALABRA_FLATICON,
 } from '../types';
 
 const URL = 'http://localhost:3000/palabra';
@@ -21,7 +22,6 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
           dispatch({
             type: FETCH_REST_PALABRA_DEFINICION,
             payload: res.data.definiciones.results[0].lexicalEntries[0].entries,
-            // payload: res.data.definiciones.definiciones,
           });
         } else {
           dispatch({
@@ -50,7 +50,6 @@ export const fetchPalabraSinonimos = (search) => async (dispatch) => {
         payload: res.data.sinonimos.sinonimos,
       });
     });
-
     return res;
   } catch (error) {
     return error;
@@ -65,7 +64,6 @@ export const fetchPalabraAntonimos = (search) => async (dispatch) => {
         payload: res.data.antonimos.antonimos,
       });
     });
-
     return res;
   } catch (error) {
     return error;
@@ -80,7 +78,6 @@ export const fetchPalabraImages = (search) => async (dispatch) => {
         payload: res.data.images,
       });
     });
-
     return res;
   } catch (error) {
     return error;
@@ -99,7 +96,6 @@ export const fetchPalabraPictograma = (search) => async (dispatch) => {
         payload: elemChild.src,
       });
     });
-
     return res;
   } catch (error) {
     return error;
@@ -114,7 +110,20 @@ export const fetchPalabraPixabay = (search) => async (dispatch) => {
         payload: res.data.pixabay.hits,
       });
     });
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
 
+export const fetchPalabraFlaticon = (search) => async (dispatch) => {
+  try {
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_FLATICON,
+        payload: res.data.flaticon,
+      });
+    });
     return res;
   } catch (error) {
     return error;
