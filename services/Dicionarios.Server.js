@@ -31,10 +31,12 @@ async function setPalabra(req, res) {
       axios.get(
         `https://pixabay.com/api/?key=${keys.pixabayKey}&q=${req.params.search}&lang=es&pretty=true`
       ),
-      axios.get(`https://api.flaticon.com/v2/search/icons/priority`, {
-        data: `${req.params.search}`,
-        headers: headersFlaticon,
-      }),
+      axios.get(
+        `https://api.flaticon.com/v2/search/icons/priority?q=${req.params.search}`,
+        {
+          headers: headersFlaticon,
+        }
+      ),
     ])
     .then(
       axios.spread(
