@@ -3,10 +3,9 @@ const sstk = require("shutterstock-api");
 const keys = require("../keys/keys");
 
 async function setPalabra(req, res) {
-  const auth = {
-    token:
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI3MTg4NzQiLCJ1aXAiOiIxNzIuMTkuMC45IiwiZXhwIjoxNjE2MTg5NTU5LCJ1bmFtZSI6InVzZXI3MTg4NzQiLCJycG0iOjI0MDAsInByZW1pdW0iOmZhbHNlLCJhcGlrZXkiOiJiY2M3NDE4N2E0NzdiYzQ0NjI3NTNiOGMxNTE0NjQ2OTk1OGE5NWZiIiwic2NvcGUiOlsib3duZWQucmVhZCJdLCJkbGltaXQiOjQwMCwiYXBpZGxpbWl0Ijp0cnVlfQ.iiBw0OJL0gJ8DdLFD2260dhbeDzdaGSOCHJzCxpD4xc",
-    expires: 1616189559,
+  var headersFlaticon = {
+    Accept: "application/json",
+    Authorization: `Bearer ${keys.flaticonKey}`,
   };
   let result = await axios
     .all([
@@ -32,17 +31,24 @@ async function setPalabra(req, res) {
       axios.get(
         `https://pixabay.com/api/?key=${keys.pixabayKey}&q=${req.params.search}&lang=es&pretty=true`
       ),
+      axios.get(`https://api.flaticon.com/v2/search/icons/priority`, {
+        data: `${req.params.search}`,
+        headers: headersFlaticon,
+      }),
     ])
     .then(
-      axios.spread((response1, response2, response3, response4, response5) => {
-        res.status(200).send({
-          definiciones: response1.data,
-          sinonimos: response2.data,
-          antonimos: response3.data,
-          pictograma: response4.data,
-          pixabay: response5.data,
-        });
-      })
+      axios.spread(
+        (response1, response2, response3, response4, response5, response6) => {
+          res.status(200).send({
+            definiciones: response1.data,
+            sinonimos: response2.data,
+            antonimos: response3.data,
+            pictograma: response4.data,
+            pixabay: response5.data,
+            flaticon: response6.data,
+          });
+        }
+      )
     )
     .catch((err) => {
       console.log(err);
