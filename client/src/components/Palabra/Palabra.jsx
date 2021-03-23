@@ -77,8 +77,8 @@ const Grid = styled.div`
 
 const GridImages = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 `;
 const GridPixabay = styled.div`
   display: grid;
@@ -214,11 +214,22 @@ const Palabra = ({ palabra }) => {
               </Grid>
               <Grid>
                 <SectionSec>
-                  {hasPictograma !== undefined ? (
-                    <ImagesPictograma src={hasPictograma} />
-                  ) : (
-                    <FoundPictograma />
-                  )}
+                  <GridImages>
+                    <>
+                      {hasPictograma !== undefined ? (
+                        <ImagesPictograma src={hasPictograma} />
+                      ) : (
+                        <FoundPictograma />
+                      )}
+                    </>
+                    <>
+                      {hasPictograma !== undefined ? (
+                        <ImagesPictograma src={hasPictograma} />
+                      ) : (
+                        <FoundPictograma />
+                      )}
+                    </>
+                  </GridImages>
                 </SectionSec>
                 <SectionSec>
                   <h3>Ejemplos</h3>

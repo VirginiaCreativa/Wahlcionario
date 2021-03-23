@@ -3,6 +3,11 @@ const sstk = require("shutterstock-api");
 const keys = require("../keys/keys");
 
 async function setPalabra(req, res) {
+  const auth = {
+    token:
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI3MTg4NzQiLCJ1aXAiOiIxNzIuMTkuMC45IiwiZXhwIjoxNjE2MTg5NTU5LCJ1bmFtZSI6InVzZXI3MTg4NzQiLCJycG0iOjI0MDAsInByZW1pdW0iOmZhbHNlLCJhcGlrZXkiOiJiY2M3NDE4N2E0NzdiYzQ0NjI3NTNiOGMxNTE0NjQ2OTk1OGE5NWZiIiwic2NvcGUiOlsib3duZWQucmVhZCJdLCJkbGltaXQiOjQwMCwiYXBpZGxpbWl0Ijp0cnVlfQ.iiBw0OJL0gJ8DdLFD2260dhbeDzdaGSOCHJzCxpD4xc",
+    expires: 1616189559,
+  };
   let result = await axios
     .all([
       axios.get(
@@ -15,9 +20,6 @@ async function setPalabra(req, res) {
           },
         }
       ),
-      // axios.get(
-      //   `http://sesat.fdi.ucm.es:8080/servicios/rest/definicion/json/${req.params.search}`
-      // ),
       axios.get(
         `http://sesat.fdi.ucm.es:8080/servicios/rest/sinonimos/json/${req.params.search}`
       ),
@@ -43,6 +45,7 @@ async function setPalabra(req, res) {
       })
     )
     .catch((err) => {
+      console.log(err);
       res.send({
         message:
           "No se encontró ninguna entrada que coincida con palabra proporcionados",
