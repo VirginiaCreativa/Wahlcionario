@@ -100,6 +100,7 @@ const Palabra = ({ palabra }) => {
   const hasPictograma = useSelector((state) => state.palabra.pictograma);
   const hasImages = useSelector((state) => state.palabra.images);
   const hasPixabay = useSelector((state) => state.palabra.pixabay);
+  const hasFlaticon = useSelector((state) => state.palabra.flaticon);
   const errorPalabra = useSelector((state) => state.palabra.error);
   const errorMessage = useSelector((state) => state.palabra.message);
 
@@ -226,7 +227,7 @@ const Palabra = ({ palabra }) => {
                     </>
                     <>
                       {hasPictograma !== undefined ? (
-                        <ImagesPictograma src={hasPictograma} />
+                        <ImagesPictograma src={hasFlaticon} />
                       ) : (
                         <FoundPictograma />
                       )}

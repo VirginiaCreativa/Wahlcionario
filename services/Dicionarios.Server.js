@@ -42,7 +42,7 @@ async function setPalabra(req, res) {
         `https://pixabay.com/api/?key=${keys.pixabayKey}&q=${req.params.search}&lang=es&pretty=true`
       ),
       axios.get(
-        `https://api.flaticon.com/v2/search/icons/priority?q=${palabraTranslate}`,
+        `https://api.flaticon.com/v2/search/icons/added?q=${palabraTranslate}`,
         {
           headers: headersFlaticon,
         }
