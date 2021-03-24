@@ -24,13 +24,8 @@ async function setPalabra(req, res) {
           res.data.results[0].lexicalEntries[0].entries[0].senses[0]
             .translations[0].text;
       }
-
-      //   text = res.data.results[0].lexicalEntries[0].entries[0].senses[0].subsenses[0]
-      //     .translations[0].text;
-      //  text =
-      //   res.data.results[0].lexicalEntries[0].entries[0].senses[0].translations[0].text;
-      // const result = text.replace("to", " ").trim();
-      // return result;
+      const result = text.replace("to", " ").trim();
+      return result;
     })
     .catch((err) => console.log(err));
 
