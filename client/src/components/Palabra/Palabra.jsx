@@ -30,7 +30,6 @@ import Variables from '../../styles/VariableStyled';
 const Section = styled.div`
   margin: 20px 0 40px;
 `;
-
 const SectionSec = styled.div`
   margin: 20px 0;
 `;
@@ -38,12 +37,6 @@ const Column = styled.div`
   display: grid;
   grid-template-columns: 63% auto;
   grid-gap: 60px;
-`;
-
-const ColumnImages = styled.div`
-  display: grid;
-  grid-template-columns: 40% 1fr;
-  grid-gap: 40px;
 `;
 const Grid = styled.div`
   h3 {
@@ -75,19 +68,13 @@ const Grid = styled.div`
     }
   }
 `;
-
 const GridImages = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 `;
-const GridPixabay = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 10px;
-`;
 
-const Palabra = ({ palabra }) => {
+const Palabra = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { search } = useParams();

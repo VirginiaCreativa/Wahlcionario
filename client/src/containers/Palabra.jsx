@@ -73,6 +73,7 @@ const LexicalCategory = styled.span`
   font-size: 0.85rem;
   font-weight: 400;
 `;
+
 const Palabra = () => {
   const [hasAddPalabra, setHasAddPalabra] = useState(true);
 
