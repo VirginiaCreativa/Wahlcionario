@@ -1,12 +1,16 @@
 const axios = require("axios");
 const sstk = require("shutterstock-api");
 const keys = require("../keys/keys");
+const setTranslate = require("../middlewares/Translate");
 
 async function setPalabra(req, res) {
   var headersFlaticon = {
     Accept: "application/json",
     Authorization: `Bearer ${keys.flaticonKey}`,
   };
+
+  // setTranslate();
+
   let result = await axios
     .all([
       axios.get(
@@ -31,12 +35,9 @@ async function setPalabra(req, res) {
       axios.get(
         `https://pixabay.com/api/?key=${keys.pixabayKey}&q=${req.params.search}&lang=es&pretty=true`
       ),
-      axios.get(
-        `https://api.flaticon.com/v2/search/icons/priority?q=${req.params.search}`,
-        {
-          headers: headersFlaticon,
-        }
-      ),
+      axios.get(`https://api.flaticon.com/v2/search/icons/priority?q=car`, {
+        headers: headersFlaticon,
+      }),
     ])
     .then(
       axios.spread(
@@ -60,7 +61,7 @@ async function setPalabra(req, res) {
       });
     });
 
-  return result || {};
+  return result;
 }
 
 async function setImages(req, res) {
