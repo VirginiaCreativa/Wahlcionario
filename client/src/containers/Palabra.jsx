@@ -59,6 +59,20 @@ const ButtonAddPalabra = styled.button`
     }
   }
 `;
+
+const LexicalCategory = styled.span`
+  position: relative;
+  top: -5px;
+  left: 5px;
+  margin-bottom: 0;
+  border-radius: 4px;
+  background-color: ${Variables.grey5};
+  padding: 2px 6px;
+  letter-spacing: 0.4px;
+  color: ${Variables.blue2};
+  font-size: 0.85rem;
+  font-weight: 400;
+`;
 const Palabra = () => {
   const [hasAddPalabra, setHasAddPalabra] = useState(true);
 
@@ -71,7 +85,10 @@ const Palabra = () => {
   return (
     <div className="container">
       <TitlePalabra>
-        <h1>{capitalizefirstletter(isPalabra || search)}</h1>
+        <h1>
+          {capitalizefirstletter(isPalabra || search)}{' '}
+          <LexicalCategory>verbo transitivo</LexicalCategory>
+        </h1>
         <ButtonAddPalabra
           type="button"
           onClick={() => setHasAddPalabra(!hasAddPalabra)}>
