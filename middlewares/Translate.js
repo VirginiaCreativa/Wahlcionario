@@ -1,4 +1,3 @@
-var unirest = require("unirest");
 const axios = require("axios");
 
 async function Translate() {

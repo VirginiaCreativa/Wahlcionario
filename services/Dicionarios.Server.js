@@ -1,7 +1,7 @@
 const axios = require("axios");
 const sstk = require("shutterstock-api");
 const keys = require("../keys/keys");
-const setTranslate = require("../middlewares/Translate");
+const setTranslate = require("../middlewares/Translate2");
 
 async function setPalabra(req, res) {
   var headersFlaticon = {
@@ -9,12 +9,18 @@ async function setPalabra(req, res) {
     Authorization: `Bearer ${keys.flaticonKey}`,
   };
 
-  // setTranslate();
+  let palabraTranslate = await setTranslate(req.params.search).then((res) => {
+    const text =
+      res.data.results[0].lexicalEntries[0].entries[0].senses[0].translations[0]
+        .text;
+    const result = text.replace("to", " ").trim();
+    return result;
+  });
 
   let result = await axios
     .all([
       axios.get(
-        `https://od-api.oxforddictionaries.com/api/v2/entries/es/${req.params.search}?strictMatch=false`,
+        `https://od-api.oxforddictionaries.com/api/v2/entries/es/${req.params.search}?strictMatch=true`,
         {
           headers: {
             Accept: "application/json",
@@ -35,9 +41,12 @@ async function setPalabra(req, res) {
       axios.get(
         `https://pixabay.com/api/?key=${keys.pixabayKey}&q=${req.params.search}&lang=es&pretty=true`
       ),
-      axios.get(`https://api.flaticon.com/v2/search/icons/priority?q=car`, {
-        headers: headersFlaticon,
-      }),
+      axios.get(
+        `https://api.flaticon.com/v2/search/icons/priority?q=${palabraTranslate}`,
+        {
+          headers: headersFlaticon,
+        }
+      ),
     ])
     .then(
       axios.spread(
