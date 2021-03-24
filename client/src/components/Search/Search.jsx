@@ -72,6 +72,7 @@ const Search = () => {
       dispatch(fetchPalabraImages(doSearchValue));
       dispatch(fetchPalabraPictograma(doSearchValue));
       history.push(`/palabra/${eliminardiacriticos(doSearchValue)}`);
+      window.location.reload();
     }
   };
 

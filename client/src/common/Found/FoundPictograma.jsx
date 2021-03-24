@@ -10,12 +10,15 @@ const BoxStyled = styled.div`
   justify-content: center;
   border-radius: 10px;
   background-color: ${Variables.grey0};
-  padding: 20px;
-  height: 320px;
+  padding: 40px;
+  height: auto;
   text-align: center;
   img {
     margin-bottom: 10px;
     height: 60px;
+  }
+  p {
+    margin-bottom: 0;
   }
 `;
 

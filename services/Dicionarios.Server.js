@@ -9,13 +9,30 @@ async function setPalabra(req, res) {
     Authorization: `Bearer ${keys.flaticonKey}`,
   };
 
-  let palabraTranslate = await setTranslate(req.params.search).then((res) => {
-    const text =
-      res.data.results[0].lexicalEntries[0].entries[0].senses[0].translations[0]
-        .text;
-    const result = text.replace("to", " ").trim();
-    return result;
-  });
+  let palabraTranslate = await setTranslate(req.params.search)
+    .then((res) => {
+      let text;
+      if (
+        !res.data.results[0].lexicalEntries[0].entries[0].senses[0]
+          .translations[0].text
+      ) {
+        text =
+          res.data.results[0].lexicalEntries[0].entries[0].senses[0]
+            .subsenses[0].translations[0].text;
+      } else {
+        text =
+          res.data.results[0].lexicalEntries[0].entries[0].senses[0]
+            .translations[0].text;
+      }
+
+      //   text = res.data.results[0].lexicalEntries[0].entries[0].senses[0].subsenses[0]
+      //     .translations[0].text;
+      //  text =
+      //   res.data.results[0].lexicalEntries[0].entries[0].senses[0].translations[0].text;
+      // const result = text.replace("to", " ").trim();
+      // return result;
+    })
+    .catch((err) => console.log(err));
 
   let result = await axios
     .all([

@@ -121,7 +121,7 @@ export const fetchPalabraFlaticon = (search) => async (dispatch) => {
     const res = await axios.get(`${URL}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_FLATICON,
-        payload: res.data.flaticon.data[3].images.svg,
+        payload: res.data.flaticon.data[0].images.svg,
       });
     });
     return res;

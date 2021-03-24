@@ -70,7 +70,8 @@ const AuthReduce = (state = initialState, action) => {
         antonimos: [],
         images: [],
         pixabay: [],
-        flaticon: [],
+        pictograma: '',
+        flaticon: '',
       };
     default:
       return state;

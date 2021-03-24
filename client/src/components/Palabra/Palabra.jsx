@@ -176,43 +176,6 @@ const Palabra = ({ palabra }) => {
                       </Splide>
                     ) : null}
                   </SectionSec>
-                  {/* <ColumnImages>
-                    <Grid>
-                      {hasPictograma !== undefined ? (
-                        <ImagesPictograma src={hasPictograma} />
-                      ) : (
-                        <FoundPictograma />
-                      )}
-                    </Grid>
-                    <Grid>
-                      {!errorPalabra && (
-                        <>
-                          <GridImages>
-                            {hasImages &&
-                              hasImages.map((item, id) => (
-                                <ImagesItemTrumb
-                                  key={id}
-                                  src={item.assets.large_thumb.url}
-                                  alt={item.assets}
-                                />
-                              ))}
-                          </GridImages>
-                        </>
-                      )}
-                    </Grid>
-                  </ColumnImages> */}
-                  {/* <Section>
-                    <GridPixabay>
-                      {hasPixabay &&
-                        hasPixabay.map((item, id) => (
-                          <ImagesPixabayItem
-                            key={id}
-                            src={item.largeImageURL}
-                            alt={item.tags}
-                          />
-                        ))}
-                    </GridPixabay>
-                  </Section> */}
                 </Section>
               </Grid>
               <Grid>
