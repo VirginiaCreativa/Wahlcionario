@@ -1,27 +1,22 @@
 const axios = require("axios");
+const keys = require("../keys/keys");
 
-async function Translate() {
-  const options = {
-    method: "POST",
-    url: "https://google-translate1.p.rapidapi.com/language/translate/v2",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-      "accept-encoding": "application/gzip",
-      "x-rapidapi-key": "5f1f1ffb88mshad23f7fca3e79ecp1edd2ajsnbab2c10c880b",
-      "x-rapidapi-host": "google-translate1.p.rapidapi.com",
-    },
-    data: { q: "Hello, world!", source: "en", target: "es" },
-  };
-  let req = await axios(options)
-    .then((response) => console.log(">>>", response))
-    .catch((err) => console.log(err));
-
-  return req;
-  // req.end((res) => {
-  //   if (res.error) throw new Error(res.error);
-  //   result = res.body.data.translations[0].translatedText;
-  // });
-  // console.log("===", result);
+async function Translate(word) {
+  try {
+    const result = axios.get(
+      `https://od-api.oxforddictionaries.com/api/v2/translations/es/en/${word}?strictMatch=false&fields=translations`,
+      {
+        headers: {
+          Accept: "application/json",
+          app_id: keys.oxfordAppId,
+          app_key: keys.oxfordAppKeys,
+        },
+      }
+    );
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 module.exports = Translate;

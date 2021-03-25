@@ -1,13 +1,17 @@
 const axios = require("axios");
 const sstk = require("shutterstock-api");
 const keys = require("../keys/keys");
-const setTranslate = require("../middlewares/Translate2");
+const setTranslate = require("../middlewares/Translate");
+const holdFlaticonToken = require("../middlewares/AuthFlaticonKeyToken");
 
 async function setPalabra(req, res) {
-  var headersFlaticon = {
+  let tokenFlaticon;
+  const headersFlaticon = {
     Accept: "application/json",
-    Authorization: `Bearer ${keys.flaticonKey}`,
+    Authorization: `Bearer ${tokenFlaticon}`,
   };
+
+  tokenFlaticon = await holdFlaticonToken().then((res) => res);
 
   let palabraTranslate = await setTranslate(req.params.search)
     .then((res) => {

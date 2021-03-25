@@ -8,6 +8,7 @@ import Variables from '../styles/VariableStyled';
 import AlertErrorPalabra from '../common/Alert/AlertErrorPalabra';
 import PalabraComponent from '../components/Palabra/Palabra';
 import { capitalizefirstletter } from '../scripts/plugin';
+import setLexicalCategorySpanich from '../scripts/LexicalCategory';
 
 const TitlePalabra = styled.div`
   display: flex;
@@ -87,8 +88,8 @@ const Palabra = () => {
     <div className="container">
       <TitlePalabra>
         <h1>
-          {capitalizefirstletter(isPalabra || search)}{' '}
-          <LexicalCategory>verbo transitivo</LexicalCategory>
+          {capitalizefirstletter(isPalabra || search)}
+          <LexicalCategory>{setLexicalCategorySpanich()}</LexicalCategory>
         </h1>
         <ButtonAddPalabra
           type="button"
