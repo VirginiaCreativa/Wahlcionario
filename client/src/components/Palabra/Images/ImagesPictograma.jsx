@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const ImgStyled = styled.img`
-  max-width: 100%;
-  height: auto;
-`;
+const ImgStyled = {
+  maxWidth: '100%',
+  height: 'auto',
+};
 
-const ImagesPictograma = ({ src, palabra }) => {
+const ImagesPictograma = ({ src, height, palabra }) => {
   return (
     <>
-      <ImgStyled src={src} alt={palabra} />
+      <LazyLoadImage effect="blur" src={src} alt={palabra} style={ImgStyled} />
     </>
   );
 };

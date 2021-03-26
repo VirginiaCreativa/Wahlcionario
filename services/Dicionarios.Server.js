@@ -6,12 +6,11 @@ const holdFlaticonToken = require("../middlewares/AuthFlaticonKeyToken");
 
 async function setPalabra(req, res) {
   let tokenFlaticon;
+  tokenFlaticon = await holdFlaticonToken().then((res) => res);
   const headersFlaticon = {
     Accept: "application/json",
     Authorization: `Bearer ${tokenFlaticon}`,
   };
-
-  tokenFlaticon = await holdFlaticonToken().then((res) => res);
 
   let palabraTranslate = await setTranslate(req.params.search)
     .then((res) => {
