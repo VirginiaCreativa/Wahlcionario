@@ -17,6 +17,7 @@ import {
   fetchPalabraPictograma,
   fetchPalabraPixabay,
   fetchPalabraFlaticon,
+  fetchPalabraLexica,
 } from '../../redux/actions/Palabra.Action';
 
 import Definicion from './Definiciones/DefinicionItem';
@@ -100,6 +101,7 @@ const Palabra = () => {
     dispatch(fetchPalabraPictograma(search));
     dispatch(fetchPalabraPixabay(search));
     dispatch(fetchPalabraFlaticon(search));
+    dispatch(fetchPalabraLexica(search));
 
     if (errorPalabra) {
       setIsLoading(true);

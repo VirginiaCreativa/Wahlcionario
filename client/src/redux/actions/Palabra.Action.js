@@ -9,6 +9,7 @@ import {
   FETCH_REST_PALABRA_PICTOGRAMA,
   FETCH_REST_PALABRA_PIXABAY,
   FETCH_REST_PALABRA_FLATICON,
+  FETCH_REST_PALABRA_LEXICA,
 } from '../types';
 
 const URL = 'http://localhost:3000/palabra';
@@ -122,6 +123,21 @@ export const fetchPalabraFlaticon = (search) => async (dispatch) => {
       dispatch({
         type: FETCH_REST_PALABRA_FLATICON,
         payload: res.data.flaticon.data[3].images.svg,
+      });
+    });
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchPalabraLexica = (search) => async (dispatch) => {
+  try {
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_LEXICA,
+        payload:
+          res.data.definiciones.results[0].lexicalEntries.lexicalCategory.text,
       });
     });
     return res;

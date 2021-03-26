@@ -8,7 +8,7 @@ import Variables from '../styles/VariableStyled';
 import AlertErrorPalabra from '../common/Alert/AlertErrorPalabra';
 import PalabraComponent from '../components/Palabra/Palabra';
 import { capitalizefirstletter } from '../scripts/plugin';
-import setLexicalCategorySpanich from '../scripts/LexicalCategory';
+import setLexicalCategorySpanish from '../scripts/LexicalCategory';
 
 const TitlePalabra = styled.div`
   display: flex;
@@ -81,15 +81,18 @@ const Palabra = () => {
   const isPalabra = useSelector((state) => state.search.palabra);
   const errorPalabra = useSelector((state) => state.palabra.error);
   const errorMessage = useSelector((state) => state.palabra.message);
+  const isLexica = useSelector((state) => state.palabra.lexica);
   const { search } = useParams();
   const history = useHistory();
+  const lexica = setLexicalCategorySpanish(isLexica);
 
+  console.log(setLexicalCategorySpanish(`${isLexica}`));
   return (
     <div className="container">
       <TitlePalabra>
         <h1>
           {capitalizefirstletter(isPalabra || search)}
-          <LexicalCategory>{setLexicalCategorySpanich()}</LexicalCategory>
+          <LexicalCategory>{lexica}</LexicalCategory>
         </h1>
         <ButtonAddPalabra
           type="button"

@@ -7,6 +7,7 @@ import {
   FETCH_REST_PALABRA_PICTOGRAMA,
   FETCH_REST_PALABRA_PIXABAY,
   FETCH_REST_PALABRA_FLATICON,
+  FETCH_REST_PALABRA_LEXICA,
 } from '../types';
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   flaticon: [],
   error: false,
   message: '',
+  lexica: [],
 };
 
 const AuthReduce = (state = initialState, action) => {
@@ -60,6 +62,11 @@ const AuthReduce = (state = initialState, action) => {
         ...state,
         flaticon: payload,
       };
+    case FETCH_REST_PALABRA_LEXICA:
+      return {
+        ...state,
+        lexica: payload,
+      };
     case FETCH_REST_PALABRA_ERROR:
       return {
         ...state,
@@ -72,6 +79,7 @@ const AuthReduce = (state = initialState, action) => {
         pixabay: [],
         pictograma: '',
         flaticon: '',
+        lexica: [],
       };
     default:
       return state;
