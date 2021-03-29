@@ -20,7 +20,7 @@ const initialState = {
   flaticon: [],
   error: false,
   message: '',
-  lexica: [],
+  lexica: '',
 };
 
 const AuthReduce = (state = initialState, action) => {
@@ -79,7 +79,7 @@ const AuthReduce = (state = initialState, action) => {
         pixabay: [],
         pictograma: '',
         flaticon: '',
-        lexica: [],
+        lexica: '',
       };
     default:
       return state;

@@ -137,7 +137,8 @@ export const fetchPalabraLexica = (search) => async (dispatch) => {
       dispatch({
         type: FETCH_REST_PALABRA_LEXICA,
         payload:
-          res.data.definiciones.results[0].lexicalEntries.lexicalCategory.text,
+          res.data.definiciones.results[0].lexicalEntries[0].lexicalCategory
+            .text,
       });
     });
     return res;
