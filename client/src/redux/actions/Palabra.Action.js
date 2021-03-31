@@ -120,10 +120,20 @@ export const fetchPalabraPixabay = (search) => async (dispatch) => {
 export const fetchPalabraFlaticon = (search) => async (dispatch) => {
   try {
     const res = await axios.get(`${URL}/${search}`).then((res) => {
-      dispatch({
-        type: FETCH_REST_PALABRA_FLATICON,
-        payload: res.data.flaticon.data[3].images.svg,
-      });
+      if (
+        res.data.flaticon.data[3].images.svg ===
+        'https://image.flaticon.com/icons/svg/42/42994.svg'
+      ) {
+        dispatch({
+          type: FETCH_REST_PALABRA_FLATICON,
+          payload: '',
+        });
+      } else {
+        dispatch({
+          type: FETCH_REST_PALABRA_FLATICON,
+          payload: res.data.flaticon.data[3].images.svg,
+        });
+      }
     });
     return res;
   } catch (error) {

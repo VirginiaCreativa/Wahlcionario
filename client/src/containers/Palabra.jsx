@@ -86,7 +86,6 @@ const Palabra = () => {
   const history = useHistory();
   const lexica = setLexicalCategorySpanish(isLexica);
 
-  console.log(setLexicalCategorySpanish(isLexica));
   return (
     <div className="container">
       <TitlePalabra>

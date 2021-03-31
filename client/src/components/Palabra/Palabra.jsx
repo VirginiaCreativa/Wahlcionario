@@ -179,7 +179,7 @@ const Palabra = () => {
                       )}
                     </>
                     <>
-                      {hasPictograma !== undefined ? (
+                      {hasPictograma !== '' ? (
                         <ImagesPictograma src={hasFlaticon} />
                       ) : (
                         <FoundPictograma />

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import FoundPictograma from '../../../common/Found/FoundPictograma';
 
 const ImgStyled = {
   maxWidth: '100%',
@@ -10,7 +11,16 @@ const ImgStyled = {
 const ImagesPictograma = ({ src, height, palabra }) => {
   return (
     <>
-      <LazyLoadImage effect="blur" src={src} alt={palabra} style={ImgStyled} />
+      {src !== '' ? (
+        <LazyLoadImage
+          effect="blur"
+          src={src}
+          alt={palabra}
+          style={ImgStyled}
+        />
+      ) : (
+        <FoundPictograma />
+      )}
     </>
   );
 };
