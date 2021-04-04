@@ -2,7 +2,7 @@ module.exports = {
   port: 3000,
   jwtSecret: "secretkey",
   dbAdmin: "admin",
-  dbPassword: "7XzlRbt2M3X3vixv",
+  dbPassword: "zROGrfgg979FkN5P",
   dbHost: "cluster0.knzyi.mongodb.net",
   dbTest: "DataBase",
   oxfordAppId: "5bf0aa54",
