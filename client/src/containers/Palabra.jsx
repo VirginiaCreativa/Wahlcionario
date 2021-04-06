@@ -61,11 +61,12 @@ const ButtonAddPalabra = styled.button`
   }
 `;
 
-const LexicalCategory = styled.span`
+const LexicalCategory = styled.button`
   position: relative;
   top: -16px;
   left: 10px;
   margin-bottom: 0;
+  border: none;
   border-radius: 4px;
   background-color: ${Variables.grey5};
   padding: 2px 6px;
@@ -75,15 +76,27 @@ const LexicalCategory = styled.span`
   font-weight: 400;
 `;
 
+const LexicalDefine = styled.span`
+  position: relative;
+  top: -16px;
+  left: 12px;
+  margin-bottom: 0;
+  border-radius: 4px;
+  padding: 2px 6px;
+  letter-spacing: 0.4px;
+  color: ${Variables.grey1};
+  font-size: 0.8rem;
+  font-weight: 400;
+`;
+
 const Palabra = () => {
   const [hasAddPalabra, setHasAddPalabra] = useState(true);
-
+  const [hasLexicaDefine, setHasLexicaDefine] = useState(false);
   const isPalabra = useSelector((state) => state.search.palabra);
   const errorPalabra = useSelector((state) => state.palabra.error);
   const errorMessage = useSelector((state) => state.palabra.message);
   const isLexica = useSelector((state) => state.palabra.lexica);
   const { search } = useParams();
-  const history = useHistory();
   const lexica = setLexicalCategorySpanish(isLexica);
 
   return (
@@ -91,7 +104,16 @@ const Palabra = () => {
       <TitlePalabra>
         <h1>
           {capitalizefirstletter(isPalabra || search)}
-          <LexicalCategory>{lexica}</LexicalCategory>
+          <LexicalCategory
+            onMouseOver={() => setHasLexicaDefine(!hasLexicaDefine)}>
+            {!lexica ? null : lexica.text}
+          </LexicalCategory>
+          {hasLexicaDefine && (
+            <LexicalDefine>
+              <i className="bx bxs-chevrons-right" />
+              {!lexica ? null : lexica.define}
+            </LexicalDefine>
+          )}
         </h1>
         <ButtonAddPalabra
           type="button"

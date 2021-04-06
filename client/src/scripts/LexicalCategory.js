@@ -1,17 +1,31 @@
 function setLexicalCategorySpanich(word) {
   let lexica;
+  let define;
   switch (word) {
     case 'Verb':
-      lexica = 'Verbo';
+      lexica = {
+        text: 'Verbo',
+        define: 'Querer, ver, pedir, traer',
+      };
       break;
     case 'Adjective':
-      lexica = 'Adjectivo';
+      lexica = {
+        text: 'Adjectivo',
+        define: 'Pequeño, grande, imaginario, posibleo',
+      };
       break;
-    case 'Adverbio':
-      lexica = 'Adverb';
+    case 'Adverb':
+      lexica = {
+        text: 'Adverbio',
+        define: 'Tarde, mucho, todavia, claro',
+      };
       break;
     case 'Noun':
-      lexica = 'Sustantivo';
+      lexica = {
+        text: 'Sustantivo',
+        define: 'Juan, bicicleta, árbol, abogado',
+      };
+
       break;
 
     default:
