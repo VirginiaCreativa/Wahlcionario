@@ -63,15 +63,15 @@ const ButtonAddPalabra = styled.button`
 
 const LexicalCategory = styled.span`
   position: relative;
-  top: -5px;
-  left: 5px;
+  top: -16px;
+  left: 10px;
   margin-bottom: 0;
   border-radius: 4px;
   background-color: ${Variables.grey5};
   padding: 2px 6px;
   letter-spacing: 0.4px;
   color: ${Variables.blue2};
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 400;
 `;
 
