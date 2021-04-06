@@ -119,6 +119,7 @@ export const fetchPalabraPixabay = (search) => async (dispatch) => {
 
 export const fetchPalabraFlaticon = (search) => async (dispatch) => {
   try {
+    const autonum = Math.floor(Math.random() * 6);
     const res = await axios.get(`${URL}/${search}`).then((res) => {
       if (
         res.data.flaticon.data[3].images.svg ===
@@ -131,7 +132,7 @@ export const fetchPalabraFlaticon = (search) => async (dispatch) => {
       } else {
         dispatch({
           type: FETCH_REST_PALABRA_FLATICON,
-          payload: res.data.flaticon.data[3].images.svg,
+          payload: res.data.flaticon.data[autonum].images.svg,
         });
       }
     });
