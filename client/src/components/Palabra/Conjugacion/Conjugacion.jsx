@@ -1,9 +1,17 @@
 import React from 'react';
-import { Table, TheadTable, TbodyTable } from './Conjugacion.styled';
+import {
+  Table,
+  TitleTable,
+  TheadTable,
+  TbodyTable,
+} from './Conjugacion.styled';
 
 const Conjugacion = () => {
   return (
-    <div>
+    <>
+      <TitleTable>
+        <h4>Indicativo</h4>
+      </TitleTable>
       <Table className="tg">
         <TheadTable>
           <tr>
@@ -66,7 +74,7 @@ const Conjugacion = () => {
           </tr>
         </TbodyTable>
       </Table>
-    </div>
+    </>
   );
 };
 

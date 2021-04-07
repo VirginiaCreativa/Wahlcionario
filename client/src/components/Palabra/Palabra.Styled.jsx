@@ -3,7 +3,7 @@ import Variables from '../../styles/VariableStyled';
 
 export const Section = styled.div`
   margin: 20px 0 40px;
-  h3 {
+  > h3 {
     position: relative;
     margin-bottom: 15px;
     padding-bottom: 16px;
@@ -12,12 +12,12 @@ export const Section = styled.div`
       display: block;
       position: absolute;
       bottom: 6px;
-      border-bottom: 2px solid ${Variables.blue1};
+      border-bottom: 3px solid ${Variables.blue1};
       width: 60px;
       content: '';
     }
   }
-  h4 {
+  > h4 {
     position: relative;
     margin-bottom: 10px;
     padding-bottom: 14px;
@@ -26,7 +26,7 @@ export const Section = styled.div`
       display: block;
       position: absolute;
       bottom: 6px;
-      border-bottom: 2px solid ${Variables.blue1};
+      border-bottom: 3px solid ${Variables.blue1};
       width: 60px;
       content: '';
     }
