@@ -28,7 +28,7 @@ import Antonimo from './Definiciones/AntonimosItems';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
 import ImagesPixabayItem from './Images/ImagesPixabayItem';
-import Variables from '../../styles/VariableStyled';
+import Conjugacion from './Conjugacion/Conjugacion';
 
 const Palabra = () => {
   const history = useHistory();
@@ -120,6 +120,11 @@ const Palabra = () => {
                         ))}
                     </Splide>
                   ) : null}
+                </Section>
+                {/*  SECTION IMAGENES */}
+                <Section>
+                  <h3>Conjugación</h3>
+                  <Conjugacion />
                 </Section>
               </Grid>
               <Grid>
