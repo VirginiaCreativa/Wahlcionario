@@ -81,9 +81,9 @@ const Palabra = () => {
           <Section>
             <Column>
               <Grid>
-                <h3>Definición</h3>
                 {/*  SECTION DEFINICION */}
                 <Section>
+                  <h3>Definición</h3>
                   {hasDefiniciones &&
                     hasDefiniciones.map((item, id) => (
                       <div key={id}>
