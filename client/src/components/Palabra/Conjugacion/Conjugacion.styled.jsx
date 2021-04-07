@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Variables from '../../../styles/VariableStyled';
 
 export const TitleTable = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   h4 {
-    background-color: ${Variables.grey1};
+    border-top: 1px solid ${Variables.grey0};
+    border-bottom: 1px solid ${Variables.grey0};
     padding: 8px;
     text-align: center;
-    color: #fff;
     font-weight: 500;
   }
 `;
