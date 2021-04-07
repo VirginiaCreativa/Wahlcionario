@@ -9,13 +9,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import Loading from '../../common/loading/LoadingHorizontal';
 import FoundPictograma from '../../common/Found/FoundPictograma';
-import {
-  Section,
-  SectionSec,
-  Column,
-  Grid,
-  GridImages,
-} from './Palabra.Styled';
+import { Section, Column, Grid, GridImages } from './Palabra.Styled';
 import {
   fetchPalabraDefinicion,
   fetchPalabraSinonimos,
@@ -88,6 +82,7 @@ const Palabra = () => {
             <Column>
               <Grid>
                 <h3>Definición</h3>
+                {/*  SECTION DEFINICION */}
                 <Section>
                   {hasDefiniciones &&
                     hasDefiniciones.map((item, id) => (
@@ -96,40 +91,40 @@ const Palabra = () => {
                       </div>
                     ))}
                 </Section>
+                {/*  SECTION IMAGENES */}
                 <Section>
-                  <SectionSec>
+                  <Splide options={SplideOptions}>
+                    {hasImages &&
+                      hasImages.map((item, id) => (
+                        <SplideSlide key={id}>
+                          <ImagesItemTrumb
+                            src={item.assets.large_thumb.url}
+                            alt={item.assets}
+                          />
+                        </SplideSlide>
+                      ))}
+                  </Splide>
+                </Section>
+                <Section>
+                  {hasPixabay !== undefined ? (
                     <Splide options={SplideOptions}>
-                      {hasImages &&
-                        hasImages.map((item, id) => (
+                      {hasPixabay &&
+                        hasPixabay.map((item, id) => (
                           <SplideSlide key={id}>
-                            <ImagesItemTrumb
-                              src={item.assets.large_thumb.url}
-                              alt={item.assets}
+                            <ImagesPixabayItem
+                              key={id}
+                              src={item.largeImageURL}
+                              alt={item.tags}
                             />
                           </SplideSlide>
                         ))}
                     </Splide>
-                  </SectionSec>
-                  <SectionSec>
-                    {hasPixabay !== undefined ? (
-                      <Splide options={SplideOptions}>
-                        {hasPixabay &&
-                          hasPixabay.map((item, id) => (
-                            <SplideSlide key={id}>
-                              <ImagesPixabayItem
-                                key={id}
-                                src={item.largeImageURL}
-                                alt={item.tags}
-                              />
-                            </SplideSlide>
-                          ))}
-                      </Splide>
-                    ) : null}
-                  </SectionSec>
+                  ) : null}
                 </Section>
               </Grid>
               <Grid>
-                <SectionSec>
+                {/* SECTION PICTOGRAMA */}
+                <Section>
                   <GridImages>
                     <>
                       {hasPictograma !== undefined ? (
@@ -146,8 +141,8 @@ const Palabra = () => {
                       )}
                     </>
                   </GridImages>
-                </SectionSec>
-                <SectionSec>
+                </Section>
+                <Section>
                   <h3>Ejemplos</h3>
                   {hasEjemplos &&
                     hasEjemplos.map((item, index) => (
@@ -155,19 +150,19 @@ const Palabra = () => {
                         <Ejemplo items={item.senses} />
                       </div>
                     ))}
-                </SectionSec>
-                <SectionSec>
+                </Section>
+                <Section>
                   <h4>Sinónimos</h4>
                   {hasSinonimos.length >= 0 ? (
                     <Sinonimo items={hasSinonimos} />
                   ) : null}
-                </SectionSec>
-                <SectionSec>
+                </Section>
+                <Section>
                   <h4>Antónimos</h4>
                   {hasAntonimos.length >= 0 ? (
                     <Antonimo items={hasAntonimos} />
                   ) : null}
-                </SectionSec>
+                </Section>
               </Grid>
             </Column>
           </Section>

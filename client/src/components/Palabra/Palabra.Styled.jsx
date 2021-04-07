@@ -4,9 +4,7 @@ import Variables from '../../styles/VariableStyled';
 export const Section = styled.div`
   margin: 20px 0 40px;
 `;
-export const SectionSec = styled.div`
-  margin: 20px 0;
-`;
+
 export const Column = styled.div`
   display: grid;
   grid-template-columns: 63% auto;
