@@ -1,22 +1,23 @@
 import React from 'react';
+import { Table, TheadTable, TbodyTable } from './Conjugacion.styled';
 
 const Conjugacion = () => {
   return (
     <div>
-      <table className="tg">
-        <thead>
+      <Table className="tg">
+        <TheadTable>
           <tr>
-            <th className="tg-nrix">...</th>
-            <th className="tg-nrix">Presente</th>
-            <th className="tg-nrix">Imperfecto</th>
-            <th className="tg-nrix">Pretérito</th>
-            <th className="tg-nrix">Futuro</th>
-            <th className="tg-cly1">Condicional</th>
+            <th> </th>
+            <th>Presente</th>
+            <th>Imperfecto</th>
+            <th>Pretérito</th>
+            <th>Futuro</th>
+            <th>Condicional</th>
           </tr>
-        </thead>
-        <tbody>
+        </TheadTable>
+        <TbodyTable>
           <tr>
-            <td className="tg-nrix">yo</td>
+            <td>yo</td>
             <td className="tg-baqh" />
             <td className="tg-baqh" />
             <td className="tg-baqh" />
@@ -24,7 +25,7 @@ const Conjugacion = () => {
             <td className="tg-0lax" />
           </tr>
           <tr>
-            <td className="tg-nrix">tú</td>
+            <td>tú</td>
             <td className="tg-baqh" />
             <td className="tg-baqh" />
             <td className="tg-baqh" />
@@ -32,7 +33,7 @@ const Conjugacion = () => {
             <td className="tg-0lax" />
           </tr>
           <tr>
-            <td className="tg-nrix">él, ella, usted</td>
+            <td>él, ella, usted</td>
             <td className="tg-baqh" />
             <td className="tg-baqh" />
             <td className="tg-baqh" />
@@ -40,7 +41,7 @@ const Conjugacion = () => {
             <td className="tg-0lax" />
           </tr>
           <tr>
-            <td className="tg-nrix">nosotros</td>
+            <td>nosotros</td>
             <td className="tg-baqh" />
             <td className="tg-baqh" />
             <td className="tg-baqh" />
@@ -48,7 +49,7 @@ const Conjugacion = () => {
             <td className="tg-0lax" />
           </tr>
           <tr>
-            <td className="tg-nrix">vosotros</td>
+            <td>vosotros</td>
             <td className="tg-baqh" />
             <td className="tg-baqh" />
             <td className="tg-baqh" />
@@ -63,8 +64,8 @@ const Conjugacion = () => {
             <td className="tg-0lax" />
             <td className="tg-0lax" />
           </tr>
-        </tbody>
-      </table>
+        </TbodyTable>
+      </Table>
     </div>
   );
 };

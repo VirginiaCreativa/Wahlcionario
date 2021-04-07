@@ -92,7 +92,7 @@ const Palabra = () => {
                     ))}
                 </Section>
                 {/*  SECTION IMAGENES */}
-                <Section>
+                {/* <Section>
                   <Splide options={SplideOptions}>
                     {hasImages &&
                       hasImages.map((item, id) => (
@@ -120,8 +120,8 @@ const Palabra = () => {
                         ))}
                     </Splide>
                   ) : null}
-                </Section>
-                {/*  SECTION IMAGENES */}
+                </Section> */}
+                {/*  SECTION CONJUGACION */}
                 <Section>
                   <h3>Conjugación</h3>
                   <Conjugacion />
