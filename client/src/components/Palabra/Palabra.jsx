@@ -10,6 +10,13 @@ import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import Loading from '../../common/loading/LoadingHorizontal';
 import FoundPictograma from '../../common/Found/FoundPictograma';
 import {
+  Section,
+  SectionSec,
+  Column,
+  Grid,
+  GridImages,
+} from './Palabra.Styled';
+import {
   fetchPalabraDefinicion,
   fetchPalabraSinonimos,
   fetchPalabraAntonimos,
@@ -28,53 +35,6 @@ import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
 import ImagesPixabayItem from './Images/ImagesPixabayItem';
 import Variables from '../../styles/VariableStyled';
-
-const Section = styled.div`
-  margin: 20px 0 40px;
-`;
-const SectionSec = styled.div`
-  margin: 20px 0;
-`;
-const Column = styled.div`
-  display: grid;
-  grid-template-columns: 63% auto;
-  grid-gap: 60px;
-`;
-const Grid = styled.div`
-  h3 {
-    position: relative;
-    margin-bottom: 15px;
-    padding-bottom: 16px;
-    font-weight: 600;
-    ::after {
-      display: block;
-      position: absolute;
-      bottom: 6px;
-      border-bottom: 2px solid ${Variables.blue1};
-      width: 60px;
-      content: '';
-    }
-  }
-  h4 {
-    position: relative;
-    margin-bottom: 10px;
-    padding-bottom: 14px;
-    font-weight: 600;
-    ::after {
-      display: block;
-      position: absolute;
-      bottom: 6px;
-      border-bottom: 2px solid ${Variables.blue1};
-      width: 60px;
-      content: '';
-    }
-  }
-`;
-const GridImages = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-`;
 
 const Palabra = () => {
   const history = useHistory();
