@@ -62,18 +62,33 @@ async function setPalabra(req, res) {
           headers: headersFlaticon,
         }
       ),
+      axios.get(
+        `https://raw.githubusercontent.com/asosab/esp_verbos/master/esp_verbos.json`
+      ),
     ])
     .then(
       axios.spread(
-        (response1, response2, response3, response4, response5, response6) => {
-          res.status(200).send({
-            definiciones: response1.data,
-            sinonimos: response2.data,
-            antonimos: response3.data,
-            pictograma: response4.data,
-            pixabay: response5.data,
-            flaticon: response6.data,
-          });
+        (
+          response1,
+          response2,
+          response3,
+          response4,
+          response5,
+          response6,
+          response7
+        ) => {
+          const resultResponseConju = response7.filter(
+            (item) => item.verbo === "estar"
+          );
+          console.log(resultResponseConju);
+          // res.status(200).send({
+          //   definiciones: response1.data,
+          //   sinonimos: response2.data,
+          //   antonimos: response3.data,
+          //   pictograma: response4.data,
+          //   pixabay: response5.data,
+          //   flaticon: response6.data,
+          // });
         }
       )
     )
