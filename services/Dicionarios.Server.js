@@ -32,6 +32,8 @@ async function setPalabra(req, res) {
     })
     .catch((err) => console.log(err));
 
+  // let resultConjugacion = await setConjugacion(req.params.search);
+
   let result = await axios
     .all([
       axios.get(
@@ -62,9 +64,16 @@ async function setPalabra(req, res) {
           headers: headersFlaticon,
         }
       ),
-      axios.get(
-        `https://raw.githubusercontent.com/asosab/esp_verbos/master/esp_verbos.json`
-      ),
+      axios
+        .get(
+          `https://raw.githubusercontent.com/asosab/esp_verbos/master/esp_verbos.json`
+        )
+        .then((res) => {
+          const result = res.data
+            .filter((item) => item.verbo === req.params.search)
+            .map((item) => item);
+          return result;
+        }),
     ])
     .then(
       axios.spread(
@@ -77,18 +86,15 @@ async function setPalabra(req, res) {
           response6,
           response7
         ) => {
-          const resultResponseConju = response7.filter(
-            (item) => item.verbo === "estar"
-          );
-          console.log(resultResponseConju);
-          // res.status(200).send({
-          //   definiciones: response1.data,
-          //   sinonimos: response2.data,
-          //   antonimos: response3.data,
-          //   pictograma: response4.data,
-          //   pixabay: response5.data,
-          //   flaticon: response6.data,
-          // });
+          res.status(200).send({
+            definiciones: response1.data,
+            sinonimos: response2.data,
+            antonimos: response3.data,
+            pictograma: response4.data,
+            pixabay: response5.data,
+            flaticon: response6.data,
+            conjugacion: response7,
+          });
         }
       )
     )

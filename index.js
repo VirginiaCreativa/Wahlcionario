@@ -11,7 +11,6 @@ const keys = require("./keys/keys");
 const MongooseLib = require("./lib/mongoose");
 const UserRouter = require("./routes/User.Router");
 const DicionariosRouter = require("./routes/Dicionarios.Router");
-const ConjugacionRouter = require("./routes/Conjugacion.Router");
 
 // ====== CONNECT MONGODB ====== //
 const connect = new MongooseLib();
@@ -30,7 +29,6 @@ app.use(express.static(path.join(__dirname, "client")));
 // ====== CONTROLLERS ROUTES ====== //
 UserRouter(app);
 DicionariosRouter(app);
-ConjugacionRouter(app);
 
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 app.get("*", (req, res) => {

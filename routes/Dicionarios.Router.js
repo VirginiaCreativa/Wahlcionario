@@ -11,6 +11,10 @@ function DicionariosRouter(app) {
   router.get("/images/:images", (req, res) => {
     DicionariosController.fetchDicionariosImages(req, res);
   });
+
+  router.get("/conjugacion", (req, res) => {
+    DicionariosController.fetchSetConjugacion(req, res);
+  });
 }
 
 module.exports = DicionariosRouter;

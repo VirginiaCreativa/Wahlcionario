@@ -9,3 +9,8 @@ exports.fetchDicionariosImages = (req, res) =>
   new Promise((resolve, reject) =>
     resolve(DicionariosServices.setImages(req, res))
   );
+
+exports.fetchSetConjugacion = (req, res) =>
+  new Promise((resolve, reject) =>
+    resolve(DicionariosServices.setConjugacion(req, res))
+  );
