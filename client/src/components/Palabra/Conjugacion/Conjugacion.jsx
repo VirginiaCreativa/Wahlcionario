@@ -5,6 +5,7 @@ import {
   TheadTable,
   TbodyTable,
 } from './Conjugacion.styled';
+import { PronombresComplementoRemove } from '../../../scripts/plugin';
 
 const Conjugacion = () => {
   return (
@@ -26,9 +27,15 @@ const Conjugacion = () => {
         <TbodyTable>
           <tr>
             <td>yo</td>
-            <td className="tg-baqh" />
-            <td className="tg-baqh" />
-            <td className="tg-baqh" />
+            <td className="tg-baqh">
+              {PronombresComplementoRemove('me dfdsf')}
+            </td>
+            <td className="tg-baqh">
+              {PronombresComplementoRemove('se dfdsf')}
+            </td>
+            <td className="tg-baqh">
+              {PronombresComplementoRemove('te dfdsf')}
+            </td>
             <td className="tg-baqh" />
             <td className="tg-0lax" />
           </tr>
