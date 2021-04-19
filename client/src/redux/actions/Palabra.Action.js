@@ -10,6 +10,7 @@ import {
   FETCH_REST_PALABRA_PIXABAY,
   FETCH_REST_PALABRA_FLATICON,
   FETCH_REST_PALABRA_LEXICA,
+  FETCH_REST_PALABRA_CONJUGACION,
 } from '../types';
 
 const URL = 'http://localhost:3000/palabra';
@@ -150,6 +151,20 @@ export const fetchPalabraLexica = (search) => async (dispatch) => {
         payload:
           res.data.definiciones.results[0].lexicalEntries[0].lexicalCategory
             .text,
+      });
+    });
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchPalabraConjugacion = (search) => async (dispatch) => {
+  try {
+    const res = await axios.get(`${URL}/${search}`).then((res) => {
+      dispatch({
+        type: FETCH_REST_PALABRA_CONJUGACION,
+        payload: res.data.conjugacion[0],
       });
     });
     return res;

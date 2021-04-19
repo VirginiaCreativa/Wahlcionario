@@ -19,6 +19,7 @@ import {
   fetchPalabraPixabay,
   fetchPalabraFlaticon,
   fetchPalabraLexica,
+  fetchPalabraConjugacion,
 } from '../../redux/actions/Palabra.Action';
 
 import Definicion from './Definiciones/DefinicionItem';
@@ -56,6 +57,7 @@ const Palabra = () => {
     dispatch(fetchPalabraPixabay(search));
     dispatch(fetchPalabraFlaticon(search));
     dispatch(fetchPalabraLexica(search));
+    dispatch(fetchPalabraConjugacion(search));
 
     if (errorPalabra) {
       setIsLoading(true);
@@ -63,14 +65,6 @@ const Palabra = () => {
       setIsLoading(false);
     }
   }, []);
-
-  const SplideOptions = {
-    type: 'loop',
-    perPage: 6,
-    focus: 'center',
-    autoWidth: true,
-    gap: '1rem',
-  };
 
   return (
     <>

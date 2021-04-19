@@ -32,8 +32,6 @@ async function setPalabra(req, res) {
     })
     .catch((err) => console.log(err));
 
-  // let resultConjugacion = await setConjugacion(req.params.search);
-
   let result = await axios
     .all([
       axios.get(
