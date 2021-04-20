@@ -4,9 +4,8 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import Loading from '../../common/loading/LoadingHorizontal';
 import FoundPictograma from '../../common/Found/FoundPictograma';
 import { Section, Column, Grid, GridImages } from './Palabra.Styled';
@@ -29,7 +28,8 @@ import Antonimo from './Definiciones/AntonimosItems';
 import ImagesItemTrumb from './Images/ImagesItemTrumb';
 import ImagesPictograma from './Images/ImagesPictograma';
 import ImagesPixabayItem from './Images/ImagesPixabayItem';
-import Conjugacion from './Conjugacion/Conjugacion';
+
+const Conjugacion = lazy(() => import('./Conjugacion/Conjugacion'));
 
 const Palabra = () => {
   const history = useHistory();
@@ -48,6 +48,13 @@ const Palabra = () => {
   const errorPalabra = useSelector((state) => state.palabra.error);
   const errorMessage = useSelector((state) => state.palabra.message);
 
+  const SplideOptions = {
+    type: 'loop',
+    perPage: 6,
+    focus: 'center',
+    autoWidth: true,
+    gap: '1rem',
+  };
   useEffect(() => {
     dispatch(fetchPalabraDefinicion(search));
     dispatch(fetchPalabraSinonimos(search));
@@ -86,20 +93,20 @@ const Palabra = () => {
                     ))}
                 </Section>
                 {/*  SECTION IMAGENES */}
-                {/* <Section>
+                <Section>
                   <Splide options={SplideOptions}>
                     {hasImages &&
                       hasImages.map((item, id) => (
                         <SplideSlide key={id}>
                           <ImagesItemTrumb
-                            src={item.assets.large_thumb.url}
+                            src={item.assets.small_thumb.url}
                             alt={item.assets}
                           />
                         </SplideSlide>
                       ))}
                   </Splide>
                 </Section>
-                <Section>
+                {/* <Section>
                   {hasPixabay !== undefined ? (
                     <Splide options={SplideOptions}>
                       {hasPixabay &&

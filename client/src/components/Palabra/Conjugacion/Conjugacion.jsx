@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Table,
   TitleTable,
@@ -8,6 +9,15 @@ import {
 import { PronombresComplementoRemove } from '../../../scripts/plugin';
 
 const Conjugacion = () => {
+  const [holdConjugacion, setHoldConjugacion] = useState();
+  const hasConjugacion = useSelector((state) => state.palabra.conjugacion);
+  useEffect(() => {
+    if (hasConjugacion !== undefined) {
+      setHoldConjugacion(hasConjugacion);
+    } else {
+      setHoldConjugacion('...');
+    }
+  }, [hasConjugacion]);
   return (
     <>
       <TitleTable>
@@ -28,10 +38,10 @@ const Conjugacion = () => {
           <tr>
             <td>yo</td>
             <td className="tg-baqh">
-              {PronombresComplementoRemove('me dfdsf')}
+              {PronombresComplementoRemove('me fdsfdsa')}
             </td>
             <td className="tg-baqh">
-              {PronombresComplementoRemove('se dfdsf')}
+              {PronombresComplementoRemove('se fdafd')}
             </td>
             <td className="tg-baqh">
               {PronombresComplementoRemove('te dfdsf')}

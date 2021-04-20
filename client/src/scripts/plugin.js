@@ -12,5 +12,8 @@ export function eliminardiacriticos(texto) {
 }
 
 export function PronombresComplementoRemove(pron) {
-  return pron.replace(/me|se|te|nos|os/gi, '').trim();
+  if (pron) {
+    return pron.replace(/me|se|te|nos|os/gi, '').trim();
+  }
+  return null;
 }

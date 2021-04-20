@@ -87,6 +87,10 @@ const GlobalStyled = createGlobalStyle`
       content: '';
     }
   }
+  .lazy-load-image-background {
+    height: 78px;
+    overflow: hidden;
+  }
 `;
 
 export default GlobalStyled;
