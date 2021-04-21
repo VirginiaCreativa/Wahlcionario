@@ -64,7 +64,7 @@ const Palabra = () => {
     dispatch(fetchPalabraPixabay(search));
     dispatch(fetchPalabraFlaticon(search));
     dispatch(fetchPalabraLexica(search));
-    dispatch(fetchPalabraConjugacion(search));
+    // dispatch(fetchPalabraConjugacion(search));
 
     if (errorPalabra) {
       setIsLoading(true);
@@ -93,7 +93,7 @@ const Palabra = () => {
                     ))}
                 </Section>
                 {/*  SECTION IMAGENES */}
-                <Section>
+                {/* <Section>
                   <Splide options={SplideOptions}>
                     {hasImages &&
                       hasImages.map((item, id) => (
@@ -105,7 +105,7 @@ const Palabra = () => {
                         </SplideSlide>
                       ))}
                   </Splide>
-                </Section>
+                </Section> */}
                 {/* <Section>
                   {hasPixabay !== undefined ? (
                     <Splide options={SplideOptions}>

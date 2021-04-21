@@ -91,7 +91,7 @@ async function setPalabra(req, res) {
             pictograma: response4.data,
             pixabay: response5.data,
             flaticon: response6.data,
-            conjugacion: response7,
+            // conjugacion: response7,
           });
         }
       )
