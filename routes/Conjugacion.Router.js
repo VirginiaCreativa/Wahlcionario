@@ -6,7 +6,6 @@ function ConjugacionRouter(app) {
   app.use("/conjugacion", router);
 
   router.get("/:search", (req, res) => {
-    console.log("npm run buildhj");
     ConjugacionController(req, res);
   });
 }

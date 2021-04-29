@@ -13,12 +13,13 @@ import {
   FETCH_REST_PALABRA_CONJUGACION,
 } from '../types';
 
-const URL = 'http://localhost:3000/palabra';
+const palabra = 'http://localhost:3000/palabra';
+const conjugacion = 'http://localhost:3000/conjugacion';
 
 export const fetchPalabraDefinicion = (search) => async (dispatch) => {
   try {
     const res = await axios
-      .get(`${URL}/${search}`)
+      .get(`${palabra}/${search}`)
       .then((res) => {
         if (res.data.definiciones) {
           dispatch({
@@ -46,7 +47,7 @@ export const fetchPalabraDefinicion = (search) => async (dispatch) => {
 
 export const fetchPalabraSinonimos = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_SINONIMOS,
         payload: res.data.sinonimos.sinonimos,
@@ -60,7 +61,7 @@ export const fetchPalabraSinonimos = (search) => async (dispatch) => {
 
 export const fetchPalabraAntonimos = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_ANTONIMOS,
         payload: res.data.antonimos.antonimos,
@@ -74,7 +75,7 @@ export const fetchPalabraAntonimos = (search) => async (dispatch) => {
 
 export const fetchPalabraImages = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/images/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/images/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_IMAGES,
         payload: res.data.images,
@@ -88,7 +89,7 @@ export const fetchPalabraImages = (search) => async (dispatch) => {
 
 export const fetchPalabraPictograma = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/${search}`).then((res) => {
       const element = res.data.pictograma;
       const tmp = document.createElement('div');
       tmp.innerHTML = element;
@@ -106,7 +107,7 @@ export const fetchPalabraPictograma = (search) => async (dispatch) => {
 
 export const fetchPalabraPixabay = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_PIXABAY,
         payload: res.data.pixabay.hits,
@@ -121,7 +122,7 @@ export const fetchPalabraPixabay = (search) => async (dispatch) => {
 export const fetchPalabraFlaticon = (search) => async (dispatch) => {
   try {
     const autonum = Math.floor(Math.random() * 6);
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/${search}`).then((res) => {
       if (
         res.data.flaticon.data[3].images.svg ===
         'https://image.flaticon.com/icons/svg/42/42994.svg'
@@ -145,7 +146,7 @@ export const fetchPalabraFlaticon = (search) => async (dispatch) => {
 
 export const fetchPalabraLexica = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${palabra}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_LEXICA,
         payload:
@@ -161,7 +162,7 @@ export const fetchPalabraLexica = (search) => async (dispatch) => {
 
 export const fetchPalabraConjugacion = (search) => async (dispatch) => {
   try {
-    const res = await axios.get(`${URL}/${search}`).then((res) => {
+    const res = await axios.get(`${conjugacion}/${search}`).then((res) => {
       dispatch({
         type: FETCH_REST_PALABRA_CONJUGACION,
         payload: res.data.conjugacion[0],

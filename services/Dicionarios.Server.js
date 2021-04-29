@@ -62,28 +62,10 @@ async function setPalabra(req, res) {
           headers: headersFlaticon,
         }
       ),
-      axios
-        .get(
-          `https://raw.githubusercontent.com/asosab/esp_verbos/master/esp_verbos.json`
-        )
-        .then((res) => {
-          const result = res.data
-            .filter((item) => item.verbo === req.params.search)
-            .map((item) => item);
-          return result;
-        }),
     ])
     .then(
       axios.spread(
-        (
-          response1,
-          response2,
-          response3,
-          response4,
-          response5,
-          response6,
-          response7
-        ) => {
+        (response1, response2, response3, response4, response5, response6) => {
           res.status(200).send({
             definiciones: response1.data,
             sinonimos: response2.data,
@@ -91,7 +73,6 @@ async function setPalabra(req, res) {
             pictograma: response4.data,
             pixabay: response5.data,
             flaticon: response6.data,
-            // conjugacion: response7,
           });
         }
       )
