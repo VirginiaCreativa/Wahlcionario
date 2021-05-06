@@ -60,7 +60,7 @@ const GlobalStyled = createGlobalStyle`
     margin-bottom: 50px;
   }
   .splide__pagination {
-    bottom: -1.8em !important;
+    bottom: -1.2em !important;
   }
   .splide__arrow svg {
     width: 1.1em !important;

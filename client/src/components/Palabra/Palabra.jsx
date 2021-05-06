@@ -1,6 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import React, { lazy, Suspense, useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -93,26 +93,26 @@ const Palabra = () => {
                     ))}
                 </Section>
                 {/*  SECTION IMAGENES */}
-                {/* <Section>
+                <Section>
                   <Splide options={SplideOptions}>
                     {hasImages &&
                       hasImages.map((item, id) => (
                         <SplideSlide key={id}>
                           <ImagesItemTrumb
-                            src={item.assets.small_thumb.url}
+                            src={item.assets.preview.url}
                             alt={item.assets}
                           />
                         </SplideSlide>
                       ))}
                   </Splide>
-                </Section> */}
+                </Section>
                 {/* <Section>
                   {hasPixabay !== undefined ? (
                     <Splide options={SplideOptions}>
                       {hasPixabay &&
                         hasPixabay.map((item, id) => (
                           <SplideSlide key={id}>
-                            <ImagesPixabayItem
+                            <p
                               key={id}
                               src={item.largeImageURL}
                               alt={item.tags}

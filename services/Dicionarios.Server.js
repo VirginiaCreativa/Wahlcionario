@@ -98,7 +98,6 @@ async function setImages(req, res) {
     page: 1,
     per_page: 10,
     orientation: "horizontal",
-    language: "es",
   };
 
   await imagesApi

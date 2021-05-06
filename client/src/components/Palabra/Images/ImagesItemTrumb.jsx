@@ -14,8 +14,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ImgStyled = {
   maxWidth: '100%',
-  height: '100px',
-  overflow: 'hidden',
+  height: '160px',
 };
 
 const ImagesItemTrumb = ({ src, palabra }) => {
